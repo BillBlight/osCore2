@@ -429,6 +429,7 @@
     ; MinLoginLevel = 0
 
     ; Ask co-operative viewers to use a different currency name
+	; You must use quotes for this
     ;Currency = ""
 
     ;; Set minimum fee to publish classified

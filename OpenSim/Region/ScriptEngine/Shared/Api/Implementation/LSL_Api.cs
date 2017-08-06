@@ -123,6 +123,8 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         protected bool m_scriptConsoleChannelEnabled = false;
         protected bool m_debuggerSafe = false;
         protected IUrlModule m_UrlModule = null;
+		
+		protected bool delayconfigoverride = false;
 
         protected Dictionary<UUID, UserInfoCacheEntry> m_userInfoCache = new Dictionary<UUID, UserInfoCacheEntry>();
         protected int EMAIL_PAUSE_TIME = 20;  // documented delay value for smtp.
@@ -398,6 +400,68 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     m_msMinInCastRay = lslConfig.GetInt("RequiredAvailableTimeInMsInLlCastRay", m_msMinInCastRay);
                     m_msMaxInCastRay = lslConfig.GetInt("MaximumAvailableTimeInMsInLlCastRay", m_msMaxInCastRay);
                     m_useMeshCacheInCastRay = lslConfig.GetBoolean("UseMeshCacheInLlCastRay", m_useMeshCacheInCastRay);
+					
+					//Overwrite delays
+					m_sleepMsOnSetTexture = lslConfig.GetInt("SetTexture_Delay", m_sleepMsOnSetTexture);
+					m_sleepMsOnSetLinkTexture = lslConfig.GetInt("SetLinkTexture_Delay", m_sleepMsOnSetLinkTexture);
+					m_sleepMsOnScaleTexture = lslConfig.GetInt("ScaleTexture_Delay", m_sleepMsOnScaleTexture);
+                    m_sleepMsOnOffsetTexture = lslConfig.GetInt("OffsetTexture_Delay" , m_sleepMsOnOffsetTexture);
+                    m_sleepMsOnRotateTexture = lslConfig.GetInt("RotateTexture_Delay" , m_sleepMsOnRotateTexture);
+                    m_sleepMsOnSetPos = lslConfig.GetInt("SetPos_Delay" , m_sleepMsOnSetPos);
+                    m_sleepMsOnSetRot = lslConfig.GetInt("SetRot_Delay" , m_sleepMsOnSetRot);
+                    m_sleepMsOnSetLocalRot = lslConfig.GetInt("SetLocalRot_Delay", m_sleepMsOnSetLocalRot);
+                    m_sleepMsOnPreloadSound = lslConfig.GetInt("PreloadSound_Delay" , m_sleepMsOnPreloadSound);
+                    m_sleepMsOnMakeExplosion = lslConfig.GetInt("MakeExplosion_Delay" , m_sleepMsOnMakeExplosion);
+                    m_sleepMsOnMakeFountain = lslConfig.GetInt("MakeFountain_Delay" , m_sleepMsOnMakeFountain);
+                    m_sleepMsOnMakeSmoke = lslConfig.GetInt("MakeSmoke_Delay" , m_sleepMsOnMakeSmoke);
+                    m_sleepMsOnMakeFire = lslConfig.GetInt("MakeFire_Delay" , m_sleepMsOnMakeFire);
+                    m_sleepMsOnRezAtRoot = lslConfig.GetInt("RezAtRoot_Delay" , m_sleepMsOnRezAtRoot);
+                    m_sleepMsOnInstantMessage = lslConfig.GetInt("InstantMessage_Delay" , m_sleepMsOnInstantMessage);
+                    m_sleepMsOnEmail = lslConfig.GetInt("OnEmail_Delay" , m_sleepMsOnEmail);
+                    m_sleepMsOnCreateLink = lslConfig.GetInt("CreateLink_Delay" , m_sleepMsOnCreateLink);
+                    m_sleepMsOnGiveInventory = lslConfig.GetInt("GiveInventory_Delay" , m_sleepMsOnGiveInventory);
+                    m_sleepMsOnRequestAgentData = lslConfig.GetInt("RequestAgentData_Delay" , m_sleepMsOnRequestAgentData);
+                    m_sleepMsOnRequestInventoryData = lslConfig.GetInt("RequestInventoryData_Delay" , m_sleepMsOnRequestInventoryData);
+                    m_sleepMsOnSetDamage = lslConfig.GetInt("SetDamage_Delay" , m_sleepMsOnSetDamage);
+                    m_sleepMsOnTextBox = lslConfig.GetInt("TextBox_Delay" , m_sleepMsOnTextBox);
+                    m_sleepMsOnAdjustSoundVolume = lslConfig.GetInt("AdjustSoundVolume_Delay" , m_sleepMsOnAdjustSoundVolume);
+                    m_sleepMsOnEjectFromLand = lslConfig.GetInt("EjectFromLand_Delay" , m_sleepMsOnEjectFromLand);
+                    m_sleepMsOnAddToLandPassList = lslConfig.GetInt("AddToLandPassList_Delay" , m_sleepMsOnAddToLandPassList);
+                    m_sleepMsOnDialog = lslConfig.GetInt("Dialog_Delay" , m_sleepMsOnDialog);
+                    m_sleepMsOnRemoteLoadScript = lslConfig.GetInt("RemoteLoadScript_Delay" , m_sleepMsOnRemoteLoadScript);
+                    m_sleepMsOnRemoteLoadScriptPin = lslConfig.GetInt("RemoteLoadScriptPin_Delay" , m_sleepMsOnRemoteLoadScriptPin);
+                    m_sleepMsOnOpenRemoteDataChannel = lslConfig.GetInt("OpenRemoteDataChannel_Delay" , m_sleepMsOnOpenRemoteDataChannel);
+                    m_sleepMsOnSendRemoteData = lslConfig.GetInt("SendRemoteData_Delay", m_sleepMsOnSendRemoteData);
+                    m_sleepMsOnRemoteDataReply = lslConfig.GetInt("RemoteDataReply_Delay" , m_sleepMsOnRemoteDataReply);
+                    m_sleepMsOnCloseRemoteDataChannel = lslConfig.GetInt("CloseRemoteDataChannel_Delay" , m_sleepMsOnCloseRemoteDataChannel);
+                    m_sleepMsOnSetPrimitiveParams = lslConfig.GetInt("SetPrimitiveParams_Delay" , m_sleepMsOnSetPrimitiveParams);
+                    m_sleepMsOnSetLinkPrimitiveParams = lslConfig.GetInt("SetLinkPrimitiveParams_Delay" , m_sleepMsOnSetLinkPrimitiveParams);
+                    m_sleepMsOnXorBase64Strings = lslConfig.GetInt("XorBase64Strings_Delay" , m_sleepMsOnXorBase64Strings);
+                    m_sleepMsOnSetParcelMusicURL = lslConfig.GetInt("SetParcelMusicURL_Delay" , m_sleepMsOnSetParcelMusicURL);
+                    m_sleepMsOnGetPrimMediaParams = lslConfig.GetInt("GetPrimMediaParams_Delay" , m_sleepMsOnGetPrimMediaParams);
+                    m_sleepMsOnGetLinkMedia = lslConfig.GetInt("GetLinkMedia_Delay" , m_sleepMsOnGetLinkMedia);
+                    m_sleepMsOnSetPrimMediaParams = lslConfig.GetInt("SetPrimMediaParams_Delay" , m_sleepMsOnSetPrimMediaParams);
+                    m_sleepMsOnSetLinkMedia = lslConfig.GetInt("SetLinkMedia_Delay" , m_sleepMsOnSetLinkMedia);
+                    m_sleepMsOnClearPrimMedia = lslConfig.GetInt("ClearPrimMedia_Delay" , m_sleepMsOnClearPrimMedia);
+                    m_sleepMsOnClearLinkMedia = lslConfig.GetInt("mClearLinkMedia_Delay" , m_sleepMsOnClearLinkMedia);
+                    m_sleepMsOnRequestSimulatorData = lslConfig.GetInt("RequestSimulatorData_Delay", m_sleepMsOnRequestSimulatorData);
+                    m_sleepMsOnLoadURL = lslConfig.GetInt("LoadURL_Delay" , m_sleepMsOnLoadURL);
+                    m_sleepMsOnParcelMediaCommandList = lslConfig.GetInt("ParcelMediaCommandList_Delay" , m_sleepMsOnParcelMediaCommandList);
+                    m_sleepMsOnParcelMediaQuery = lslConfig.GetInt("ParcelMediaQuery_Delay", m_sleepMsOnParcelMediaQuery);
+                    m_sleepMsOnModPow = lslConfig.GetInt("ModPow_Delay" , m_sleepMsOnModPow);
+                    m_sleepMsOnSetPrimURL = lslConfig.GetInt("SetPrimURL_Delay" , m_sleepMsOnSetPrimURL);
+                    m_sleepMsOnRefreshPrimURL = lslConfig.GetInt("RefreshPrimURL_Delay" , m_sleepMsOnRefreshPrimURL);
+                    m_sleepMsOnMapDestination = lslConfig.GetInt("MapDestination_Delay" , m_sleepMsOnMapDestination);
+                    m_sleepMsOnAddToLandBanList = lslConfig.GetInt("AddToLandBanList_Delay" , m_sleepMsOnAddToLandBanList);
+                    m_sleepMsOnRemoveFromLandPassList = lslConfig.GetInt("RemoveFromLandPassList_Delay" , m_sleepMsOnRemoveFromLandPassList);
+                    m_sleepMsOnRemoveFromLandBanList = lslConfig.GetInt("RemoveFromLandBanList_Delay" , m_sleepMsOnRemoveFromLandBanList);
+                    m_sleepMsOnResetLandBanList = lslConfig.GetInt("ResetLandBanList_Delay" , m_sleepMsOnResetLandBanList);
+                    m_sleepMsOnResetLandPassList = lslConfig.GetInt("ResetLandPassList_Delay" , m_sleepMsOnResetLandPassList);
+                    m_sleepMsOnGetParcelPrimOwners = lslConfig.GetInt("GetParcelPrimOwners_Delay" , m_sleepMsOnGetParcelPrimOwners);
+                    m_sleepMsOnGetNumberOfNotecardLines = lslConfig.GetInt("GetNumberOfNotecardLines_Delay" , m_sleepMsOnGetNumberOfNotecardLines);
+                    m_sleepMsOnGetNotecardLine = lslConfig.GetInt("GetNotecardLine_Delay" , m_sleepMsOnGetNotecardLine);
+					
+					
                 }
 
                 IConfig smtpConfig = seConfigSource.Configs["SMTP"];
@@ -407,9 +471,13 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     EMAIL_PAUSE_TIME = smtpConfig.GetInt("email_pause_time", EMAIL_PAUSE_TIME);
 
                     m_internalObjectHost = smtpConfig.GetString("internal_object_host", m_internalObjectHost);
+					
+					if (m_sleepMsOnEmail < (EMAIL_PAUSE_TIME * 1000))
+					{
+						m_sleepMsOnEmail = EMAIL_PAUSE_TIME * 1000;
+					}					
                 }
             }
-            m_sleepMsOnEmail = EMAIL_PAUSE_TIME * 1000;
         }
 
         public override Object InitializeLifetimeService()
