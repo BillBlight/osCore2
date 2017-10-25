@@ -5589,6 +5589,13 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                 velocity = presence.Velocity;
                 acceleration = Vector3.Zero;
                 rotation = presence.Rotation;
+                // tpvs can only see rotations around Z in some cases
+                if(!presence.Flying && !presence.IsSatOnObject)
+                {
+                    rotation.X = 0f;
+                    rotation.Y = 0f;
+                    rotation.Normalize();
+                }
                 angularVelocity = presence.AngularVelocity;
 
 //                m_log.DebugFormat(
@@ -5718,6 +5725,12 @@ namespace OpenSim.Region.ClientStack.LindenUDP
 
             Vector3 velocity = new Vector3(0, 0, 0);
             Vector3 acceleration = new Vector3(0, 0, 0);
+            // tpvs can only see rotations around Z in some cases
+            if(!data.Flying && !data.IsSatOnObject)
+            {
+                rotation.X = 0f;
+                rotation.Y = 0f;
+            }
             rotation.Normalize();
 
             data.CollisionPlane.ToBytes(objectData, 0);
@@ -5843,7 +5856,6 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                 update.State = part.Shape.State; // not sure about this
             }
 
-
             update.ObjectData = objectData;
             update.ParentID = part.ParentID;
             update.PathBegin = part.Shape.PathBegin;
@@ -5864,13 +5876,26 @@ namespace OpenSim.Region.ClientStack.LindenUDP
             update.ProfileBegin = part.Shape.ProfileBegin;
             update.ProfileCurve = part.Shape.ProfileCurve;
 
-            if(part.Shape.SculptType == (byte)SculptType.Mesh) // filter out hack 
-                update.ProfileCurve = (byte)(part.Shape.ProfileCurve & 0x0f);
-            else
-                update.ProfileCurve = part.Shape.ProfileCurve;
+            ushort profileBegin = part.Shape.ProfileBegin;
+            ushort profileHollow = part.Shape.ProfileHollow;
 
+            if(part.Shape.SculptType == (byte)SculptType.Mesh) // filter out hack
+            {
+                update.ProfileCurve = (byte)(part.Shape.ProfileCurve & 0x0f);
+                // fix old values that confused viewers
+                if(profileBegin == 1)
+                    profileBegin = 9375;
+                if(profileHollow == 1)
+                    profileHollow = 27500;
+            }
+            else
+            {
+                update.ProfileCurve = part.Shape.ProfileCurve;
+            }
+
+            update.ProfileHollow = profileHollow;
+            update.ProfileBegin = profileBegin;
             update.ProfileEnd = part.Shape.ProfileEnd;
-            update.ProfileHollow = part.Shape.ProfileHollow;
             update.PSBlock = part.ParticleSystem ?? Utils.EmptyBytes;
             update.TextColor = part.GetTextColor().GetBytes(false);
             update.TextureAnim = part.TextureAnimation ?? Utils.EmptyBytes;

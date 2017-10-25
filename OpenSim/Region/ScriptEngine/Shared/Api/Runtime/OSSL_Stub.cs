@@ -230,6 +230,11 @@ namespace OpenSim.Region.ScriptEngine.Shared.ScriptBase
             return m_OSSL_Functions.osConsoleCommand(Command);
         }
 
+		public void osSetParcelMusicURL(string url)
+        {
+            m_OSSL_Functions.osSetParcelMusicURL(url);
+        }
+		
         public void osSetParcelMediaURL(string url)
         {
             m_OSSL_Functions.osSetParcelMediaURL(url);
@@ -958,12 +963,17 @@ namespace OpenSim.Region.ScriptEngine.Shared.ScriptBase
 
         /// <summary>
         /// Returns the amount of memory in use by the Simulator Daemon.
-        /// Amount in bytes - if >= 4GB, returns 4GB. (LSL is not 64-bit aware)
+        /// Amount in bytes - if >= 2GB, returns 2GB. (LSL is not 64-bit aware)
         /// </summary>
         /// <returns></returns>
         public LSL_Integer osGetSimulatorMemory()
         {
             return m_OSSL_Functions.osGetSimulatorMemory();
+        }
+
+        public LSL_Integer osGetSimulatorMemoryKB()
+        {
+            return m_OSSL_Functions.osGetSimulatorMemoryKB();
         }
 
         public void osKickAvatar(string FirstName,string SurName,string alert)
@@ -1154,6 +1164,11 @@ namespace OpenSim.Region.ScriptEngine.Shared.ScriptBase
         public LSL_List osGetInertiaData()
         {
             return m_OSSL_Functions.osGetInertiaData();
+        }
+
+        public void osSetInertia(LSL_Float mass, vector centerOfMass, vector principalInertiaScaled,  rotation rot)
+        {
+            m_OSSL_Functions.osSetInertia(mass, centerOfMass, principalInertiaScaled, rot);
         }
 
         public void osSetInertiaAsBox(LSL_Float mass, vector boxSize, vector centerOfMass, rotation rot)

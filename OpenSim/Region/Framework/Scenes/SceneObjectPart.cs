@@ -238,12 +238,6 @@ namespace OpenSim.Region.Framework.Scenes
         /// </remarks>
         public bool SoundQueueing { get; set; }
 
-        public uint TimeStampFull;
-
-        public uint TimeStampLastActivity; // Will be used for AutoReturn
-
-        public uint TimeStampTerse;
-
         [XmlIgnore]
         public Quaternion AttachRotation = Quaternion.Identity;
 
@@ -1219,6 +1213,7 @@ namespace OpenSim.Region.Framework.Scenes
         }
 
         public UpdateRequired UpdateFlag { get; set; }
+        private object UpdateFlagLock = new object();
 
         /// <summary>
         /// Used for media on a prim.
@@ -1641,8 +1636,10 @@ namespace OpenSim.Region.Framework.Scenes
                             PhysActor.SetMaterial((int)value);
                         }
                         if(ParentGroup != null)
+                        {
                             ParentGroup.HasGroupChanged = true;
-                        ScheduleFullUpdateIfNone();
+                            ScheduleFullUpdate();
+                        }
                     }
                 }
             }
@@ -1730,7 +1727,12 @@ namespace OpenSim.Region.Framework.Scenes
 
         public byte PhysicsShapeType
         {
-            get { return m_physicsShapeType; }
+            get
+            {
+//                if (PhysActor != null)
+//                    m_physicsShapeType  = PhysActor.PhysicsShapeType;
+                return m_physicsShapeType;
+            }
             set
             {
                 byte oldv = m_physicsShapeType;
@@ -1781,10 +1783,12 @@ namespace OpenSim.Region.Framework.Scenes
                 {
                     m_density = value;
 
-                    ScheduleFullUpdateIfNone();
 
                     if (ParentGroup != null)
+                    {
                         ParentGroup.HasGroupChanged = true;
+                        ScheduleFullUpdate();
+                    }
 
                     PhysicsActor pa = PhysActor;
                     if (pa != null)
@@ -1802,10 +1806,11 @@ namespace OpenSim.Region.Framework.Scenes
                 {
                     m_gravitymod = value;
 
-                    ScheduleFullUpdateIfNone();
-
                     if (ParentGroup != null)
+                    {
                         ParentGroup.HasGroupChanged = true;
+                        ScheduleFullUpdate();
+                    }
 
                     PhysicsActor pa = PhysActor;
                     if (pa != null)
@@ -1823,10 +1828,11 @@ namespace OpenSim.Region.Framework.Scenes
                 {
                     m_friction = value;
 
-                    ScheduleFullUpdateIfNone();
-
                     if (ParentGroup != null)
+                    {
                         ParentGroup.HasGroupChanged = true;
+                        ScheduleFullUpdate();
+                    }
 
                     PhysicsActor pa = PhysActor;
                     if (pa != null)
@@ -1844,10 +1850,11 @@ namespace OpenSim.Region.Framework.Scenes
                 {
                     m_bounce = value;
 
-                    ScheduleFullUpdateIfNone();
-
                     if (ParentGroup != null)
+                    {
                         ParentGroup.HasGroupChanged = true;
+                        ScheduleFullUpdate();
+                    }
 
                     PhysicsActor pa = PhysActor;
                     if (pa != null)
@@ -1876,7 +1883,8 @@ namespace OpenSim.Region.Framework.Scenes
         /// </summary>
         public void ClearUpdateSchedule()
         {
-            UpdateFlag = UpdateRequired.NONE;
+            lock(UpdateFlagLock)
+                UpdateFlag = UpdateRequired.NONE;
         }
 
         /// <summary>
@@ -3239,17 +3247,6 @@ namespace OpenSim.Region.Framework.Scenes
             APIDActive = false;
         }
 
-        public void ScheduleFullUpdateIfNone()
-        {
-            if (ParentGroup == null)
-                return;
-
-// ???            ParentGroup.HasGroupChanged = true;
-
-            if (UpdateFlag != UpdateRequired.FULL)
-                ScheduleFullUpdate();
-        }
-
         /// <summary>
         /// Schedules this prim for a full update
         /// </summary>
@@ -3259,31 +3256,27 @@ namespace OpenSim.Region.Framework.Scenes
 
             if (ParentGroup == null)
                 return;
+            if (ParentGroup.Scene == null)
+                return;
 
-            ParentGroup.QueueForUpdateCheck();
+            if(ParentGroup.Scene.GetNumberOfClients() == 0)
+                return;
 
-            int timeNow = Util.UnixTimeSinceEpoch();
+            ParentGroup.QueueForUpdateCheck(); // just in case
 
-            // If multiple updates are scheduled on the same second, we still need to perform all of them
-            // So we'll force the issue by bumping up the timestamp so that later processing sees these need
-            // to be performed.
-            if (timeNow <= TimeStampFull)
+            lock(UpdateFlagLock)
             {
-                TimeStampFull += 1;
+                if(UpdateFlag != UpdateRequired.FULL)
+                {
+                    UpdateFlag = UpdateRequired.FULL;
+
+                    //            m_log.DebugFormat(
+                    //                "[SCENE OBJECT PART]: Scheduling full  update for {0}, {1} at {2}",
+                    //                UUID, Name, TimeStampFull);
+
+                }
             }
-            else
-            {
-                TimeStampFull = (uint)timeNow;
-            }
-
-            UpdateFlag = UpdateRequired.FULL;
-
-            //            m_log.DebugFormat(
-            //                "[SCENE OBJECT PART]: Scheduling full  update for {0}, {1} at {2}",
-            //                UUID, Name, TimeStampFull);
-
-            if (ParentGroup.Scene != null)
-                ParentGroup.Scene.EventManager.TriggerSceneObjectPartUpdated(this, true);
+            ParentGroup.Scene.EventManager.TriggerSceneObjectPartUpdated(this, true);
         }
 
         /// <summary>
@@ -3293,6 +3286,13 @@ namespace OpenSim.Region.Framework.Scenes
         public void ScheduleTerseUpdate()
         {
             if (ParentGroup == null)
+                return;
+            if (ParentGroup.Scene == null)
+                return;
+
+            ParentGroup.HasGroupChanged = true;
+
+            if(ParentGroup.Scene.GetNumberOfClients() == 0)
                 return;
 
             // This was pulled from SceneViewer. Attachments always receive full updates.
@@ -3304,21 +3304,19 @@ namespace OpenSim.Region.Framework.Scenes
                 return;
             }
 
-            if (UpdateFlag == UpdateRequired.NONE)
+            ParentGroup.QueueForUpdateCheck();
+            lock(UpdateFlagLock)
             {
-                ParentGroup.HasGroupChanged = true;
-                ParentGroup.QueueForUpdateCheck();
+                if (UpdateFlag == UpdateRequired.NONE)
+                {
+                    UpdateFlag = UpdateRequired.TERSE;
 
-                TimeStampTerse = (uint) Util.UnixTimeSinceEpoch();
-                UpdateFlag = UpdateRequired.TERSE;
-
-            //                m_log.DebugFormat(
-            //                    "[SCENE OBJECT PART]: Scheduling terse update for {0}, {1} at {2}",
-            //                    UUID, Name, TimeStampTerse);
+                    //            m_log.DebugFormat(
+                    //                "[SCENE OBJECT PART]: Scheduling terse update for {0}, {1}",
+                    //                UUID, Name);
+                }
             }
-
-            if (ParentGroup.Scene != null)
-                ParentGroup.Scene.EventManager.TriggerSceneObjectPartUpdated(this, false);
+            ParentGroup.Scene.EventManager.TriggerSceneObjectPartUpdated(this, false);
         }
 
         public void ScriptSetPhysicsStatus(bool UsePhysics)
@@ -3362,12 +3360,15 @@ namespace OpenSim.Region.Framework.Scenes
                 return;
 
             // Update the "last" values
-            m_lastPosition = AbsolutePosition;
-            m_lastRotation = RotationOffset;
-            m_lastVelocity = Velocity;
-            m_lastAcceleration = Acceleration;
-            m_lastAngularVelocity = AngularVelocity;
-            m_lastUpdateSentTime = Util.GetTimeStampMS();
+            lock(UpdateFlagLock)
+            {
+                m_lastPosition = AbsolutePosition;
+                m_lastRotation = RotationOffset;
+                m_lastVelocity = Velocity;
+                m_lastAcceleration = Acceleration;
+                m_lastAngularVelocity = AngularVelocity;
+                m_lastUpdateSentTime = Util.GetTimeStampMS();
+            }
 
             ParentGroup.Scene.ForEachScenePresence(delegate(ScenePresence avatar)
             {
@@ -3381,12 +3382,15 @@ namespace OpenSim.Region.Framework.Scenes
                 return;
 
             // Update the "last" values
-            m_lastPosition = AbsolutePosition;
-            m_lastRotation = RotationOffset;
-            m_lastVelocity = Velocity;
-            m_lastAcceleration = Acceleration;
-            m_lastAngularVelocity = AngularVelocity;
-            m_lastUpdateSentTime = Util.GetTimeStampMS();
+            lock(UpdateFlagLock)
+            {
+                m_lastPosition = AbsolutePosition;
+                m_lastRotation = RotationOffset;
+                m_lastVelocity = Velocity;
+                m_lastAcceleration = Acceleration;
+                m_lastAngularVelocity = AngularVelocity;
+                m_lastUpdateSentTime = Util.GetTimeStampMS();
+            }
 
             if (ParentGroup.IsAttachment)
             {
@@ -3432,132 +3436,148 @@ namespace OpenSim.Region.Framework.Scenes
             ParentGroup.Scene.StatsReporter.AddObjectUpdates(1);
         }
 
-
         private const float ROTATION_TOLERANCE = 0.01f;
-        private const float VELOCITY_TOLERANCE = 0.1f; // terse update vel has low resolution
+        private const float VELOCITY_TOLERANCE = 0.1f;
+        private const float ANGVELOCITY_TOLERANCE = 0.005f;
         private const float POSITION_TOLERANCE = 0.05f; // I don't like this, but I suppose it's necessary
-        private const double TIME_MS_TOLERANCE = 200f; //llSetPos has a 200ms delay. This should NOT be 3 seconds.
+        private const double TIME_MS_TOLERANCE = 200.0; //llSetPos has a 200ms delay. This should NOT be 3 seconds.
         
         /// <summary>
         /// Tell all the prims which have had updates scheduled
         /// </summary>
-        public void SendScheduledUpdates()
-        {           
-            switch (UpdateFlag)
+        public void SendScheduledUpdates(double now)
+        {  
+            bool sendterse = false;    
+            bool sendfull = false;    
+
+            lock(UpdateFlagLock)
             {
-                case UpdateRequired.NONE:
-                    ClearUpdateSchedule();
-                    break;
+                switch (UpdateFlag)
+                {
+                    case UpdateRequired.NONE:
+                        break;
 
-                case UpdateRequired.TERSE:
+                    case UpdateRequired.TERSE:
+                        sendterse = true;
 
-                    ClearUpdateSchedule();
-                    bool needupdate = true;
-                    double now = Util.GetTimeStampMS();
-                    Vector3 curvel = Velocity;
-                    Vector3 curacc = Acceleration;
-                    Vector3 angvel = AngularVelocity;
+                        Vector3 curvel = Velocity;
+                        Vector3 curacc = Acceleration;
+                        Vector3 angvel = AngularVelocity;
 
-                    while(true) // just to avoid ugly goto
-                    {
-                        double elapsed = now - m_lastUpdateSentTime;
-                        if (elapsed > TIME_MS_TOLERANCE)
-                            break;
-
-                        if( Math.Abs(curacc.X - m_lastAcceleration.X) >  VELOCITY_TOLERANCE ||
-                            Math.Abs(curacc.Y - m_lastAcceleration.Y) >  VELOCITY_TOLERANCE ||
-                            Math.Abs(curacc.Z - m_lastAcceleration.Z) >  VELOCITY_TOLERANCE)
-                            break;
-
-                        // velocity change is also direction not only norm)
-                        if( Math.Abs(curvel.X - m_lastVelocity.X) >  VELOCITY_TOLERANCE ||
-                            Math.Abs(curvel.Y - m_lastVelocity.Y) >  VELOCITY_TOLERANCE ||
-                            Math.Abs(curvel.Z - m_lastVelocity.Z) >  VELOCITY_TOLERANCE)
-                            break;
-                        
-                        float vx = Math.Abs(curvel.X);
-                        if(vx > 128.0)
-                            break;
-                        float vy = Math.Abs(curvel.Y);
-                        if(vy > 128.0)
-                            break;
-                        float vz = Math.Abs(curvel.Z);
-                        if(vz > 128.0)
-                            break;
-
-                        if (
-                            vx <  VELOCITY_TOLERANCE &&
-                            vy <  VELOCITY_TOLERANCE &&
-                            vz <  VELOCITY_TOLERANCE
-                            )
+                        while(true) // just to avoid ugly goto
                         {
-                            if(!AbsolutePosition.ApproxEquals(m_lastPosition, POSITION_TOLERANCE))
+                            double elapsed = now - m_lastUpdateSentTime;
+                            if (elapsed > TIME_MS_TOLERANCE)
                                 break;
+
+                            if( Math.Abs(curacc.X - m_lastAcceleration.X) >  VELOCITY_TOLERANCE ||
+                                Math.Abs(curacc.Y - m_lastAcceleration.Y) >  VELOCITY_TOLERANCE ||
+                                Math.Abs(curacc.Z - m_lastAcceleration.Z) >  VELOCITY_TOLERANCE)
+                                break;
+                          
+                            if( Math.Abs(curvel.X - m_lastVelocity.X) >  VELOCITY_TOLERANCE ||
+                                Math.Abs(curvel.Y - m_lastVelocity.Y) >  VELOCITY_TOLERANCE ||
+                                Math.Abs(curvel.Z - m_lastVelocity.Z) >  VELOCITY_TOLERANCE)
+                                break;
+                        
+                            float vx = Math.Abs(curvel.X);
+                            if(vx > 128.0)
+                                break;
+                            float vy = Math.Abs(curvel.Y);
+                            if(vy > 128.0)
+                                break;
+                            float vz = Math.Abs(curvel.Z);
+                            if(vz > 128.0)
+                                break;
+
+                            if (
+                                vx <  VELOCITY_TOLERANCE &&
+                                vy <  VELOCITY_TOLERANCE &&
+                                vz <  VELOCITY_TOLERANCE
+                                )
+                            {
+                                if(!AbsolutePosition.ApproxEquals(m_lastPosition, POSITION_TOLERANCE))
+                                    break;
                             
-                            if (vx <  1e-4 &&
-                                vy <  1e-4 &&
-                                vz <  1e-4 &&
-                                (
-                                    Math.Abs(m_lastVelocity.X) > 1e-4 ||
-                                    Math.Abs(m_lastVelocity.Y) > 1e-4 ||
-                                    Math.Abs(m_lastVelocity.Z) > 1e-4
-                                ))
+                                if (vx <  1e-4 &&
+                                    vy <  1e-4 &&
+                                    vz <  1e-4 &&
+                                    (
+                                        Math.Abs(m_lastVelocity.X) > 1e-4 ||
+                                        Math.Abs(m_lastVelocity.Y) > 1e-4 ||
+                                        Math.Abs(m_lastVelocity.Z) > 1e-4
+                                    ))
+                                    break;
+                            }
+
+                            if( Math.Abs(angvel.X - m_lastAngularVelocity.X) >  ANGVELOCITY_TOLERANCE ||
+                                Math.Abs(angvel.Y - m_lastAngularVelocity.Y) >  ANGVELOCITY_TOLERANCE ||
+                                Math.Abs(angvel.Z - m_lastAngularVelocity.Z) >  ANGVELOCITY_TOLERANCE)
                                 break;
+
+                            // viewer interpolators have a limit of 64rad/s
+                            float ax = Math.Abs(angvel.X);
+                            if(ax > 64.0)
+                                break;
+                            float ay = Math.Abs(angvel.Y);
+                            if(ay > 64.0)
+                                break;
+                            float az = Math.Abs(angvel.Z);
+                            if(az > 64.0)
+                                break;
+
+                            if (
+                                ax <  ANGVELOCITY_TOLERANCE &&
+                                ay <  ANGVELOCITY_TOLERANCE &&
+                                az <  ANGVELOCITY_TOLERANCE &&
+                                !RotationOffset.ApproxEquals(m_lastRotation, ROTATION_TOLERANCE)
+                                )
+                                break;
+
+                            sendterse = false;
+                            break;
                         }
 
-                        if( Math.Abs(angvel.X - m_lastAngularVelocity.X) >  VELOCITY_TOLERANCE ||
-                            Math.Abs(angvel.Y - m_lastAngularVelocity.Y) >  VELOCITY_TOLERANCE ||
-                            Math.Abs(angvel.Z - m_lastAngularVelocity.Z) >  VELOCITY_TOLERANCE)
-                            break;
-
-                        // viewer interpolators have a limit of 128m/s
-                        float ax = Math.Abs(angvel.X);
-                        if(ax > 64.0)
-                            break;
-                        float ay = Math.Abs(angvel.Y);
-                        if(ay > 64.0)
-                            break;
-                        float az = Math.Abs(angvel.Z);
-                        if(az > 64.0)
-                            break;
-
-                        if (
-                            ax <  VELOCITY_TOLERANCE &&
-                            ay <  VELOCITY_TOLERANCE &&
-                            az <  VELOCITY_TOLERANCE &&
-                            !RotationOffset.ApproxEquals(m_lastRotation, ROTATION_TOLERANCE)
-                            )
-                          break;
-
-                        needupdate = false;
+                        if(sendterse)
+                        {
+                            // Update the "last" values
+                            m_lastPosition = AbsolutePosition;
+                            m_lastRotation = RotationOffset;
+                            m_lastVelocity = curvel;
+                            m_lastAcceleration = curacc;
+                            m_lastAngularVelocity = angvel;
+                            m_lastUpdateSentTime = now;
+                            ClearUpdateSchedule();
+                        }
                         break;
-                    }
 
-                    if(needupdate)
-                    {
-
-                        // Update the "last" values
+                    case UpdateRequired.FULL:
                         m_lastPosition = AbsolutePosition;
                         m_lastRotation = RotationOffset;
-                        m_lastVelocity = curvel;
-                        m_lastAcceleration = curacc;
-                        m_lastAngularVelocity = angvel;
+                        m_lastVelocity = Velocity;
+                        m_lastAcceleration = Acceleration;
+                        m_lastAngularVelocity = AngularVelocity;
                         m_lastUpdateSentTime = now;
-
-                        ParentGroup.Scene.ForEachClient(delegate(IClientAPI client)
-                        {
-                            SendTerseUpdateToClient(client);
-                        });
-                    }
-                    break;
-
-                case UpdateRequired.FULL:
-                    ClearUpdateSchedule();
-                    SendFullUpdateToAllClientsInternal();
-                    break;
+                        ClearUpdateSchedule();
+                        sendfull = true;
+                        break;
+                }
+            }
+            if(sendterse)
+            {
+                ParentGroup.Scene.ForEachClient(delegate(IClientAPI client)
+                {
+                    SendTerseUpdateToClient(client);
+                });
+            }
+            else if(sendfull)
+            {
+                ParentGroup.Scene.ForEachScenePresence(delegate(ScenePresence avatar)
+                {
+                    SendFullUpdate(avatar.ControllingClient);
+                });
             }
         }
-
 
         /// <summary>
         /// Send a terse update to all clients
@@ -3566,16 +3586,19 @@ namespace OpenSim.Region.Framework.Scenes
         {
             if (ParentGroup == null || ParentGroup.Scene == null)
                 return;
+            lock(UpdateFlagLock)
+            {
+                if(UpdateFlag != UpdateRequired.NONE)
+                    return;
 
-            ClearUpdateSchedule();
-
-            // Update the "last" values
-            m_lastPosition = AbsolutePosition;
-            m_lastRotation = RotationOffset;
-            m_lastVelocity = Velocity;
-            m_lastAcceleration = Acceleration;
-            m_lastAngularVelocity = AngularVelocity;
-            m_lastUpdateSentTime = Util.GetTimeStampMS();
+                // Update the "last" values
+                m_lastPosition = AbsolutePosition;
+                m_lastRotation = RotationOffset;
+                m_lastVelocity = Velocity;
+                m_lastAcceleration = Acceleration;
+                m_lastAngularVelocity = AngularVelocity;
+                m_lastUpdateSentTime = Util.GetTimeStampMS();
+            }
 
             ParentGroup.Scene.ForEachClient(delegate(IClientAPI client)
             {
@@ -3588,15 +3611,19 @@ namespace OpenSim.Region.Framework.Scenes
             if (ParentGroup == null || ParentGroup.Scene == null)
                 return;
 
-            ClearUpdateSchedule();
+            lock(UpdateFlagLock)
+            {
+                if(UpdateFlag != UpdateRequired.NONE)
+                    return;
 
-            // Update the "last" values
-            m_lastPosition = AbsolutePosition;
-            m_lastRotation = RotationOffset;
-            m_lastVelocity = Velocity;
-            m_lastAcceleration = Acceleration;
-            m_lastAngularVelocity = AngularVelocity;
-            m_lastUpdateSentTime = Util.GetTimeStampMS();
+                // Update the "last" values
+                m_lastPosition = AbsolutePosition;
+                m_lastRotation = RotationOffset;
+                m_lastVelocity = Velocity;
+                m_lastAcceleration = Acceleration;
+                m_lastAngularVelocity = AngularVelocity;
+                m_lastUpdateSentTime = Util.GetTimeStampMS();
+            }
 
             if (ParentGroup.IsAttachment)
             {

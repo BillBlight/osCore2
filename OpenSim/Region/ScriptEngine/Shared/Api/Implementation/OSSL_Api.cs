@@ -1794,7 +1794,19 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
             }
             return Convert.ToDouble(src.Data[index]);
         }
+		
+		public void osSetParcelMusicURL(string url)
+        {
+            CheckThreatLevel(ThreatLevel.VeryLow, "osSetParcelMusicURL");
 
+            ILandObject land = World.LandChannel.GetLandObject(m_host.AbsolutePosition);
+
+
+
+            land.SetMusicUrl(url);
+			
+		}
+		
         public void osSetParcelMediaURL(string url)
         {
             // What actually is the difference to the LL function?
@@ -3587,6 +3599,22 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                 return Int32.MaxValue;
             if (pws < 0)
                 return 0;
+
+            return (int)pws;
+        }
+
+        public int osGetSimulatorMemoryKB()
+        {
+            CheckThreatLevel(ThreatLevel.Moderate, "osGetSimulatorMemory");
+
+            long pws = System.Diagnostics.Process.GetCurrentProcess().WorkingSet64;
+
+            if((pws & 0x3FFL) != 0)
+                pws += 0x400L;
+            pws >>= 10;
+
+            if (pws > Int32.MaxValue)
+                return Int32.MaxValue;
 
             return (int)pws;
         }

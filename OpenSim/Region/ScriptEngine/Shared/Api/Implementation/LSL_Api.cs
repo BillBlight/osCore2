@@ -111,7 +111,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         protected AsyncCommandManager AsyncCommands = null;
         protected float m_ScriptDelayFactor = 1.0f;
         protected float m_ScriptDistanceFactor = 1.0f;
-        protected float m_MinTimerInterval = 0.5f;
+        protected float m_MinTimerInterval = 0.005f;
         protected float m_recoilScaleFactor = 0.0f;
 
         protected double m_timer = Util.GetTimeStampMS();
@@ -137,20 +137,20 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         protected int m_sleepMsOnSetRot = 20;
         protected int m_sleepMsOnSetLocalRot = 20;
         protected int m_sleepMsOnPreloadSound = 100;
-        protected int m_sleepMsOnMakeExplosion = 100;
+        protected int m_sleepMsOnMakeExplosion = 10;
         protected int m_sleepMsOnMakeFountain = 100;
         protected int m_sleepMsOnMakeSmoke = 100;
         protected int m_sleepMsOnMakeFire = 100;
-        protected int m_sleepMsOnRezAtRoot = 10;
+        protected int m_sleepMsOnRezAtRoot = 100;
         protected int m_sleepMsOnInstantMessage = 200;
         protected int m_sleepMsOnEmail = 2000;
         protected int m_sleepMsOnCreateLink = 100;
         protected int m_sleepMsOnGiveInventory = 300;
-        protected int m_sleepMsOnRequestAgentData = 10;
-        protected int m_sleepMsOnRequestInventoryData = 100;
+        protected int m_sleepMsOnRequestAgentData = 100;
+        protected int m_sleepMsOnRequestInventoryData = 1000;
         protected int m_sleepMsOnSetDamage = 500;
         protected int m_sleepMsOnTextBox = 100;
-        protected int m_sleepMsOnAdjustSoundVolume = 10;
+        protected int m_sleepMsOnAdjustSoundVolume = 100;
         protected int m_sleepMsOnEjectFromLand = 500;
         protected int m_sleepMsOnAddToLandPassList = 10;
         protected int m_sleepMsOnDialog = 100;
@@ -161,8 +161,8 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         protected int m_sleepMsOnRemoteDataReply = 300;
         protected int m_sleepMsOnCloseRemoteDataChannel = 100;
         protected int m_sleepMsOnSetPrimitiveParams = 20;
-        protected int m_sleepMsOnSetLinkPrimitiveParams = 200;
-        protected int m_sleepMsOnXorBase64Strings = 300;
+        protected int m_sleepMsOnSetLinkPrimitiveParams = 20;
+        protected int m_sleepMsOnXorBase64Strings = 30;
         protected int m_sleepMsOnSetParcelMusicURL = 200;
         protected int m_sleepMsOnGetPrimMediaParams = 100;
         protected int m_sleepMsOnGetLinkMedia = 100;
@@ -178,18 +178,17 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         protected int m_sleepMsOnSetPrimURL = 200;
         protected int m_sleepMsOnRefreshPrimURL = 2000;
         protected int m_sleepMsOnMapDestination = 100;
-        protected int m_sleepMsOnAddToLandBanList = 10;
-        protected int m_sleepMsOnRemoveFromLandPassList = 10;
-        protected int m_sleepMsOnRemoveFromLandBanList = 10;
-        protected int m_sleepMsOnResetLandBanList = 10;
-        protected int m_sleepMsOnResetLandPassList = 10;
+        protected int m_sleepMsOnAddToLandBanList = 100;
+        protected int m_sleepMsOnRemoveFromLandPassList = 100;
+        protected int m_sleepMsOnRemoveFromLandBanList = 100;
+        protected int m_sleepMsOnResetLandBanList = 100;
+        protected int m_sleepMsOnResetLandPassList = 100;
         protected int m_sleepMsOnGetParcelPrimOwners = 200;
-        protected int m_sleepMsOnGetNumberOfNotecardLines = 10;
-        protected int m_sleepMsOnGetNotecardLine = 10;
+        protected int m_sleepMsOnGetNumberOfNotecardLines = 100;
+        protected int m_sleepMsOnGetNotecardLine = 100;
         protected string m_internalObjectHost = "lsl.opensim.local";
         protected bool m_restrictEmail = false;
         protected ISoundModule m_SoundModule = null;
-
         protected float m_avatarHeightCorrection = 0.2f;
         protected bool m_useSimpleBoxesInGetBoundingBox = false;
         protected bool m_addStatsInGetBoundingBox = false;
@@ -221,7 +220,6 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         protected float m_lABB1SitZ1 = -0.375f;
         protected float m_lABB2SitZ0 = -0.25f;
         protected float m_lABB2SitZ1 = 0.25f;
-
         protected float m_primSafetyCoeffX = 2.414214f;
         protected float m_primSafetyCoeffY = 2.414214f;
         protected float m_primSafetyCoeffZ = 1.618034f;
@@ -5595,20 +5593,16 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         {
             m_host.AddScriptLPS(1);
 
-            if (Math.Abs(rot.s) > 1) // normalization needed
-                rot.Normalize();
+            rot.Normalize();
 
             double s = Math.Sqrt(1 - rot.s * rot.s);
-            if (s < 0.001)
-            {
-                return new LSL_Vector(1, 0, 0);
-            }
-            else
-            {
-                double invS = 1.0 / s;
-                if (rot.s < 0) invS = -invS;
-                return new LSL_Vector(rot.x * invS, rot.y * invS, rot.z * invS);
-            }
+            if (s < 1e-8)
+                return new LSL_Vector(0, 0, 0);
+
+            double invS = 1.0 / s;
+            if (rot.s < 0)
+                invS = -invS;
+            return new LSL_Vector(rot.x * invS, rot.y * invS, rot.z * invS);
         }
 
 
@@ -5617,8 +5611,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
         {
             m_host.AddScriptLPS(1);
 
-            if (Math.Abs(rot.s) > 1) // normalization needed
-                rot.Normalize();
+            rot.Normalize();
 
             double angle = 2 * Math.Acos(rot.s);
             if (angle > Math.PI)
@@ -6900,7 +6893,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     if (m_host.OwnerID == land.LandData.OwnerID)
                     {
                         Vector3 p = World.GetNearestAllowedPosition(presence, land);
-                        presence.TeleportWithMomentum(p, null);
+                        presence.TeleportOnEject(p);
                         presence.ControllingClient.SendAlertMessage("You have been ejected from this land");
                     }
                 }
@@ -14429,6 +14422,9 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
             if (obj == null)
                 return;
 
+            if (obj.OwnerID != m_host.OwnerID)
+                return;
+
             SetEntityParams(new List<ISceneEntity>() { obj }, rules, originFunc);
         }
 
@@ -14438,7 +14434,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
 
             LSL_List result = new LSL_List();
 
-            if (obj != null)
+            if (obj != null && obj.OwnerID == m_host.OwnerID)
             {
                 LSL_List remaining = GetPrimParams(obj, rules, ref result);
 

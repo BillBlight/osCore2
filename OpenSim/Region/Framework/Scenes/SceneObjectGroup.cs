@@ -657,6 +657,9 @@ namespace OpenSim.Region.Framework.Scenes
                 }
             }
 
+//            if(!m_scene.IsRunning)
+//                return sog;
+
             if (root.KeyframeMotion != null)
                 root.KeyframeMotion.StartCrossingCheck();
 
@@ -3018,12 +3021,13 @@ namespace OpenSim.Region.Framework.Scenes
 
             // If we somehow got here to updating the SOG and its root part is not scheduled for update,
             // check to see if the physical position or rotation warrant an update.
+/*
             if (m_rootPart.UpdateFlag == UpdateRequired.NONE)
             {
                 // rootpart SendScheduledUpdates will check if a update is needed
                 m_rootPart.UpdateFlag = UpdateRequired.TERSE;
             }
-
+*/
             if (IsAttachment)
             {
                 ScenePresence sp = m_scene.GetScenePresence(AttachedAvatar);
@@ -3038,11 +3042,14 @@ namespace OpenSim.Region.Framework.Scenes
             if (!IsSelected)
                 RootPart.UpdateLookAt();
 
+            double now = Util.GetTimeStampMS();
+            RootPart.SendScheduledUpdates(now);
             SceneObjectPart[] parts = m_parts.GetArray();
             for (int i = 0; i < parts.Length; i++)
             {
                 SceneObjectPart part = parts[i];
-                part.SendScheduledUpdates();
+                if(part != RootPart)
+                    part.SendScheduledUpdates(now);
             }
         }
 
@@ -3109,7 +3116,6 @@ namespace OpenSim.Region.Framework.Scenes
             }
 
             RootPart.SendFullUpdateToAllClientsInternal();
-
             SceneObjectPart[] parts = m_parts.GetArray();
             for (int i = 0; i < parts.Length; i++)
             {
