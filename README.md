@@ -1,4 +1,4 @@
-#osCore2 Fork by Bill Blight of Opensim.life
+# osCore2 Fork by Bill Blight of Opensim.life
 
 This has some fixes that have not made it into core OpenSimulator .
 
