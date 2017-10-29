@@ -1,3 +1,13 @@
+#osCore2 Fork by Bill Blight of Opensim.life
+
+This has some fixes that have not made it into core OpenSimulator .
+
+Some of the additions include the http tests branch which improves the built in http server.
+Roll back of some of the permission changes , specifcally the item creation permsions for textures.
+decresed built in LSL delays, added osParcelMusicURL, for gods, as the ll funcion only works for parcel/land owners.
+
+And various others.
+
 Welcome to OpenSim!
 
 # Overview
