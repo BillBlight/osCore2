@@ -27,7 +27,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
+using OpenMetaverse;
 
 using OpenMetaverse;
 
@@ -117,15 +119,6 @@ namespace OpenSim.Framework
 
         public EstateBan() { }
 
-        public Dictionary<string, object> ToMap()
-        {
-            Dictionary<string, object> map = new Dictionary<string, object>();
-            PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            foreach (PropertyInfo p in properties)
-                map[p.Name] = p.GetValue(this, null);
-
-            return map;
-        }
 
         public EstateBan(Dictionary<string, object> map)
         {
@@ -145,7 +138,37 @@ namespace OpenSim.Framework
                     p.SetValue(this, UUID.Parse((string)map[p.Name]), null);
             }
         }
+public Dictionary<string, object> ToMap()
+        {
+            Dictionary<string, object> map = new Dictionary<string, object>();
+            PropertyInfo[] properties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo p in properties)
+            {
+                // EstateBans is a complex type, let's treat it as special
+                if (p.Name == "EstateBan")
+                    continue;
 
+                object value = p.GetValue(this, null);
+                if (value != null)
+                {
+                    if (p.PropertyType.IsArray) // of UUIDs
+                    {
+                        if (((Array)value).Length > 0)
+                        {
+                            string[] args = new string[((Array)value).Length];
+                            int index = 0;
+                            foreach (object o in (Array)value)
+                                args[index++] = o.ToString();
+                            map[p.Name] = String.Join(",", args);
+                        }
+                    }
+                    else // simple types
+                        map[p.Name] = value;
+                }
+            }
+
+               return map;
+        }
 
         /// <summary>
         ///  For debugging
