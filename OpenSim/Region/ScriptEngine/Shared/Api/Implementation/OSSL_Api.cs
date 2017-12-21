@@ -2780,6 +2780,26 @@ public void osMakeScript(string scriptName, LSL_Types.list contents)
             return matcher.Replace(src,replace,count,start);
         }
 
+        public LSL_Integer osStringStartsWith(string input, string startsWith)
+        {
+            CheckThreatLevel(ThreatLevel.None, "osStringStartsWith");
+            m_host.AddScriptLPS(1);
+
+            if (input.StartsWith(startsWith))
+                return true;
+            return false;
+        }
+
+        public LSL_Integer osStringEndsWith(string input, string endsWith)
+        {
+            CheckThreatLevel(ThreatLevel.None, "osStringEndsWith");
+            m_host.AddScriptLPS(1);
+
+            if (input.EndsWith(endsWith))
+                return true;
+            return false;
+        }
+
         public string osLoadedCreationDate()
         {
             CheckThreatLevel(ThreatLevel.Low, "osLoadedCreationDate");
