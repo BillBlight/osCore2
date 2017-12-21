@@ -500,7 +500,10 @@ namespace OpenSim.Region.ScriptEngine.Shared.ScriptBase
         {
             m_OSSL_Functions.osMakeNotecard(notecardName, contents);
         }
-
+public void osMakeScript(string scriptName, LSL_Types.list contents)
+        {
+            m_OSSL_Functions.osMakeScript(scriptName, contents);
+        }
         public string osGetNotecardLine(string name, int line)
         {
             return m_OSSL_Functions.osGetNotecardLine(name, line);
