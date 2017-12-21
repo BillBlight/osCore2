@@ -578,6 +578,15 @@ public void osMakeScript(string scriptName, LSL_Types.list contents)
         {
             return m_OSSL_Functions.osReplaceString(src,pattern,replace,count,start);
         }
+		public LSL_Integer osStringStartsWith(string input, string startsWith)
+        {
+            return m_OSSL_Functions.osStringStartsWith(input, startsWith);
+        }
+
+        public LSL_Integer osStringEndsWith(string input, string endsWith)
+        {
+            return m_OSSL_Functions.osStringEndsWith(input, endsWith);
+        }
 
 
         // Information about data loaded into the region
