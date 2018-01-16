@@ -136,7 +136,7 @@ namespace OpenSim.Region.CoreModules.Framework.UserManagement
                         {
                             userID = uasConn.GetUUID(names[0], names[1]);
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.Debug("[USER MANAGEMENT MODULE]: GetUUID call failed ", e);
                         }

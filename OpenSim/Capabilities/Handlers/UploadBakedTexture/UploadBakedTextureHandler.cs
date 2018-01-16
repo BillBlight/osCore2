@@ -90,7 +90,7 @@ namespace OpenSim.Capabilities.Handlers
 
                 return LLSDHelpers.SerialiseLLSDReply(uploadResponse);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[UPLOAD BAKED TEXTURE HANDLER]: {0}{1}", e.Message, e.StackTrace);
             }

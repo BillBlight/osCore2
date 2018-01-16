@@ -99,7 +99,7 @@ namespace OpenSim.Data.PGSQL
                     {
                         return cmd.ExecuteNonQuery();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(e.Message, e);
                         return 0;

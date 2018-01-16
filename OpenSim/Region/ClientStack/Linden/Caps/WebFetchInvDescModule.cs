@@ -312,7 +312,7 @@ namespace OpenSim.Region.ClientStack.Linden
                     {
                         hash = (Hashtable)LLSD.LLSDDeserialize(Utils.StringToBytes(request));
                     }
-                    catch (LLSD.LLSDParseException e)
+                    catch (LLSD.LLSDParseException)
                     {
                         m_log.ErrorFormat("[INVENTORY]: Fetch error: {0}{1}" + e.Message, e.StackTrace);
                         m_log.Error("Request: " + request);
@@ -488,7 +488,7 @@ namespace OpenSim.Region.ClientStack.Linden
                     {
                         poolreq.thepoll.Process(poolreq);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                             "[INVENTORY]: Failed to process queued inventory request {0} for {1}.  Exception {2}",

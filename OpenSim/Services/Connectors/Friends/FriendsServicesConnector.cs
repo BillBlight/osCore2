@@ -150,7 +150,7 @@ namespace OpenSim.Services.Connectors.Friends
 
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[FRIENDS SERVICE CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
             }
@@ -172,7 +172,7 @@ namespace OpenSim.Services.Connectors.Friends
             {
                 reply = SynchronousRestFormsRequester.MakeRequest("POST", uri, ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[FRIENDS SERVICE CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
                 return false;
@@ -227,7 +227,7 @@ namespace OpenSim.Services.Connectors.Friends
             {
                 reply = SynchronousRestFormsRequester.MakeRequest("POST", uri, ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[FRIENDS SERVICE CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
                 return false;

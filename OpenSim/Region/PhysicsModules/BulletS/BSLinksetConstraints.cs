@@ -798,12 +798,12 @@ public sealed class BSLinksetConstraints : BSLinkset
                                             break;
                                     }
                                 }
-                                catch (InvalidCastException e)
+                                catch (InvalidCastException)
                                 {
                                     m_physicsScene.Logger.WarnFormat("{0} value of wrong type in physSetLinksetParams: {1}, err={2}",
                                                         LogHeader, errMsg, e);
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {
                                     m_physicsScene.Logger.WarnFormat("{0} bad parameters in physSetLinksetParams: {1}", LogHeader, e);
                                 }

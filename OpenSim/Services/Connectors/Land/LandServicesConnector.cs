@@ -121,7 +121,7 @@ namespace OpenSim.Services.Connectors
                                 landData.Dwell = Convert.ToSingle((string)hash["Dwell"]);
                             m_log.DebugFormat("[LAND CONNECTOR]: Got land data for parcel {0}", landData.Name);
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat(
                                 "[LAND CONNECTOR]: Got exception while parsing land-data: {0} {1}",
@@ -132,7 +132,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.WarnFormat("[LAND CONNECTOR]: Couldn't find region with handle {0}", regionHandle);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[LAND CONNECTOR]: Couldn't contact region {0}: {1} {2}", regionHandle, e.Message, e.StackTrace);

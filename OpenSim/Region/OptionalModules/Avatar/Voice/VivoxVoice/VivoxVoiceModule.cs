@@ -220,7 +220,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Voice.VivoxVoice
 
                 m_log.Info("[VivoxVoice] plugin enabled");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[VivoxVoice] plugin initialization failed: {0}", e.Message);
                 m_log.DebugFormat("[VivoxVoice] plugin initialization failed: {0}", e.ToString());
@@ -588,7 +588,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Voice.VivoxVoice
 
                 return r;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[VivoxVoice][PROVISIONVOICE]: : {0}, retry later", e.Message);
                 m_log.DebugFormat("[VivoxVoice][PROVISIONVOICE]: : {0} failed", e.ToString());
@@ -671,7 +671,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Voice.VivoxVoice
 //                                      scene.RegionInfo.RegionName, land.Name, land.LocalID, avatarName, r);
                 return r;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[VivoxVoice][PARCELVOICE]: region \"{0}\": avatar \"{1}\": {2}, retry later",
                                   scene.RegionInfo.RegionName, avatarName, e.Message);
@@ -1153,7 +1153,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Voice.VivoxVoice
                             doc.Load(rdr);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[VivoxVoice] Error in admin call : {0}", e.Message);
                 }

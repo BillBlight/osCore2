@@ -108,7 +108,7 @@ namespace OpenSim.Services.AssetService
             {
                 return m_Database.GetAsset(assetID);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[ASSET SERVICE]: Exception getting asset {0} {1}", assetID, e);
                 return null;
@@ -160,7 +160,7 @@ namespace OpenSim.Services.AssetService
                 UUID[] uuid = Array.ConvertAll(ids, id => UUID.Parse(id));
                 return m_Database.AssetsExist(uuid);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[ASSET SERVICE]: Exception getting assets ", e);
                 return new bool[ids.Length];

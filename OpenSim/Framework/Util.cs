@@ -1039,7 +1039,7 @@ namespace OpenSim.Framework
             {
                 IPH = Dns.GetHostEntry(dnsAddress);
             }
-            catch // (SocketException e)
+            catch // (SocketException)
             {
                 return null;
             }
@@ -1111,7 +1111,7 @@ namespace OpenSim.Framework
             {
                 IPH = Dns.GetHostEntry(hostname);
             }
-            catch // (SocketException e)
+            catch // (SocketException)
             {
                 return null;
             }
@@ -1565,7 +1565,7 @@ namespace OpenSim.Framework
                     File.Copy(exampleConfigFile, configFile);
                     created = true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[UTILS]: Exception copying configuration file {0} to {1}: {2}", configFile, exampleConfigFile, e.Message);
                     return false;
@@ -1671,7 +1671,7 @@ namespace OpenSim.Framework
 
                 formatter.Serialize(stream, obj);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.ToString());
             }
@@ -1698,7 +1698,7 @@ namespace OpenSim.Framework
 
                 ret = formatter.Deserialize(stream);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.ToString());
             }
@@ -2679,7 +2679,7 @@ namespace OpenSim.Framework
                     catch (ThreadAbortException)
                     {
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(string.Format("[UTIL]: Util STP threadfunc {0} terminated with error ", threadFuncNum), e);
                     }
@@ -3123,7 +3123,7 @@ namespace OpenSim.Framework
                 {
                     return new IPEndPoint(IPAddress.Parse(parts[0]), 0);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[UTIL]: Exception parsing XFF header {0}: {1}", xff, e.Message);
                 }
@@ -3142,7 +3142,7 @@ namespace OpenSim.Framework
                     if (headers.ContainsKey("remote_addr") && headers["remote_addr"] != null)
                         return headers["remote_addr"].ToString();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[UTIL]: exception in GetCallerIP: {0}", e.Message);
                 }

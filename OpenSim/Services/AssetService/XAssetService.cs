@@ -123,7 +123,7 @@ namespace OpenSim.Services.AssetService
 
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[XASSET SERVICE]: Exception getting asset {0} {1}", assetID, e);
                 return null;

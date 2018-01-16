@@ -606,7 +606,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Concierge
                 responseData["success"] = "true";
                 response.Value = responseData;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.InfoFormat("[Concierge]: UpdateWelcome failed: {0}", e.Message);
 

@@ -286,7 +286,7 @@ namespace OpenSim.Region.ClientStack.Linden
 
 //                m_HostCapsObj.RegisterHandler("UpdateAnimSetTaskInventory", animSetRequestHandler);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[CAPS]: " + e.ToString());
             }
@@ -316,7 +316,7 @@ namespace OpenSim.Region.ClientStack.Linden
                 m_HostCapsObj.RegisterHandler("CopyInventoryFromNotecard", CopyInventoryFromNotecardHandler);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[CAPS]: " + e.ToString());
             }
@@ -333,7 +333,7 @@ namespace OpenSim.Region.ClientStack.Linden
                     m_HostCapsObj.RegisterHandler("GetDisplayNames", GetDisplayNamesHandler);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[CAPS]: " + e.ToString());
             }
@@ -432,7 +432,7 @@ namespace OpenSim.Region.ClientStack.Linden
 
                 return LLSDHelpers.SerialiseLLSDReply(uploadResponse);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[CAPS]: " + e.ToString());
             }
@@ -1363,7 +1363,7 @@ namespace OpenSim.Region.ClientStack.Linden
                         client.SendAlertMessage("Failed to retrieve item");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[CAPS]: CopyInventoryFromNotecard : {0}", e.ToString());
             }
@@ -2216,7 +2216,7 @@ namespace OpenSim.Region.ClientStack.Linden
 
                 return res;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[CAPS]: " + e.ToString());
             }

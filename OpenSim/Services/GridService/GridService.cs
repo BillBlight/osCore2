@@ -299,7 +299,7 @@ namespace OpenSim.Services.GridService
                 {
                     m_Database.Delete(regionInfos.RegionID);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[GRID SERVICE]: Database exception: {0}", e);
                 }
@@ -340,7 +340,7 @@ namespace OpenSim.Services.GridService
                 rdata.Data["last_seen"] = Util.UnixTimeSinceEpoch();
                 m_Database.Store(rdata);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID SERVICE]: Database exception: {0}", e);
             }
@@ -389,7 +389,7 @@ namespace OpenSim.Services.GridService
                 {
                     m_Database.Store(region);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[GRID SERVICE]: Database exception: {0}", e);
                 }

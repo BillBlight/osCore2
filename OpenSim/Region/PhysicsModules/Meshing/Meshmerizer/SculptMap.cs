@@ -78,7 +78,7 @@ namespace PrimMesher
                     bm = ScaleImage(bm, width, height);
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Exception in ScaleImage(): e: " + e.ToString());
             }
@@ -119,7 +119,7 @@ namespace PrimMesher
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Caught exception processing byte arrays in SculptMap(): e: " + e.ToString());
             }

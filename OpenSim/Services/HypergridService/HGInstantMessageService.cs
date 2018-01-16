@@ -226,7 +226,7 @@ namespace OpenSim.Services.HypergridService
                     {
                         url = m_UserAgentService.LocateUser(toAgentID);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Warn("[HG IM SERVICE]: LocateUser call failed ", e);
                         url = string.Empty;

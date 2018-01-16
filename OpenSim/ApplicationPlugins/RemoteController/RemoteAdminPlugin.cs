@@ -238,7 +238,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                 method(request, response, remoteClient);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[RADMIN]: Method {0} failed.  Exception {1}{2}", request.MethodName, e.Message, e.StackTrace);
@@ -410,7 +410,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                 }
                 responseData["success"] = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[RADMIN]: Restart region: failed: {0} {1}", e.Message, e.StackTrace);
                 responseData["rebooting"] = false;
@@ -1216,7 +1216,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                     m_log.InfoFormat("[RADMIN]: CreateUser: User {0} {1} created, UUID {2}", firstName, lastName, account.PrincipalID);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     responseData["avatar_uuid"] = UUID.Zero.ToString();
 
@@ -1446,7 +1446,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                                      firstName, lastName,
                                      account.PrincipalID);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     responseData["avatar_uuid"] = UUID.Zero.ToString();
 
@@ -1579,7 +1579,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                     responseData["success"] = true;
 
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     responseData["success"] = false;
                     responseData["error"] = e.Message;
@@ -1668,7 +1668,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                     responseData["loaded"] = true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     responseData["loaded"] = false;
 
@@ -1788,7 +1788,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                 responseData["saved"] = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 responseData["saved"] = false;
 
@@ -1852,7 +1852,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                     responseData["loaded"] = true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     responseData["loaded"] = false;
                     responseData["switched"] = false;
@@ -1905,7 +1905,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                 responseData["saved"] = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 responseData["saved"] = false;
                 responseData["switched"] = false;
@@ -1934,7 +1934,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                 GetSceneFromRegionParams(requestData, responseData, out scene);
                 health = scene.GetHealth(out flags, out text);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 responseData["error"] = null;
             }
@@ -2792,7 +2792,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                     scene.AvatarService.SetAppearance(destination, avatarAppearance);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[RADMIN]: Error transferring appearance for {0} : {1}",
                                       destination, e.Message);
@@ -2823,7 +2823,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
 
                 scene.AvatarService.SetAppearance(destination, avatarAppearance);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                m_log.WarnFormat("[RADMIN]: Error transferring appearance for {0} : {1}",
                                   destination, e.Message);
@@ -3219,7 +3219,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                             m_log.DebugFormat("[RADMIN]: User {0}[{1}] created or retrieved", name, ID);
                             include = true;
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.DebugFormat("[RADMIN]: Error creating user {0} : {1}", name, e.Message);
                             include = false;
@@ -3390,7 +3390,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                                                 avatarAppearance.Wearables[inventoryItem.Flags].Wear(inventoryItem.ID, inventoryItem.AssetID);
                                             }
                                         }
-                                        catch (Exception e)
+                                        catch (Exception)
                                         {
                                             m_log.WarnFormat("[RADMIN]: Error wearing item {0} : {1}", inventoryItem.ID, e.Message);
                                         }
@@ -3400,7 +3400,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                                 m_log.DebugFormat("[RADMIN]: Inventory update complete for {0}", name);
                                 scene.AvatarService.SetAppearance(ID, avatarAppearance);
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.WarnFormat("[RADMIN]: Inventory processing incomplete for user {0} : {1}",
                                     name, e.Message);
@@ -3415,7 +3415,7 @@ namespace OpenSim.ApplicationPlugins.RemoteController
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[RADMIN]: Exception whilst loading default avatars ; {0}", e.Message);
                 return false;

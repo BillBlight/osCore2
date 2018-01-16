@@ -461,7 +461,7 @@ namespace pCampBot
                         m_log.WarnFormat("Failed to decode {0} asset {1}", asset.AssetType, asset.AssetID);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("Exception: {0}{1}", e.Message, e.StackTrace);
                 }
@@ -702,7 +702,7 @@ namespace pCampBot
                 else
                     Client.Assets.RequestMesh(assetID, Asset_MeshCallback);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(string.Format("Error requesting {0} {1}", texture ? "texture" : "mesh", assetID), e);
             }

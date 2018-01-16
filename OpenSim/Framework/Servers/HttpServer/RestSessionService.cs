@@ -215,7 +215,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                     XmlSerializer deserializer = new XmlSerializer(typeof(RestSessionObject<TRequest>));
                     deserial = (RestSessionObject<TRequest>)deserializer.Deserialize(xmlReader);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[REST]: Deserialization problem. Ignoring request. " + e);
                     fail = true;
@@ -276,7 +276,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                     XmlSerializer deserializer = new XmlSerializer(typeof(TRequest));
                     deserial = (TRequest)deserializer.Deserialize(xmlReader);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[REST]: Deserialization problem. Ignoring request. " + e);
                     fail = true;

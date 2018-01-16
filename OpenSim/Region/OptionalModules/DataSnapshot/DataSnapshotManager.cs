@@ -350,12 +350,12 @@ namespace OpenSim.Region.DataSnapshot
                 requestedSnap.AppendChild(regiondata);
                 regiondata.AppendChild(requestedSnap.CreateWhitespace("\r\n"));
             }
-            catch (XmlException e)
+            catch (XmlException)
             {
                 m_log.Warn("[DATASNAPSHOT]: XmlException while trying to load snapshot: " + e.ToString());
                 requestedSnap = GetErrorMessage(regionName, e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn("[DATASNAPSHOT]: Caught unknown exception while trying to load snapshot: " + e.StackTrace);
                 requestedSnap = GetErrorMessage(regionName, e);
@@ -365,7 +365,7 @@ namespace OpenSim.Region.DataSnapshot
             return requestedSnap;
         }
 
-        private XmlDocument GetErrorMessage(string regionName, Exception e)
+        private XmlDocument GetErrorMessage(string regionName, Exception)
         {
             XmlDocument errorMessage = new XmlDocument();
             XmlNode error = errorMessage.CreateNode(XmlNodeType.Element, "error", "");
@@ -411,7 +411,7 @@ namespace OpenSim.Region.DataSnapshot
                     {
                         m_log.Warn("[DATASNAPSHOT]: Unable to notify " + url);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Warn("[DATASNAPSHOT]: Ignoring unknown exception " + e.ToString());
                     }
@@ -423,7 +423,7 @@ namespace OpenSim.Region.DataSnapshot
                         // n = reply.Read(response, 0, 1024);
                         reply.Read(response, 0, 1024);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.WarnFormat("[DATASNAPSHOT]: Unable to decode reply from data service. Ignoring. {0}", e.StackTrace);
                     }

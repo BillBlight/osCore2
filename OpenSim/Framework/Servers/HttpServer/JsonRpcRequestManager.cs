@@ -91,7 +91,7 @@ namespace OpenSim.Framework.Servers.HttpServer
             {
                 response = WebUtil.PostToService(uri, request, 10000, true);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug(string.Format("JsonRpc request '{0}' to {1} failed", method, uri), e);
                 return false;
@@ -162,7 +162,7 @@ namespace OpenSim.Framework.Servers.HttpServer
             {
                 response = WebUtil.PostToService(uri, request, 10000, true);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug(string.Format("JsonRpc request '{0}' to {1} failed", method, uri), e);
                 return false;

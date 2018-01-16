@@ -500,7 +500,7 @@ namespace OpenSim
             {
                 scene.RegisterRegionWithGrid();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[STARTUP]: Registration of region with grid failed, aborting startup due to {0} {1}",
@@ -943,7 +943,7 @@ namespace OpenSim
                 foreach (IApplicationPlugin plugin in m_plugins)
                     plugin.Dispose();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[SHUTDOWN]: Ignoring failure during shutdown - ", e);
             }

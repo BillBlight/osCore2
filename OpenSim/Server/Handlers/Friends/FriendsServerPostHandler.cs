@@ -99,7 +99,7 @@ namespace OpenSim.Server.Handlers.Friends
 
                 m_log.DebugFormat("[FRIENDS HANDLER]: unknown method request {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[FRIENDS HANDLER]: Exception {0}", e);
             }

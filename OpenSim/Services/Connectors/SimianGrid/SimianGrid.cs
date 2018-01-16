@@ -80,7 +80,7 @@ namespace OpenSim.Services.Connectors.SimianGrid
                     m_log.InfoFormat("[SimianExternalCaps] using {0} as simulator capability",SimulatorCapability);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[SimianExternalCaps] initialization error: {0}",e.Message);
                 return;

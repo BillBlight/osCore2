@@ -391,7 +391,7 @@ namespace OpenSim.Region.CoreModules.Scripting.VectorRender
                 {
                     imageJ2000 = OpenJPEG.EncodeFromImage(bitmap, true);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[VECTORRENDERMODULE]: OpenJpeg Encode Failed.  Exception {0}{1}",

@@ -102,7 +102,7 @@ namespace OpenSim.Region.OptionalModules.Framework.Monitoring
                 CheckAssetService();
                 sb.Append("OK");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 sb.AppendFormat("FAIL ({0})", e.Message);
             }

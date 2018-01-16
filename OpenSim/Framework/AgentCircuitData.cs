@@ -349,7 +349,7 @@ namespace OpenSim.Framework
                     m_log.Warn("[AGENTCIRCUITDATA]: failed to find a valid packed_appearance");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[AGENTCIRCUITDATA] failed to unpack appearance; {0}",e.Message);
             }

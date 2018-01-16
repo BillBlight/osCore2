@@ -1784,7 +1784,7 @@ namespace OpenSim.Region.Framework.Scenes
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[SCENE]: Failed on region {0} with exception {1}{2}",
@@ -2119,7 +2119,7 @@ namespace OpenSim.Region.Framework.Scenes
                     Bakedmap = new TerrainChannel(map);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat(
                     "[TERRAIN]: Scene.cs: LoadWorldMap() baked terrain - Failed with exception {0}{1}", e.Message, e.StackTrace);
@@ -2156,7 +2156,7 @@ namespace OpenSim.Region.Framework.Scenes
                     Heightmap = new TerrainChannel(map);
                 }
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 m_log.WarnFormat(
                     "[TERRAIN]: Scene.cs: LoadWorldMap() - Regenerating as failed with exception {0}{1}",
@@ -2170,7 +2170,7 @@ namespace OpenSim.Region.Framework.Scenes
                     SimulationDataService.StoreTerrain(Heightmap.GetTerrainData(), RegionInfo.RegionID);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat(
                     "[TERRAIN]: Scene.cs: LoadWorldMap() - Failed with exception {0}{1}", e.Message, e.StackTrace);
@@ -2885,7 +2885,7 @@ namespace OpenSim.Region.Framework.Scenes
             {
                 newObject = (SceneObjectGroup)sog;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[INTERREGION]: Problem casting object, exception {0}{1}", e.Message, e.StackTrace);
                 return false;
@@ -3224,7 +3224,7 @@ namespace OpenSim.Region.Framework.Scenes
 
                         return false;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.DebugFormat("[SCENE]: Exception while closing aborted client: {0}", e.StackTrace);
                     }
@@ -3751,7 +3751,7 @@ namespace OpenSim.Region.Framework.Scenes
                     }
                     m_log.Debug("[Scene] The avatar has left the building");
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(
                         string.Format("[SCENE]: Exception removing {0} from {1}.  Cleaning up.  Exception ", avatar.Name, Name), e);
@@ -3769,7 +3769,7 @@ namespace OpenSim.Region.Framework.Scenes
 
                         avatar.Close();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(
                             string.Format("[SCENE]: Exception in final clean up of {0} in {1}.  Exception ", avatar.Name, Name), e);
@@ -4080,7 +4080,7 @@ namespace OpenSim.Region.Framework.Scenes
                                 return false;
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat(
                                 "[SCENE]: Exception verifying presence {0}{1}", e.Message, e.StackTrace);
@@ -4098,7 +4098,7 @@ namespace OpenSim.Region.Framework.Scenes
                             return false;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                             "[SCENE]: Exception authorizing user {0}{1}", e.Message, e.StackTrace);
@@ -4481,7 +4481,7 @@ Label_GroupsDone:
 //                {
 //                    presence.MakeRootAgent(position, isFlying);
 //                }
-//                catch (Exception e)
+//                catch (Exception)
 //                {
 //                    m_log.ErrorFormat("[SCENE]: Unable to do agent crossing, exception {0}{1}", e.Message, e.StackTrace);
 //                }
@@ -6100,7 +6100,7 @@ Environment.Exit(1);
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[SCENE]: Exception authorizing agent: {0} " + e.StackTrace, e.Message);
                 reason = "Error authorizing agent: " + e.Message;

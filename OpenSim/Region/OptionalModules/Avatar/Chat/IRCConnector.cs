@@ -373,7 +373,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Chat
                     m_writer.WriteLine(m_user);
                     m_writer.Flush();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[IRC-Connector-{0}] cannot connect {1} to {2}:{3}: {4}",
                                       idn, m_nick, m_server, m_port, e.Message);
@@ -865,7 +865,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Chat
                                 // m_log.DebugFormat("[IRC-Watchdog] Connecting {1}:{2}", connector.idn, connector.m_server, connector.m_ircChannel);
                                 connector.Connect();
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.ErrorFormat("[IRC-Watchdog] Exception on connector {0}: {1} ", connector.idn, e.Message);
                             }
@@ -895,7 +895,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Chat
                                     connector.m_writer.WriteLine(String.Format("PING :{0}", connector.m_server));
                                     connector.m_writer.Flush();
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {
                                     m_log.ErrorFormat("[IRC-PingRun] Exception on connector {0}: {1} ", connector.idn, e.Message);
                                     m_log.Debug(e);

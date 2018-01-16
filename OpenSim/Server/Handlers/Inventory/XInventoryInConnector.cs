@@ -160,7 +160,7 @@ namespace OpenSim.Server.Handlers.Inventory
                 }
                 m_log.DebugFormat("[XINVENTORY HANDLER]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("[XINVENTORY HANDLER]: Exception {0} ", e.Message), e);
             }
@@ -529,7 +529,7 @@ namespace OpenSim.Server.Handlers.Inventory
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[XINVENTORY IN CONNECTOR]: Exception in HandleMoveItems: {0}", e.Message);
                 return FailureResult();

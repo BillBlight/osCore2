@@ -1764,7 +1764,7 @@ default
                 CSCodeGenerator cg = new CSCodeGenerator();
                 cg.Convert(input);
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
                 // The syntax error is on line 5, char 4 (expected ';', found
                 // '}').
@@ -1795,7 +1795,7 @@ default
                 CSCodeGenerator cg = new CSCodeGenerator();
                 cg.Convert(input);
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
                 // The syntax error is on line 4, char 13 (Syntax error)
                 Assert.AreEqual("(4,13) syntax error", e.Message);

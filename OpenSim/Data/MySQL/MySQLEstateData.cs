@@ -71,7 +71,7 @@ namespace OpenSim.Data.MySQL
             {
                 m_log.Info("[REGION DB]: MySql - connecting: " + Util.GetDisplayConnectionString(m_connectionString));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("Exception: password not found in connection string\n" + e.ToString());
             }
@@ -581,7 +581,7 @@ namespace OpenSim.Data.MySQL
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[REGION DB]: Error reading estate map. " + e.ToString());
                     return result;

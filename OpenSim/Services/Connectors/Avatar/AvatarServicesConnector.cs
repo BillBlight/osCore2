@@ -124,7 +124,7 @@ namespace OpenSim.Services.Connectors
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AVATAR CONNECTOR]: Exception when contacting presence server at {0}: {1}", uri, e.Message);
             }
@@ -187,7 +187,7 @@ namespace OpenSim.Services.Connectors
                     m_log.DebugFormat("[AVATAR CONNECTOR]: SetAvatar received empty reply");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AVATAR CONNECTOR]: Exception when contacting presence server at {0}: {1}", uri, e.Message);
             }
@@ -229,7 +229,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[AVATAR CONNECTOR]: SetItems received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AVATAR CONNECTOR]: Exception when contacting presence server at {0}: {1}", uri, e.Message);
             }
@@ -272,7 +272,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[AVATAR CONNECTOR]: SetItems received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AVATAR CONNECTOR]: Exception when contacting presence server at {0}: {1}", uri, e.Message);
             }
@@ -315,7 +315,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[AVATAR CONNECTOR]: RemoveItems received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AVATAR CONNECTOR]: Exception when contacting presence server at {0}: {1}", uri, e.Message);
             }

@@ -179,7 +179,7 @@ namespace OpenSim.Region.OptionalModules.World.NPC
                     npcAvatar = new NPCAvatar(firstname, lastname, agentID, position,
                         owner, senseAsAgent, scene);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Info("[NPC MODULE]: exception creating NPC avatar: " + e.ToString());
                 return UUID.Zero;

@@ -830,7 +830,7 @@ namespace OpenSim.Services.UserAccountService
 
                 m_AvatarService.SetAppearance(destinationAgent, modelAppearance);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[USER ACCOUNT SERVICE]: Error transferring appearance for {0} : {1}",
                     destinationAgent, e.Message);

@@ -111,7 +111,7 @@ namespace OpenSim.Region.CoreModules.Scripting.EmailModules
                 SMTP_SERVER_PASSWORD = SMTPConfig.GetString("SMTP_SERVER_PASSWORD", SMTP_SERVER_PASSWORD);
                 m_MaxEmailSize = SMTPConfig.GetInt("email_max_size", m_MaxEmailSize);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[EMAIL]: DefaultEmailModule not configured: " + e.Message);
                 m_Enabled = false;
@@ -320,7 +320,7 @@ namespace OpenSim.Region.CoreModules.Scripting.EmailModules
                     //Log
                     m_log.Info("[EMAIL]: EMail sent to: " + address + " from object: " + objectID.ToString() + "@" + m_HostName);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[EMAIL]: DefaultEmailModule Exception: " + e.Message);
                 }

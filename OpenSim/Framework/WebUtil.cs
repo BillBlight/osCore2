@@ -870,7 +870,7 @@ namespace OpenSim.Framework
                                 }
                             }
                         }
-                        catch (WebException e)
+                        catch (WebException)
                         {
                             if (e.Status == WebExceptionStatus.ProtocolError)
                             {
@@ -896,7 +896,7 @@ namespace OpenSim.Framework
                                     verb, requestUrl, e.Status, e.Message);
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat(
                                 "[ASYNC REQUEST]: Request {0} {1} failed with exception {2}{3}",
@@ -909,7 +909,7 @@ namespace OpenSim.Framework
                         {
                             action(deserial);
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat(
                                 "[ASYNC REQUEST]: Request {0} {1} callback failed with exception {2}{3}",
@@ -1017,7 +1017,7 @@ namespace OpenSim.Framework
                         using(Stream requestStream = request.GetRequestStream())
                             requestStream.Write(data,0,length);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.InfoFormat("[FORMS]: Error sending request to {0}: {1}. Request: {2}", requestUrl, e.Message,
                             obj.Length > WebUtil.MaxRequestDiagLength ? obj.Remove(WebUtil.MaxRequestDiagLength) : obj);
@@ -1042,7 +1042,7 @@ namespace OpenSim.Framework
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.InfoFormat("[FORMS]: Error receiving response from {0}: {1}. Request: {2}", requestUrl, e.Message,
                         obj.Length > WebUtil.MaxRequestDiagLength ? obj.Remove(WebUtil.MaxRequestDiagLength) : obj);
@@ -1219,7 +1219,7 @@ namespace OpenSim.Framework
                         using (Stream requestStream = request.GetRequestStream())
                             requestStream.Write(data, 0, length);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.DebugFormat(
                             "[SynchronousRestObjectRequester]: Exception in making request {0} {1}: {2}{3}",
@@ -1254,7 +1254,7 @@ namespace OpenSim.Framework
                         }
                     }
                 }
-                catch (WebException e)
+                catch (WebException)
                 {
                     using (HttpWebResponse hwr = (HttpWebResponse)e.Response)
                     {
@@ -1289,7 +1289,7 @@ namespace OpenSim.Framework
                         "[SynchronousRestObjectRequester]: Invalid XML from {0} {1} {2}",
                         verb, requestUrl, typeof(TResponse).ToString());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Debug(string.Format(
                         "[SynchronousRestObjectRequester]: Exception on response from {0} {1} ",
@@ -1393,7 +1393,7 @@ namespace OpenSim.Framework
                     if (WebUtil.DebugLevel >= 5)
                         WebUtil.LogResponseDetail(reqnum, responseStr);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("Error parsing XML-RPC response", e);
                 }

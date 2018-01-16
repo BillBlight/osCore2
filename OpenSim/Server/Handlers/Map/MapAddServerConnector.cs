@@ -166,7 +166,7 @@ namespace OpenSim.Server.Handlers.MapImage
                     return FailureResult(reason);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[MAP SERVICE IMAGE HANDLER]: Exception {0} {1}", e.Message, e.StackTrace);
             }

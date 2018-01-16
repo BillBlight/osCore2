@@ -95,7 +95,7 @@ namespace OpenSim.Region.OptionalModules.Framework.Monitoring
 
                 m_client = new EtcdClient(uris.ToArray(), new DefaultSerializer(), new DefaultSerializer());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[ETCD]: Error initializing connection: " + e.ToString());
                 return;
@@ -126,7 +126,7 @@ namespace OpenSim.Region.OptionalModules.Framework.Monitoring
                 {
                     m_client.Advanced.CreateDirectory(new CreateDirectoryRequest() {Key = m_etcdBasePath});
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("Exception trying to create base path {0}: " + e.ToString(), m_etcdBasePath);
                 }

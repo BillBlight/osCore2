@@ -199,7 +199,7 @@ namespace OpenSim.Data.SQLite
                     {
                         primDa.Fill(ds.Tables["prims"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on prims table :{0}", e.Message);
                     }
@@ -208,7 +208,7 @@ namespace OpenSim.Data.SQLite
                     {
                         shapeDa.Fill(ds.Tables["primshapes"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on primshapes table :{0}", e.Message);
                     }
@@ -217,7 +217,7 @@ namespace OpenSim.Data.SQLite
                     {
                         itemsDa.Fill(ds.Tables["primitems"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on primitems table :{0}", e.Message);
                     }
@@ -226,7 +226,7 @@ namespace OpenSim.Data.SQLite
                     {
                         terrainDa.Fill(ds.Tables["terrain"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on terrain table :{0}", e.Message);
                     }
@@ -235,7 +235,7 @@ namespace OpenSim.Data.SQLite
                     {
                         landDa.Fill(ds.Tables["land"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on land table :{0}", e.Message);
                     }
@@ -244,7 +244,7 @@ namespace OpenSim.Data.SQLite
                     {
                         landAccessListDa.Fill(ds.Tables["landaccesslist"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on landaccesslist table :{0}", e.Message);
                     }
@@ -253,7 +253,7 @@ namespace OpenSim.Data.SQLite
                     {
                         regionSettingsDa.Fill(ds.Tables["regionsettings"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on regionsettings table :{0}", e.Message);
                     }
@@ -262,7 +262,7 @@ namespace OpenSim.Data.SQLite
                     {
                         regionWindlightDa.Fill(ds.Tables["regionwindlight"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on regionwindlight table :{0}", e.Message);
                     }
@@ -271,7 +271,7 @@ namespace OpenSim.Data.SQLite
                     {
                         regionEnvironmentDa.Fill(ds.Tables["regionenvironment"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on regionenvironment table :{0}", e.Message);
                     }
@@ -280,7 +280,7 @@ namespace OpenSim.Data.SQLite
                     {
                         regionSpawnPointsDa.Fill(ds.Tables["spawn_points"]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SQLITE REGION DB]: Caught fill error on spawn_points table :{0}", e.Message);
                     }
@@ -300,7 +300,7 @@ namespace OpenSim.Data.SQLite
                     CreateDataSetMapping(regionSpawnPointsDa, "spawn_points");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[SQLITE REGION DB]: {0} - {1}", e.Message, e.StackTrace);
                 Environment.Exit(23);
@@ -741,7 +741,7 @@ namespace OpenSim.Data.SQLite
 
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SQLITE REGION DB]: Failed create prim object in new group, exception and data follows");
                         m_log.Error("[SQLITE REGION DB]: ", e);
@@ -780,7 +780,7 @@ namespace OpenSim.Data.SQLite
                             LoadItems(prim);
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SQLITE REGION DB]: Failed create prim object in group, exception and data follows");
                         m_log.Error("[SQLITE REGION DB]: ", e);

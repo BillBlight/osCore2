@@ -583,7 +583,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                     OnHandleRequestIOThread(context, request);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(String.Format("[BASE HTTP SERVER]: OnRequest() failed: {0} ", e.Message), e);
             }
@@ -865,7 +865,7 @@ namespace OpenSim.Framework.Servers.HttpServer
 
                 response.Send();
             }
-            catch (SocketException e)
+            catch (SocketException)
             {
                 // At least on linux, it appears that if the client makes a request without requiring the response,
                 // an unconnected socket exception is thrown when we close the response output stream.  There's no
@@ -876,11 +876,11 @@ namespace OpenSim.Framework.Servers.HttpServer
                 // with the minimum first
                 m_log.Warn(String.Format("[BASE HTTP SERVER]: HandleRequest threw {0}.\nNOTE: this may be spurious on Linux ", e.Message), e);
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 m_log.Error("[BASE HTTP SERVER]: HandleRequest() threw exception ", e);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[BASE HTTP SERVER]: HandleRequest() threw exception ", e);
                 try
@@ -1183,7 +1183,7 @@ namespace OpenSim.Framework.Servers.HttpServer
             {
                 xmlRprcRequest = (XmlRpcRequest) (new XmlRpcRequestDeserializer()).Deserialize(requestBody);
             }
-            catch (XmlException e)
+            catch (XmlException)
             {
                 if (DebugLevel >= 1)
                 {
@@ -1253,7 +1253,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                         {
                             xmlRpcResponse = method(xmlRprcRequest, request.RemoteIPEndPoint);
                         }
-                        catch(Exception e)
+                        catch(Exception)
                         {
                             string errorMessage
                                 = String.Format(
@@ -1334,7 +1334,7 @@ namespace OpenSim.Framework.Servers.HttpServer
             {
                 jsonRpcRequest = (OSDMap)OSDParser.DeserializeJson(requestStream);
             }
-            catch (LitJson.JsonException e)
+            catch (LitJson.JsonException)
             {
                 jsonRpcResponse.Error.Code = ErrorCode.InternalError;
                 jsonRpcResponse.Error.Message = e.Message;
@@ -1376,7 +1376,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                                 }
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             string ErrorMessage = string.Format("[BASE HTTP SERVER]: Json-Rpc Handler Error method {0} - {1}", methodname, e.Message);
                             m_log.Error(ErrorMessage);
@@ -2103,7 +2103,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                 //    ThreadPool.UnsafeQueueUserWorkItem(new WaitCallback(HandleRequest), context);
                // }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[BASE HTTP SERVER]: Error - " + e.Message);
                 m_log.Error("[BASE HTTP SERVER]: Tip: Do you have permission to listen on port " + m_port + "?");

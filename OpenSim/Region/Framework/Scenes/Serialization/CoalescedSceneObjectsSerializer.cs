@@ -180,7 +180,7 @@ namespace OpenSim.Region.Framework.Scenes.Serialization
                     i++;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[COALESCED SCENE OBJECTS SERIALIZER]: Deserialization of xml failed ",  e);
                 Util.LogFailedXML("[COALESCED SCENE OBJECTS SERIALIZER]:", xml);

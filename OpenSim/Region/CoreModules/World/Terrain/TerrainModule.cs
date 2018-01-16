@@ -368,7 +368,7 @@ namespace OpenSim.Region.CoreModules.World.Terrain
                             throw new TerrainException(
                                 String.Format("unable to load heightmap: file {0} not found (or permissions do not allow access", filename));
                         }
-                        catch(ArgumentException e)
+                        catch(ArgumentException)
                         {
                             m_log.ErrorFormat("[TERRAIN]: Unable to load heightmap: {0}", e.Message);
                             throw new TerrainException(

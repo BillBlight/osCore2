@@ -383,7 +383,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Attachments
                     RezSingleAttachmentFromInventoryInternal(
                         sp, sp.PresenceType == PresenceType.Npc ? UUID.Zero : attach.ItemID, attach.AssetID, attachmentPt, true, d);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     UUID agentId = (sp.ControllingClient == null) ? default(UUID) : sp.ControllingClient.AgentId;
                     m_log.ErrorFormat("[ATTACHMENTS MODULE]: Unable to rez attachment with itemID {0}, assetID {1}, point {2} for {3}: {4}\n{5}",
@@ -1200,7 +1200,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Attachments
 
                 AttachObjectInternal(sp, objatt, attachmentPt, false, true, true, append);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[ATTACHMENTS MODULE]: Failed to attach {0} {1} for {2}, exception {3}{4}",
@@ -1364,7 +1364,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Attachments
                     m_scene.AvatarFactory.QueueAppearanceSave(sp.UUID);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[ATTACHMENTS MODULE]: exception upon Attach Object {0}{1}", e.Message, e.StackTrace);
             }

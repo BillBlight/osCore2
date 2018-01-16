@@ -344,7 +344,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Tests
             {
                 m_cg.Convert(script);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 gotException = true;
                 ge = e;

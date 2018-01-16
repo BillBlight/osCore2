@@ -662,12 +662,12 @@ namespace OpenSim.Region.CoreModules.Framework.UserManagement
                 {
                     userdata.ServerURLs = uConn.GetServerURLs(userID);
                 }
-                catch(System.Net.WebException e)
+                catch(System.Net.WebException)
                 {
                     m_log.DebugFormat("[USER MANAGEMENT MODULE]: GetServerURLs call failed {0}", e.Message);
                     userdata.ServerURLs = new Dictionary<string, object>();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Debug("[USER MANAGEMENT MODULE]: GetServerURLs call failed ", e);
                     userdata.ServerURLs = new Dictionary<string, object>();

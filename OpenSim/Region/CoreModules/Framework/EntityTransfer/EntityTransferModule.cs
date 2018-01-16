@@ -425,7 +425,7 @@ namespace OpenSim.Region.CoreModules.Framework.EntityTransfer
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 
                 m_log.ErrorFormat(
@@ -683,7 +683,7 @@ namespace OpenSim.Region.CoreModules.Framework.EntityTransfer
             {
                 DoTeleportInternal(sp, reg, finalDestination, position, lookAt, teleportFlags);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[ENTITY TRANSFER MODULE]: Exception on teleport of {0} from {1}@{2} to {3}@{4}: {5}{6}",
@@ -1760,7 +1760,7 @@ namespace OpenSim.Region.CoreModules.Framework.EntityTransfer
                     m_entityTransferStateMachine.ResetFromTransit(agent.UUID);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("{0}: CrossAgentToNewRegionAsync: failed with exception  ", LogHeader), e);
             }
@@ -1824,7 +1824,7 @@ namespace OpenSim.Region.CoreModules.Framework.EntityTransfer
 
             m_log.DebugFormat("[CrossAgentIntoNewRegionMain] ok, time {0}ms",Util.EnvironmentTickCountSubtract(ts));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[ENTITY TRANSFER MODULE]: Problem crossing user {0} to new region {1} from {2}.  Exception {3}{4}",
@@ -2178,7 +2178,7 @@ namespace OpenSim.Region.CoreModules.Framework.EntityTransfer
                                 spScene.SimulationService.UpdateAgent(neighbour, agentpos);
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat(
                                 "[ENTITY TRANSFER MODULE]: Error creating child agent at {0} ({1} ({2}, {3}).  {4}",
@@ -2559,7 +2559,7 @@ namespace OpenSim.Region.CoreModules.Framework.EntityTransfer
                     {
                         grp.Scene.DeleteSceneObject(grp, silent, removeScripts);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                             "[ENTITY TRANSFER MODULE]: Exception deleting the old object left behind on a border crossing for {0}, {1}",

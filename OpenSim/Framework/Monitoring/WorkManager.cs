@@ -164,7 +164,7 @@ namespace OpenSim.Framework.Monitoring
                     callback(obj);
                     Watchdog.RemoveThread(log:false);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(string.Format("[WATCHDOG]: Exception in thread {0}.", name), e);
                 }

@@ -134,7 +134,7 @@ namespace OpenSim.Services.PresenceService
 
                 return success;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug(string.Format("[PRESENCE SERVICE]: ReportAgent for session {0} threw exception ", sessionID), e);
                 return false;

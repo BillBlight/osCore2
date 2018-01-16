@@ -143,7 +143,7 @@ namespace OpenSim.Data.Tests
                 m_service = new TService();
                 InitService(m_service);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.ToString());
                 Assert.Ignore();

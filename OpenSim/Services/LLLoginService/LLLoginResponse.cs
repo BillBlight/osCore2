@@ -319,7 +319,7 @@ namespace OpenSim.Services.LLLoginService
             {
                 inventData = GetInventorySkeleton(invSkel);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat(
                     "[LLLOGIN SERVICE]: Error processing inventory skeleton of agent {0} - {1}",
@@ -420,7 +420,7 @@ namespace OpenSim.Services.LLLoginService
 //                // on linux and mac, and should work also on Windows (to confirm)
 //                gridTimeZone = TimeZoneInfo.FindSystemTimeZoneById("US/Pacific");
 //            }
-//            catch (Exception e)
+//            catch (Exception)
 //            {
 //                m_log.WarnFormat(
 //                    "[TIMEZONE]: {0} Falling back to system time. System time should be set to Pacific Standard Time to provide the expected time",
@@ -600,7 +600,7 @@ namespace OpenSim.Services.LLLoginService
 
                 return responseData;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn("[CLIENT]: LoginResponse: Error creating Hashtable Response: " + e.Message);
 
@@ -713,7 +713,7 @@ namespace OpenSim.Services.LLLoginService
 
                 return map;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn("[CLIENT]: LoginResponse: Error creating LLSD Response: " + e.Message);
 

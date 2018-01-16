@@ -315,7 +315,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Instance
 
                 Part.SetScriptEvents(ItemID, (int)m_Script.GetStateEventFlags(State));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[SCRIPT INSTANCE]: Not starting script {0} (id {1}) in part {2} (id {3}) in object {4} in {5}.  Error initializing script instance.  Exception {6}{7}",
@@ -385,7 +385,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Instance
                     //                            ScriptTask.Name, ScriptTask.ItemID, Part.Name, Part.UUID, Part.ParentGroup.Name, Engine.World.Name, savedState);
                     //                    }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[SCRIPT INSTANCE]: Not starting script {0} (id {1}) in part {2} (id {3}) in object {4} in {5}.  Unable to load script state file {6}.  XML is {7}.  Exception {8}{9}",
@@ -504,7 +504,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Instance
             {
                 File.Delete(savedState);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(
                     string.Format(
@@ -1223,7 +1223,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Instance
             return String.Format("{0} {1} on {2}", ScriptName, ItemID, PrimName);
         }
 
-        string FormatException(Exception e)
+        string FormatException(Exception)
         {
             if (e.InnerException == null) // Not a normal runtime error
                 return e.ToString();

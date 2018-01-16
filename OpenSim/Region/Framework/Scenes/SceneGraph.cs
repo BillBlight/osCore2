@@ -653,7 +653,7 @@ namespace OpenSim.Region.Framework.Scenes
                     {
                         sog.Update();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                             "[INNER SCENE]: Failed to update {0}, {1} - {2}", sog.Name, sog.UUID, e);
@@ -1287,7 +1287,7 @@ namespace OpenSim.Region.Framework.Scenes
                 {
                     action(obj);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // Catch it and move on. This includes situations where objlist has inconsistent info
                     m_log.WarnFormat(
@@ -1326,7 +1326,7 @@ namespace OpenSim.Region.Framework.Scenes
                     {
                         action(sp);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Info("[SCENEGRAPH]: Error in " + m_parentScene.RegionInfo.RegionName + ": " + e.ToString());
                         m_log.Info("[SCENEGRAPH]: Stack Trace: " + e.StackTrace);
@@ -1342,7 +1342,7 @@ namespace OpenSim.Region.Framework.Scenes
                 {
                     action(sp);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[SCENEGRAPH]: Error in " + m_parentScene.RegionInfo.RegionName + ": " + e.ToString());
                 }

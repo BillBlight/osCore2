@@ -81,7 +81,7 @@ namespace OpenSim.Data.MySQL
                     conn.Close();
                 }
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
                 m_log.ErrorFormat("[FSASSETS]: Can't connect to database: {0}", e.Message.ToString());
             }
@@ -109,7 +109,7 @@ namespace OpenSim.Data.MySQL
                 {
                     conn.Open();
                 }
-                catch (MySqlException e)
+                catch (MySqlException)
                 {
                     m_log.ErrorFormat("[FSASSETS]: Database open failed with {0}", e.ToString());
                     return false;
@@ -120,7 +120,7 @@ namespace OpenSim.Data.MySQL
                 {
                     cmd.ExecuteNonQuery();
                 }
-                catch (MySqlException e)
+                catch (MySqlException)
                 {
                     cmd.Connection = null;
                     conn.Close();
@@ -148,7 +148,7 @@ namespace OpenSim.Data.MySQL
                 {
                     conn.Open();
                 }
-                catch (MySqlException e)
+                catch (MySqlException)
                 {
                     m_log.ErrorFormat("[FSASSETS]: Database open failed with {0}", e.ToString());
                     return null;
@@ -199,7 +199,7 @@ namespace OpenSim.Data.MySQL
                 {
                     conn.Open();
                 }
-                catch (MySqlException e)
+                catch (MySqlException)
                 {
                     m_log.ErrorFormat("[FSASSETS]: Database open failed with {0}", e.ToString());
                     return;
@@ -253,7 +253,7 @@ namespace OpenSim.Data.MySQL
                 // or regions will keep retry.
                 return true;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 m_log.Error("[FSAssets] Failed to store asset with ID " + meta.ID);
         m_log.Error(e.ToString());
@@ -286,7 +286,7 @@ namespace OpenSim.Data.MySQL
                 {
                     conn.Open();
                 }
-                catch (MySqlException e)
+                catch (MySqlException)
                 {
                     m_log.ErrorFormat("[FSASSETS]: Failed to open database: {0}", e.ToString());
                     return results;
@@ -323,7 +323,7 @@ namespace OpenSim.Data.MySQL
                 {
                     conn.Open();
                 }
-                catch (MySqlException e)
+                catch (MySqlException)
                 {
                     m_log.ErrorFormat("[FSASSETS]: Failed to open database: {0}", e.ToString());
                     return 0;
@@ -371,7 +371,7 @@ namespace OpenSim.Data.MySQL
                 {
                     importConn.Open();
                 }
-                catch (MySqlException e)
+                catch (MySqlException)
                 {
                     m_log.ErrorFormat("[FSASSETS]: Can't connect to database: {0}",
                             e.Message.ToString());

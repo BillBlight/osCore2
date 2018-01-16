@@ -168,7 +168,7 @@ namespace OpenSim
                     signal_thread.IsBackground = true;
                     signal_thread.Start();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Info("Could not set up UNIX signal handlers. SIGTERM will not");
                     m_log.InfoFormat("shut down gracefully: {0}", e.Message);
@@ -1261,7 +1261,7 @@ namespace OpenSim
             {
                 SceneManager.LoadArchiveToCurrentScene(cmdparams);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MainConsole.Instance.Output(e.Message);
             }

@@ -2004,7 +2004,7 @@ namespace OpenSim.Region.CoreModules.World.Land
                     }
                 }
             }
-            catch (LLSD.LLSDParseException e)
+            catch (LLSD.LLSDParseException)
             {
                 m_log.ErrorFormat("[LAND MANAGEMENT MODULE]: Fetch error: {0}", e.Message);
                 m_log.ErrorFormat("[LAND MANAGEMENT MODULE]: ... in request {0}", request);

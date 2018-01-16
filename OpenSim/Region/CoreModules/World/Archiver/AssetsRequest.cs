@@ -163,7 +163,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
                     m_assetsArchiver.WriteAsset(PostProcess(asset));
                 }
 
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[ARCHIVER]: Execute failed with {0}", e);
                 }
@@ -203,7 +203,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
             {
                 m_assetsRequestCallback(m_foundAssetUuids, m_notFoundAssetUuids, timedOut);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[ARCHIVER]: Terminating archive creation since asset requster callback failed with {0}", e);

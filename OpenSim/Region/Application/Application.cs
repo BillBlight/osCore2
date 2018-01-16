@@ -340,7 +340,7 @@ namespace OpenSim
                         // Block thread here for input
                         MainConsole.Instance.Prompt();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("Command error: {0}", e);
                     }

@@ -197,7 +197,7 @@ namespace OpenSim.Framework.Servers
             {
                 StartupSpecific();
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 m_log.Fatal("Fatal error: " + e.ToString());
                 Environment.Exit(1);

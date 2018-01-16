@@ -184,7 +184,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[GRID USER CONNECTOR]: SetPosition received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID USER CONNECTOR]: Exception when contacting grid user server at {0}: {1}", uri, e.Message);
             }
@@ -220,7 +220,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[GRID USER CONNECTOR]: Get received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID USER CONNECTOR]: Exception when contacting grid user server at {0}: {1}", uri, e.Message);
             }
@@ -255,7 +255,7 @@ namespace OpenSim.Services.Connectors
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID USER CONNECTOR]: Exception when contacting grid user server at {0}: {1}", uri, e.Message);
             }

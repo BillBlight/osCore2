@@ -343,7 +343,7 @@ namespace OpenSim.Region.OptionalModules.World.AutoBackup
                 if (!dirinfo.Exists)
                     dirinfo.Create();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_enabled = false;
                     m_log.WarnFormat("[AUTO BACKUP]: Error accessing backup folder {0}. Module disabled. {1}",
@@ -598,7 +598,7 @@ namespace OpenSim.Region.OptionalModules.World.AutoBackup
                     proc.ErrorDataReceived += HandleProcErrorDataReceived;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(
                     "Exception encountered when trying to run script for oar backup " + savePath, e);

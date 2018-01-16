@@ -10277,7 +10277,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     }
                 }
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 Error(originFunc, string.Format("Error running rule #{0}: arg #{1} - ", rulesParsed, idx - idxStart) + e.Message);
             }
@@ -10406,7 +10406,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     }
                 }
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 Error(
                     originFunc,
@@ -16357,7 +16357,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     }
                 }
             }
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 Error(originFunc,string.Format(
                         " error running rule #{0}: arg #{1} {2}",
@@ -16802,7 +16802,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
             {
                 jsdata = LitJson.JsonMapper.ToObject(json);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 string m = e.Message; // debug point
                 return json;
@@ -16811,7 +16811,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
             {
                 return JsonParseTop(jsdata);
             }
-            catch   (Exception e)
+            catch   (Exception)
             {
                 string m = e.Message; // debug point
                 return (LSL_String)ScriptBaseClass.JSON_INVALID;
@@ -17070,7 +17070,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     workData.SetJsonType(LitJson.JsonType.Array);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 string m = e.Message; // debug point
                 return ScriptBaseClass.JSON_INVALID;
@@ -17081,7 +17081,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                 if(replace != null)
                     workData = replace;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 string m = e.Message; // debug point
                 return ScriptBaseClass.JSON_INVALID;
@@ -17094,7 +17094,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                     r = r.Substring(1,r.Length -2); // strip leading and trailing brakets
                 return r;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 string m = e.Message; // debug point
             }
@@ -17437,7 +17437,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
             {
                 jsonData = LitJson.JsonMapper.ToObject(json);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 string m = e.Message; // debug point
                 return ScriptBaseClass.JSON_INVALID;
@@ -17510,7 +17510,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
             {
                 jsonData = LitJson.JsonMapper.ToObject(json);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 string m = e.Message; // debug point
                 return ScriptBaseClass.JSON_INVALID;

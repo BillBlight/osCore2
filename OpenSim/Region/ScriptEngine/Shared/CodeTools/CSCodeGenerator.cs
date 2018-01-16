@@ -143,7 +143,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.CodeTools
             {
                 codeTransformer = new LSL2CSCodeTransformer(p.Parse(script));
             }
-            catch (CSToolsException e)
+            catch (CSToolsException)
             {
                 string message;
 

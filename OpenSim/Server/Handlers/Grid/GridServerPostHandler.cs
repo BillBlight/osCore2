@@ -129,7 +129,7 @@ namespace OpenSim.Server.Handlers.Grid
 
                 m_log.DebugFormat("[GRID HANDLER]: unknown method request {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[GRID HANDLER]: Exception {0} {1}", e.Message, e.StackTrace);
             }
@@ -190,7 +190,7 @@ namespace OpenSim.Server.Handlers.Grid
                     rinfoData[kvp.Key] = kvp.Value.ToString();
                 rinfo = new GridRegion(rinfoData);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID HANDLER]: exception unpacking region data: {0}", e);
             }

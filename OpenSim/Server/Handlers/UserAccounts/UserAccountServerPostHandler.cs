@@ -114,7 +114,7 @@ namespace OpenSim.Server.Handlers.UserAccounts
 
                 m_log.DebugFormat("[USER SERVICE HANDLER]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[USER SERVICE HANDLER]: Exception in method {0}: {1}", method, e);
             }

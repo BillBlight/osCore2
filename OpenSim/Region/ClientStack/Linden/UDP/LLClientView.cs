@@ -785,7 +785,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
             {
                 packetObject.result = packetObject.Method(packetObject.ClientView, packetObject.Pack);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // Make sure that we see any exception caused by the asynchronous operation.
                 m_log.Error(
@@ -1225,7 +1225,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                 // Send LayerData in a spiral pattern. Fun!
                 SendLayerTopRight(map, 0, 0, map.SizeX / Constants.TerrainPatchSize - 1, map.SizeY / Constants.TerrainPatchSize - 1);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[CLIENT]: SendLayerData() Failed with exception: " + e.Message, e);
             }
@@ -1337,7 +1337,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                 foreach(LayerDataPacket pkt in packets)
                     OutPacket(pkt, ThrottleOutPacketType.Land);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[CLIENT]: SendLayerData() Failed with exception: " + e.Message, e);
             }
@@ -6569,7 +6569,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                         handlerGenericMessage(sender, method, msg);
                         return true;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                             "[LLCLIENTVIEW]: Exeception when handling generic message {0}{1}", e.Message, e.StackTrace);
@@ -7116,7 +7116,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
 
                     handlerSetAppearance(sender, te, visualparams,avSize, cacheitems);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[CLIENT VIEW]: AgentSetApperance packet handler threw an exception, {0}",

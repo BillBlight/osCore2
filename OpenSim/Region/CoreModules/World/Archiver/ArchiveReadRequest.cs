@@ -199,7 +199,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
             {
                 m_loadStream = new GZipStream(ArchiveHelpers.GetStream(loadPath), CompressionMode.Decompress);
             }
-            catch (EntryPointNotFoundException e)
+            catch (EntryPointNotFoundException)
             {
                 m_log.ErrorFormat(
                     "[ARCHIVER]: Mismatch between Mono and zlib1g library version when trying to create compression stream."
@@ -372,7 +372,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
 
                 //m_log.Debug("[ARCHIVER]: Reached end of archive");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(
                     String.Format("[ARCHIVER]: Aborting load with error in archive file {0} ", fullPath), e);
@@ -418,7 +418,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
                     if (estateModule != null)
                         estateModule.TriggerRegionInfoChange();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[ARCHIVER]: Error loading parcels or objects ", e);
                     m_errorMessage += e.ToString();
@@ -1029,7 +1029,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
             {
                 loadedRegionSettings = RegionSettingsSerializer.Deserialize(data);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[ARCHIVER]: Could not parse region settings file {0}.  Ignoring.  Exception was {1}",

@@ -167,7 +167,7 @@ namespace OpenSim.Framework.Monitoring
                 MakeStat("Threads", null, "threads", ContainerProcessor,
                                     (s) => { s.Value = Process.GetCurrentProcess().Threads.Count; });
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("{0} Exception creating 'Process': {1}", LogHeader, e);
             }
@@ -242,7 +242,7 @@ namespace OpenSim.Framework.Monitoring
                     // TODO: add IPv6 (it may actually happen someday)
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("{0} Exception creating 'Network Interface': {1}", LogHeader, e);
             }
@@ -316,7 +316,7 @@ namespace OpenSim.Framework.Monitoring
                     {
                         stat.Value = Math.Round(perfControl.perfCounter.NextValue(), 3);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("{0} Exception on NextValue fetching {1}: {2}", LogHeader, stat.Name, e);
                     }

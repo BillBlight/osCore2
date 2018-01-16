@@ -303,7 +303,7 @@ namespace OpenSim.Region.PhysicsModule.ODE
             {
                 m_log.Error("[PHYSICS]: The Operating system shut down ODE because of corrupt memory.  This could be a result of really irregular terrain.  If this repeats continuously, restart using Basic Physics and terrain fill your terrain.  Restarting the sim.");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[PHYSICS]: Unable to collide test an object: {0}", e.Message);
                 return;

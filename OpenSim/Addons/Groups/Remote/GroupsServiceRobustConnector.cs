@@ -152,7 +152,7 @@ namespace OpenSim.Groups
                 }
                 m_log.DebugFormat("[GROUPS HANDLER]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("[GROUPS HANDLER]: Exception {0} ", e.Message), e);
             }

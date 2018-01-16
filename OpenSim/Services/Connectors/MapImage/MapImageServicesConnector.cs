@@ -135,7 +135,7 @@ namespace OpenSim.Services.Connectors
                     m_log.DebugFormat("[MAP IMAGE CONNECTOR]: Map post received null reply");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[MAP IMAGE CONNECTOR]: Exception when contacting map server at {0}: {1}", uri, e.Message);
             }
@@ -196,7 +196,7 @@ namespace OpenSim.Services.Connectors
                     m_log.DebugFormat("[MAP IMAGE CONNECTOR]: Map post received null reply");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[MAP IMAGE CONNECTOR]: Exception when contacting map server at {0}: {1}", uri, e.Message);
             }
@@ -262,7 +262,7 @@ namespace OpenSim.Services.Connectors
                     m_log.WarnFormat("[MAP IMAGE CONNECTOR]: {0}", reason);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 reason = string.Format("Exception when posting to map server at {0}: {1}", uri, e.Message);
                 m_log.WarnFormat("[MAP IMAGE CONNECTOR]: {0}", reason);

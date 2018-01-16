@@ -360,7 +360,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                         return false;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[MESH]: Exception deserializing mesh asset header:" + e.ToString());
                     return false;
@@ -429,7 +429,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[MESH]: exception decoding physical mesh prim " + primName +" : " + e.ToString());
                     return false;
@@ -1316,7 +1316,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                         }
 
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         ok = false;
                         m_log.ErrorFormat(
@@ -1364,7 +1364,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                     stream = File.Open(filename, FileMode.Create);
                     ok = mesh.ToStream(stream);
                 }
-                catch (IOException e)
+                catch (IOException)
                 {
                     m_log.ErrorFormat(
                         "[MESH CACHE]: Failed to write file {0}.  Exception {1} {2}.",
@@ -1383,7 +1383,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                     {
                         File.Delete(filename);
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
                          m_log.ErrorFormat(
                         "[MESH CACHE]: Failed to delete file {0}",filename);
@@ -1484,7 +1484,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                     while(Directory.Exists(cachePath))
                         Thread.Sleep(100);
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     m_log.Error("[MESH CACHE]: failed to delete old version of the cache: " + e.Message);
                     doMeshFileCache = false;
@@ -1498,7 +1498,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                     while(!Directory.Exists(cachePath))
                         Thread.Sleep(100);
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     m_log.Error("[MESH CACHE]: failed to create new cache folder: " + e.Message);
                     doMeshFileCache = false;
@@ -1512,7 +1512,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                     FileStream fs = File.Create(controlfile, 4096, FileOptions.WriteThrough);
                     fs.Close();
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     m_log.Error("[MESH CACHE]: failed to create new control file: " + e.Message);
                     doMeshFileCache = false;

@@ -72,7 +72,7 @@ namespace OpenSim.Framework.Console
                         System.Console.Write(loggingMessage);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 System.Console.WriteLine("Couldn't write out log message: {0}", e.ToString());
             }

@@ -979,7 +979,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.XmlRpcGroups
                 {
                     resp = req.Send(m_groupsServerURI);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[XMLRPC-GROUPS-CONNECTOR]: An error has occured while attempting to access the XmlRpcGroups server method {0} at {1}: {2}",
@@ -1168,7 +1168,7 @@ namespace Nwc.XmlRpc
                         {
                             resp = (XmlRpcResponse)_deserializer.Deserialize(inputXml);
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             RequestResponse = inputXml;
                             throw e;

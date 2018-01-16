@@ -114,7 +114,7 @@ namespace OpenSim.Region.CoreModules.World.Estate
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("[XESTATE]: Exception {0}" + e.ToString());
             }

@@ -107,7 +107,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
 
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[HGFRIENDS CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
             }
@@ -136,7 +136,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                         uri,
                         ServerUtils.BuildQueryString(sendData));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[HGFRIENDS CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
                 return false;
@@ -182,7 +182,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                         uri,
                         ServerUtils.BuildQueryString(sendData));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[HGFRIENDS CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
                 return false;
@@ -228,7 +228,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                         uri,
                         ServerUtils.BuildQueryString(sendData));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[HGFRIENDS CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
                 return false;
@@ -282,7 +282,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                         null,
                         false);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[HGFRIENDS CONNECTOR]: Exception when contacting friends server at {0}: {1}", uri, e.Message);
                 return friendsOnline;

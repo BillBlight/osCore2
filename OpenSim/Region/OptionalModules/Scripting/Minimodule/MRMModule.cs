@@ -288,7 +288,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.Minimodule
                     m_log.Info("[MRM] Starting MRM");
                     mmb.Start();
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     m_log.Error("[MRM] UAE " + e.Message);
                     m_log.Error("[MRM] " + e.StackTrace);
@@ -302,7 +302,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.Minimodule
                             "MRM UnAuthorizedAccess: " + e);
                     });
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Info("[MRM] Error: " + e);
                     m_scene.ForEachClient(delegate(IClientAPI user)
@@ -369,13 +369,13 @@ namespace OpenSim.Region.OptionalModules.Scripting.Minimodule
             {
                 File.Delete(OutFile);
             }
-            catch (UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException)
             {
                 throw new Exception("Unable to delete old existing " +
                                     "script-file before writing new. Compile aborted: " +
                                     e);
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 throw new Exception("Unable to delete old existing " +
                                     "script-file before writing new. Compile aborted: " +

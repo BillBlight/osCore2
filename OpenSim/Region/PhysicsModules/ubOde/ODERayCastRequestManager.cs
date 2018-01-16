@@ -502,7 +502,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                 {
                     SafeNativeMethods.SpaceCollide2(g1, g2, IntPtr.Zero, nearCallback);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[PHYSICS Ray]: Unable to Space collide test an object: {0}", e.Message);
                 }
@@ -514,7 +514,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
             {
                 count = SafeNativeMethods.CollidePtr(g1, g2, CollisionContactGeomsPerTest, m_scene.ContactgeomsArray, SafeNativeMethods.ContactGeom.unmanagedSizeOf);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[PHYSICS Ray]: Unable to collide test an object: {0}", e.Message);
                 return;

@@ -308,7 +308,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                     int currentPosition = CurrentBytePosition();
 
                     try { Buffer.BlockCopy(m_asset, currentPosition, imageData, 0, imagePacketSize); }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[J2KIMAGE]: Texture block copy for the first packet failed. textureid={0}, assetlength={1}, currentposition={2}, imagepacketsize={3}, exception={4}",
                             TextureID, m_asset.Length, currentPosition, imagePacketSize, e.Message);

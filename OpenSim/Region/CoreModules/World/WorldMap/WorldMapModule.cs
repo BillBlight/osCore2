@@ -809,7 +809,7 @@ namespace OpenSim.Region.CoreModules.World.WorldMap
                 }
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[WORLD MAP]: Map item request thread terminated abnormally with exception {0}", e);
             }
@@ -912,7 +912,7 @@ namespace OpenSim.Region.CoreModules.World.WorldMap
             {
                 mapitemsrequest = WebRequest.Create(httpserver);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[WORLD MAP]: Access to {0} failed with {1}", httpserver, e);
                 Interlocked.Decrement(ref nAsyncRequests);
@@ -1671,7 +1671,7 @@ namespace OpenSim.Region.CoreModules.World.WorldMap
                         needRegionSave = true;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[WORLD MAP]: Failed generating terrain map: " + e);
                 }
@@ -1826,7 +1826,7 @@ namespace OpenSim.Region.CoreModules.World.WorldMap
                 {
                     return OpenJPEG.EncodeFromImage(overlay, true);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[WORLD MAP]: Error creating parcel overlay: " + e.ToString());
                 }

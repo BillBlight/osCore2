@@ -311,7 +311,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("Exception in poll service thread: " + e.ToString());
                 }

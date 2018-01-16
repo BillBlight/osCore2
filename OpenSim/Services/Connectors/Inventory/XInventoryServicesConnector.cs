@@ -179,7 +179,7 @@ namespace OpenSim.Services.Connectors
                 foreach (Object o in folders.Values)
                     fldrs.Add(BuildFolder((Dictionary<string, object>)o));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[XINVENTORY SERVICES CONNECTOR]: Exception unwrapping folder list: ", e);
             }
@@ -244,7 +244,7 @@ namespace OpenSim.Services.Connectors
                     foreach (Object o in items.Values) // getting the values directly, we don't care about the keys item_i
                         inventory.Items.Add(BuildItem((Dictionary<string, object>)o));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[XINVENTORY SERVICES CONNECTOR]: Exception in GetFolderContent: {0}", e.Message);
             }
@@ -325,7 +325,7 @@ namespace OpenSim.Services.Connectors
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[XINVENTORY SERVICES CONNECTOR]: Exception in GetMultipleFoldersContent: {0}", e.Message);
             }
@@ -552,7 +552,7 @@ namespace OpenSim.Services.Connectors
 
                 retrieved = BuildItem((Dictionary<string, object>)ret["item"]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[XINVENTORY SERVICES CONNECTOR]: Exception in GetItem: ", e);
             }
@@ -617,7 +617,7 @@ namespace OpenSim.Services.Connectors
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[XINVENTORY SERVICES CONNECTOR]: Exception in GetMultipleItems: {0}", e.Message);
             }
@@ -640,7 +640,7 @@ namespace OpenSim.Services.Connectors
 
                 return BuildFolder((Dictionary<string, object>)ret["folder"]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[XINVENTORY SERVICES CONNECTOR]: Exception in GetFolder: ", e);
             }
@@ -745,7 +745,7 @@ namespace OpenSim.Services.Connectors
                 folder.Owner = new UUID(data["Owner"].ToString());
                 folder.ID = new UUID(data["ID"].ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[XINVENTORY SERVICES CONNECTOR]: Exception building folder: ", e);
             }
@@ -784,7 +784,7 @@ namespace OpenSim.Services.Connectors
                 item.Flags = uint.Parse(data["Flags"].ToString());
                 item.CreationDate = int.Parse(data["CreationDate"].ToString());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[XINVENTORY CONNECTOR]: Exception building item: ", e);
             }

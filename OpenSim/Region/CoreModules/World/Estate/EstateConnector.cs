@@ -217,7 +217,7 @@ namespace OpenSim.Region.CoreModules.World.Estate
                 else
                     m_log.DebugFormat("[XESTATE CONNECTOR]: received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[XESTATE CONNECTOR]: Exception when contacting remote sim: {0}", e.Message);
             }

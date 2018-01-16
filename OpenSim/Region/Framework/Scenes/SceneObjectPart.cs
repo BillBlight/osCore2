@@ -848,7 +848,7 @@ namespace OpenSim.Region.Framework.Scenes
                         if (ParentGroup != null && ParentGroup.Scene != null && ParentGroup.Scene.PhysicsScene != null)
                             ParentGroup.Scene.PhysicsScene.AddPhysicsActorTaint(actor);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[SCENEOBJECTPART]: GROUP POSITION. {0}", e);
                     }
@@ -4907,7 +4907,7 @@ namespace OpenSim.Region.Framework.Scenes
                                  PhysicsShapeType,
                                  m_localId);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[SCENE]: caught exception meshing object {0}. Object set to phantom. e={1}", m_uuid, e);
                 pa = null;

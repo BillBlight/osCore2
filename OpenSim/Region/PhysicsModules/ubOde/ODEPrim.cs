@@ -1694,7 +1694,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                 geo = SafeNativeMethods.CreateTriMesh(m_targetSpace, _triMeshData, null, null, null);
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[PHYSICS]: SetGeom Mesh failed for {0} exception: {1}", Name, e);
                 if (_triMeshData != IntPtr.Zero)
@@ -1759,7 +1759,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                     {
                         geo = SafeNativeMethods.CreateSphere(m_targetSpace, _size.X * 0.5f);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.WarnFormat("[PHYSICS]: Create sphere failed: {0}", e);
                         return;
@@ -1771,7 +1771,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                     {
                         geo = SafeNativeMethods.CreateBox(m_targetSpace, _size.X, _size.Y, _size.Z);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Warn("[PHYSICS]: Create box failed: {0}", e);
                         return;
@@ -1798,7 +1798,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                         _triMeshData = IntPtr.Zero;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[PHYSICS]: PrimGeom destruction failed for {0} exception {1}", Name, e);
                 }

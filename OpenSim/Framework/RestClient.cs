@@ -202,7 +202,7 @@ namespace OpenSim.Framework
             {
                 m_log.Error("[REST]: Query parameter " + name + " is already added.");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[REST]: An exception was raised adding query parameter to dictionary. Exception: {0}",e);
             }
@@ -222,7 +222,7 @@ namespace OpenSim.Framework
             {
                 m_log.Error("[REST]: Query parameter " + name + " is already added.");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[REST]: An exception was raised adding query parameter to dictionary. Exception: {0}",e);
             }
@@ -314,7 +314,7 @@ namespace OpenSim.Framework
                     //_allDone.Set();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //_allDone.Set();
                 _asyncException = e;
@@ -374,7 +374,7 @@ namespace OpenSim.Framework
                         }
                     }
                 }
-                catch (WebException e)
+                catch (WebException)
                 {
                     using (HttpWebResponse errorResponse = e.Response as HttpWebResponse)
                     {
@@ -447,13 +447,13 @@ namespace OpenSim.Framework
 
                 _response = (HttpWebResponse)_request.GetResponse();
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 m_log.WarnFormat("[REST]: Request {0} {1} failed with status {2} and message {3}",
                                   RequestMethod, _request.RequestUri, e.Status, e.Message);
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat(
                     "[REST]: Request {0} {1} failed with exception {2} {3}",
@@ -516,7 +516,7 @@ namespace OpenSim.Framework
                 Stream s = Request(null);
                 ar.SetAsCompleted(s, false);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // If operation fails, set the exception
                 ar.HandleException(e, false);

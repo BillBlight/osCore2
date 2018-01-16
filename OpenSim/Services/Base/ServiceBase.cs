@@ -100,7 +100,7 @@ namespace OpenSim.Services.Base
 
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 List<string> strArgs = new List<string>();
                 foreach (Object arg in args)

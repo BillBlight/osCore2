@@ -169,7 +169,7 @@ namespace OpenSim.Data.SQLite
                             return false;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SQLITE]: Exception storing authentication data", e);
                         //CloseCommand(cmd);
@@ -195,7 +195,7 @@ namespace OpenSim.Data.SQLite
                             return false;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         Console.WriteLine(e.ToString());
                         return false;

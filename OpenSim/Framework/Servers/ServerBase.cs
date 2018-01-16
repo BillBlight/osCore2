@@ -99,7 +99,7 @@ namespace OpenSim.Framework.Servers
 
                 m_log.InfoFormat("[SERVER BASE]: Created pid file {0}", m_pidFile);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(string.Format("[SERVER BASE]: Could not create PID file at {0} ", path), e);
             }
@@ -113,7 +113,7 @@ namespace OpenSim.Framework.Servers
                 {
                     File.Delete(m_pidFile);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(string.Format("[SERVER BASE]: Error whilst removing {0} ", m_pidFile), e);
                 }

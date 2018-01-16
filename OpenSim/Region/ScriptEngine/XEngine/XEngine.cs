@@ -735,7 +735,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
                         if (instance.StatePersistedHere)
                             instance.SaveState();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(
                             string.Format(
@@ -865,7 +865,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
                 {
                     i.SaveState();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(
                         string.Format(
@@ -1080,7 +1080,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
                         }
                     }
                     catch (System.Threading.ThreadAbortException) { }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(
                             string.Format(
@@ -1095,7 +1095,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
                         "[XEngine]: Completed starting {0} scripts on {1}", scriptsStarted, m_Scene.Name);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(
                     string.Format("[XEngine]: Failure in DoOnRezScriptQueue() in {0}.  Exception  ", m_Scene.Name), e);
@@ -1250,7 +1250,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 //                    m_log.ErrorFormat(
 //                        "[XEngine]: Exception when rezzing script with item ID {0}, {1}{2}",
@@ -1352,7 +1352,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
 
                             m_DomainScripts[appDomain] = new List<UUID>();
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat("[XEngine] Exception creating app domain:\n {0}", e.ToString());
                             m_ScriptErrorMessage += "Exception creating app domain:\n";
@@ -2170,7 +2170,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
 
                         assem = Encoding.ASCII.GetString(tdata);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                          m_log.ErrorFormat(
                             "[XEngine]: Unable to open script textfile {0}{1}, reason: {2}",
@@ -2195,7 +2195,7 @@ namespace OpenSim.Region.ScriptEngine.XEngine
 
                         assem = System.Convert.ToBase64String(data);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                             "[XEngine]: Unable to open script assembly {0}, reason: {1}", assemName, e.Message);

@@ -86,7 +86,7 @@ namespace OpenSim.Services.Connectors.SimianGrid
                 else
                     m_enabled = false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[SimianExternalCaps] initialization error: {0}",e.Message);
                 return;

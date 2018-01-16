@@ -153,7 +153,7 @@ namespace OpenSim.Services.GridService
                 {
                     Directory.CreateDirectory(m_MapTileDirectory);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[HYPERGRID LINKER]: Could not create map tile storage directory {0}: {1}", m_MapTileDirectory, e);
                     m_MapTileDirectory = string.Empty;
@@ -304,7 +304,7 @@ namespace OpenSim.Services.GridService
             {
                 regInfo.InternalEndPoint = new IPEndPoint(IPAddress.Parse("0.0.0.0"), (int)0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn("[HYPERGRID LINKER]: Wrong format for link-region: " + e.Message);
                 reason = "Internal error";
@@ -605,7 +605,7 @@ namespace OpenSim.Services.GridService
                         //internalPort = Convert.ToUInt32(cmdparams[4]);
                         //remotingPort = Convert.ToUInt32(cmdparams[5]);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         MainConsole.Instance.Output("[HGrid] Wrong format for link-region command: " + e.Message);
                         LinkRegionCmdUsage();
@@ -687,7 +687,7 @@ namespace OpenSim.Services.GridService
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.ToString());
             }

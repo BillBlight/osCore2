@@ -272,7 +272,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                                 }
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.Warn("[Materials]: exception decoding persisted legacy material: " + e.ToString());
                         }
@@ -339,7 +339,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                 {
                     mat = (OSDMap)OSDParser.DeserializeLLSDXml(data);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[Materials]: cannot decode material asset {0}: {1}", id, e.Message);
                     return;
@@ -395,7 +395,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                                     }
                                 }
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.Error("Error getting materials in response to viewer request", e);
                                 continue;
@@ -403,7 +403,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Warn("[Materials]: exception decoding zipped CAP payload ", e);
                     //return "";
@@ -458,7 +458,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                                         try {
                                             primLocalID = matsMap["ID"].AsUInteger();
                                         }
-                                        catch (Exception e) {
+                                        catch (Exception) {
                                             m_log.Warn("[Materials]: cannot decode \"ID\" from matsMap: " + e.Message);
                                             continue;
                                         }
@@ -481,7 +481,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                                         {
                                             mat = matsMap["Material"] as OSDMap;
                                         }
-                                        catch (Exception e)
+                                        catch (Exception)
                                         {
                                             m_log.Warn("[Materials]: cannot decode \"Material\" from matsMap: " + e.Message);
                                             continue;
@@ -574,7 +574,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                                         }
                                     }
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {
                                     m_log.Warn("[Materials]: exception processing received material ", e);
                                 }
@@ -582,7 +582,7 @@ namespace OpenSim.Region.OptionalModules.Materials
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Warn("[Materials]: exception decoding zipped CAP payload ", e);
                     //return "";
@@ -722,7 +722,7 @@ namespace OpenSim.Region.OptionalModules.Materials
             {
                 return OSDParser.SerializeJsonString(ZDecompressBytesToOsd(bytes));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return "ZippedOsdBytesToString caught an exception: " + e.ToString();
             }

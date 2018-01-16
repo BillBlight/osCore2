@@ -94,7 +94,7 @@ namespace OpenSim.Server.Handlers.Presence
                 }
                 m_log.DebugFormat("[PRESENCE HANDLER]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[PRESENCE HANDLER]: Exception in method {0}: {1}", method, e);
             }

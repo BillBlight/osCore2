@@ -245,7 +245,7 @@ namespace OpenSim.Region.Framework.Scenes
                     // still needed to retrieve textures used as materials for any parts containing legacy materials stored in DynAttrs
                     RecordMaterialsUuids(part);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[UUID GATHERER]: Failed to get part - {0}", e);
                 }
@@ -319,7 +319,7 @@ namespace OpenSim.Region.Framework.Scenes
             {
                 assetBase = GetAsset(assetUuid);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[UUID GATHERER]: Failed to get asset {0} : {1}", assetUuid, e.Message);
                 ErrorCount++;
@@ -379,7 +379,7 @@ namespace OpenSim.Region.Framework.Scenes
                     RecordSceneObjectAssetUuids(assetBase);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[UUID GATHERER]: Failed to gather uuids for asset with id {0} type {1}: {2}", assetUuid, assetType, e.Message);
                 GatheredUuids.Remove(assetUuid);
@@ -498,7 +498,7 @@ namespace OpenSim.Region.Framework.Scenes
                                 }
 
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.Warn("[UUID Gatherer]: exception getting materials: " + e.Message);
                             }
@@ -635,7 +635,7 @@ namespace OpenSim.Region.Framework.Scenes
             {
                 mat = (OSDMap)OSDParser.DeserializeLLSDXml(materialAsset.Data);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                m_log.WarnFormat("[Materials]: cannot decode material asset {0}: {1}", materialAsset.ID, e.Message);
                return;

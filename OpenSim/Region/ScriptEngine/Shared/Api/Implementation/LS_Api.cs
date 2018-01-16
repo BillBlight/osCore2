@@ -738,7 +738,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                 {
                     wl = getWindlightProfileFromRules(rules);
                 }
-                catch(InvalidCastException e)
+                catch(InvalidCastException)
                 {
                     LSShoutError(e.Message);
                     return 0;
@@ -816,7 +816,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                 {
                     wl = getWindlightProfileFromRules(rules);
                 }
-                catch(InvalidCastException e)
+                catch(InvalidCastException)
                 {
                     LSShoutError(e.Message);
                     return 0;

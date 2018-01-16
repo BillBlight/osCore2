@@ -109,7 +109,7 @@ namespace OpenSim.Server.Handlers.Simulation
                     return responsedata;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[OBJECT HANDLER]: Caught exception {0}", e.StackTrace);
                 responsedata["int_response_code"] = HttpStatusCode.InternalServerError;
@@ -202,7 +202,7 @@ namespace OpenSim.Server.Handlers.Simulation
                 // This is the meaning of POST object
                 result = CreateObject(destination, newPosition, sog);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[OBJECT HANDLER]: Exception in CreateObject: {0}", e.StackTrace);
             }

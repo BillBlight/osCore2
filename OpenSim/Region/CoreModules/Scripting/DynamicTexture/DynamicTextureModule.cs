@@ -590,7 +590,7 @@ namespace OpenSim.Region.CoreModules.Scripting.DynamicTexture
                     {
                         result = OpenJPEG.EncodeFromImage(joint, true);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                         "[DYNAMICTEXTUREMODULE]: OpenJpeg Encode Failed.  Exception {0}{1}",

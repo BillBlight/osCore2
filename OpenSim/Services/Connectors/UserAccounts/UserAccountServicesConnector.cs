@@ -155,7 +155,7 @@ namespace OpenSim.Services.Connectors
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[ACCOUNT CONNECTOR]: Exception when contacting user accounts server at {0}: {1}", uri, e.Message);
             }
@@ -239,7 +239,7 @@ namespace OpenSim.Services.Connectors
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[ACCOUNT CONNECTOR]: Exception when contacting user accounts server at {0}: {1}", uri, e.Message);
             }
@@ -363,7 +363,7 @@ namespace OpenSim.Services.Connectors
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[ACCOUNT CONNECTOR]: Exception when contacting user accounts server at {0}: {1}", uri, e.Message);
             }
@@ -413,7 +413,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[ACCOUNTS CONNECTOR]: Set or Create UserAccount received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[ACCOUNT CONNECTOR]: Exception when contacting user accounts server at {0}: {1}", uri, e.Message);
             }

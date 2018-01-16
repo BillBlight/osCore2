@@ -221,7 +221,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Inventory.Archiver
                             InventoryArchiveWriteRequest iarReq = new InventoryArchiveWriteRequest(id, this, m_aScene, userInfo, invPath, saveStream);
                             iarReq.Execute(options, UserAccountService);
                         }
-                        catch (EntryPointNotFoundException e)
+                        catch (EntryPointNotFoundException)
                         {
                             m_log.ErrorFormat(
                                 "[INVENTORY ARCHIVER]: Mismatch between Mono and zlib1g library version when trying to create compression stream."
@@ -265,7 +265,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Inventory.Archiver
                             InventoryArchiveWriteRequest iarReq  = new InventoryArchiveWriteRequest(id, this, m_aScene, userInfo, invPath, savePath);
                             iarReq.Execute(options, UserAccountService);
                         }
-                        catch (EntryPointNotFoundException e)
+                        catch (EntryPointNotFoundException)
                         {
                             m_log.ErrorFormat(
                                 "[INVENTORY ARCHIVER]: Mismatch between Mono and zlib1g library version when trying to create compression stream."
@@ -313,7 +313,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Inventory.Archiver
                         {
                             request = new InventoryArchiveReadRequest(id, this, m_aScene.InventoryService, m_aScene.AssetService, m_aScene.UserAccountService, userInfo, invPath, loadStream, merge);
                         }
-                        catch (EntryPointNotFoundException e)
+                        catch (EntryPointNotFoundException)
                         {
                             m_log.ErrorFormat(
                                 "[INVENTORY ARCHIVER]: Mismatch between Mono and zlib1g library version when trying to create compression stream."
@@ -361,7 +361,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Inventory.Archiver
                         {
                             request = new InventoryArchiveReadRequest(id, this, m_aScene.InventoryService, m_aScene.AssetService, m_aScene.UserAccountService, userInfo, invPath, loadPath, merge);
                         }
-                        catch (EntryPointNotFoundException e)
+                        catch (EntryPointNotFoundException)
                         {
                             m_log.ErrorFormat(
                                 "[INVENTORY ARCHIVER]: Mismatch between Mono and zlib1g library version when trying to create compression stream."
@@ -424,7 +424,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Inventory.Archiver
 
                 DearchiveInventory(id, firstName, lastName, invPath, pass, loadPath, options);
             }
-            catch (InventoryArchiverException e)
+            catch (InventoryArchiverException)
             {
                 m_log.ErrorFormat("[INVENTORY ARCHIVER]: {0}", e.Message);
             }
@@ -489,7 +489,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Inventory.Archiver
 
                 ArchiveInventory(id, firstName, lastName, invPath, pass, savePath, options);
             }
-            catch (InventoryArchiverException e)
+            catch (InventoryArchiverException)
             {
                 m_log.ErrorFormat("[INVENTORY ARCHIVER]: {0}", e.Message);
             }
@@ -582,7 +582,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Inventory.Archiver
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[INVENTORY ARCHIVER]: Could not authenticate password, {0}", e);
                 return null;

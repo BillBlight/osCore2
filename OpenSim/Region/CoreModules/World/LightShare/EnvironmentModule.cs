@@ -172,7 +172,7 @@ namespace OpenSim.Region.CoreModules.World.LightShare
             {
                 env = m_scene.SimulationDataService.LoadRegionEnvironmentSettings(regionID);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[{0}]: Unable to load environment settings for region {1}, Exception: {2} - {3}",
                     Name, caps.RegionName, e.Message, e.StackTrace);
@@ -208,7 +208,7 @@ namespace OpenSim.Region.CoreModules.World.LightShare
                 m_log.InfoFormat("[{0}]: New Environment settings has been saved from agentID {1} in region {2}",
                     Name, agentID, caps.RegionName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[{0}]: Environment settings has not been saved for region {1}, Exception: {2} - {3}",
                     Name, caps.RegionName, e.Message, e.StackTrace);

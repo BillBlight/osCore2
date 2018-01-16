@@ -1300,7 +1300,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                     // Only allocate a buffer for zerodecoding if the packet is zerocoded
                     ((buffer.Data[0] & Helpers.MSG_ZEROCODED) != 0) ? new byte[4096] : null);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (IncomingMalformedPacketCount < 100)
                     m_log.DebugFormat("[LLUDPSERVER]: Dropped malformed packet: " + e.ToString());
@@ -1755,7 +1755,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
     //                buffer.RemoteEndPoint, (DateTime.Now - startTime).Milliseconds);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[LLUDPSERVER]: UseCircuitCode handling from endpoint {0}, client {1} {2} failed.  Exception {3}{4}",
@@ -1865,7 +1865,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
 
                 packetInbox.Enqueue(incomingPacket1);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[LLUDPSERVER]: CompleteAgentMovement handling from endpoint {0}, client {1} {2} failed.  Exception {3}{4}",
@@ -2212,7 +2212,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                 m_log.Info("[LLUDPSERVER]: Caught a thread abort, shutting down the LLUDP server");
                 Stop();
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 // Don't let a failure in an individual client thread crash the whole sim.
                 m_log.Error(

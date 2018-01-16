@@ -69,7 +69,7 @@ namespace OpenSim.Region.Framework.Scenes.Serialization
                     {
                         return FromOriginalXmlFormat(reader);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SERIALIZER]: Deserialization of xml failed ", e);
                         Util.LogFailedXML("[SERIALIZER]:", fixedData);
@@ -314,7 +314,7 @@ namespace OpenSim.Region.Framework.Scenes.Serialization
 //                sceneObject.AggregatePerms();
                 return sceneObject;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[SERIALIZER]: Deserialization of xml failed ", e);
                 Util.LogFailedXML("[SERIALIZER]:", xmlData);
@@ -1401,7 +1401,7 @@ namespace OpenSim.Region.Framework.Scenes.Serialization
                 value = reader.ReadElementContentAsString("Media", String.Empty);
                 shp.Media = PrimitiveBaseShape.MediaList.FromXml(value);
             }
-            catch (XmlException e)
+            catch (XmlException)
             {
                 // There are versions of OAR files that contain unquoted XML.
                 // ie ONE comercial fork that never wanted their oars to be read by our code

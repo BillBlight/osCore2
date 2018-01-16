@@ -157,7 +157,7 @@ namespace OpenSim.Groups
                 }
                 m_log.DebugFormat("[Groups.RobustHGConnector]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("[Groups.RobustHGConnector]: Exception {0} ", e.Message), e);
             }

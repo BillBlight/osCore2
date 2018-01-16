@@ -296,7 +296,7 @@ namespace OpenSim.Region.CoreModules.Framework.InventoryAccess
                         {
                             success &= PostAsset(userAssetURL, asset);
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.Error(
                                 string.Format(

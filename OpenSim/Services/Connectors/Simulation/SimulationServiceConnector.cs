@@ -162,7 +162,7 @@ namespace OpenSim.Services.Connectors.Simulation
                 reason = result["Message"] != null ? result["Message"].AsString() : "error";
                 return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn("[REMOTE SIMULATION CONNECTOR]: CreateAgent failed with exception: " + e.ToString());
                 reason = e.Message;
@@ -278,7 +278,7 @@ namespace OpenSim.Services.Connectors.Simulation
 
                 return result["Success"].AsBoolean();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn("[REMOTE SIMULATION CONNECTOR]: UpdateAgent failed with exception: " + e.ToString());
             }
@@ -403,7 +403,7 @@ namespace OpenSim.Services.Connectors.Simulation
 
                 return success;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[REMOTE SIMULATION CONNECTOR] QueryAcesss failed with exception; {0}",e.ToString());
             }
@@ -421,7 +421,7 @@ namespace OpenSim.Services.Connectors.Simulation
             {
                 WebUtil.ServiceOSDRequest(uri, null, "DELETE", 10000, false, false);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[REMOTE SIMULATION CONNECTOR] ReleaseAgent failed with exception; {0}",e.ToString());
             }
@@ -440,7 +440,7 @@ namespace OpenSim.Services.Connectors.Simulation
             {
                 WebUtil.ServiceOSDRequest(uri, null, "DELETE", 10000, false, false);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[REMOTE SIMULATION CONNECTOR] CloseAgent failed with exception; {0}",e.ToString());
             }
@@ -493,7 +493,7 @@ namespace OpenSim.Services.Connectors.Simulation
                 if (!success)
                     return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[REMOTE SIMULATION CONNECTOR] CreateObject failed with exception; {0}",e.ToString());
                 return false;

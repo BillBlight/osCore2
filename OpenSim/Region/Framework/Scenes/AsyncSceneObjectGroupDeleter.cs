@@ -157,7 +157,7 @@ namespace OpenSim.Region.Framework.Scenes
                                     m_scene.DeleteSceneObject(g, true);
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat(
                                 "[ASYNC DELETER]: Exception background sending object: {0}{1}", e.Message, e.StackTrace);
@@ -167,7 +167,7 @@ namespace OpenSim.Region.Framework.Scenes
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // We can't put the object group details in here since the root part may have disappeared (which is where these sit).
                 // FIXME: This needs to be fixed.

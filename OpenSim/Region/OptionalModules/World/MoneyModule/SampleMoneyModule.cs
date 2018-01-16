@@ -325,7 +325,7 @@ namespace OpenSim.Region.OptionalModules.World.MoneyModule
                 {
                     returnfunds = GetFundsForAgentID(agentID);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     client.SendAlertMessage(e.Message + " ");
                 }

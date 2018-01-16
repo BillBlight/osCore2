@@ -62,7 +62,7 @@ namespace OpenSim.Tools.LSL.Compiler
                  ICodeConverter cvt = (ICodeConverter) new CSCodeGenerator();
                  source = cvt.Convert(File.ReadAllText(args[0]));
              }
-             catch(Exception e)
+             catch(Exception)
              {
                  Console.WriteLine("Conversion failed:\n"+e.Message);
                  Environment.Exit(1);
@@ -74,7 +74,7 @@ namespace OpenSim.Tools.LSL.Compiler
              {
                  Console.WriteLine(CompileFromDotNetText(source,"a.out"));
              }
-             catch(Exception e)
+             catch(Exception)
              {
                  Console.WriteLine("Conversion failed: "+e.Message);
                  Environment.Exit(1);
@@ -105,7 +105,7 @@ namespace OpenSim.Tools.LSL.Compiler
             {
                 File.Delete(OutFile);
             }
-            catch (Exception e) // NOTLEGIT - Should be just FileIOException
+            catch (Exception) // NOTLEGIT - Should be just FileIOException
             {
                 throw new Exception("Unable to delete old existing "+
                         "script-file before writing new. Compile aborted: " +

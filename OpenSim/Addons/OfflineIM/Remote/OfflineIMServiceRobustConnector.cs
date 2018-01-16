@@ -110,7 +110,7 @@ namespace OpenSim.OfflineIM
                 }
                 m_log.DebugFormat("[OFFLINE IM HANDLER]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("[OFFLINE IM HANDLER]: Exception {0} ", e.Message), e);
             }

@@ -100,7 +100,7 @@ namespace OpenSim.Region.CoreModules.Avatar.Friends
                         return StatusNotification(request);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("[FRIENDS]: Exception {0}" + e.ToString());
             }

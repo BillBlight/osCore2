@@ -353,7 +353,7 @@ namespace OpenMetaverse
                         //wrappedBuffer);
                         buf);
                 }
-                catch (SocketException e)
+                catch (SocketException)
                 {
                     if (e.SocketErrorCode == SocketError.ConnectionReset)
                     {
@@ -382,12 +382,12 @@ namespace OpenMetaverse
                         m_log.Warn("[UDPBASE]: Salvaged the UDP listener on port " + m_udpPort);
                     }
                 }
-                catch (ObjectDisposedException e)
+                catch (ObjectDisposedException)
                 {
                     m_log.Error(
                         string.Format("[UDPBASE]: Error processing UDP begin receive {0}.  Exception  ", UdpReceives), e);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(
                         string.Format("[UDPBASE]: Error processing UDP begin receive {0}.  Exception  ", UdpReceives), e);
@@ -444,12 +444,12 @@ namespace OpenMetaverse
                             UdpReceives, se.ErrorCode),
                         se);
                 }
-                catch (ObjectDisposedException e)
+                catch (ObjectDisposedException)
                 {
                     m_log.Error(
                         string.Format("[UDPBASE]: Error processing UDP end receive {0}.  Exception  ", UdpReceives), e);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(
                         string.Format("[UDPBASE]: Error processing UDP end receive {0}.  Exception  ", UdpReceives), e);
@@ -516,7 +516,7 @@ namespace OpenMetaverse
                     );
                  UdpSends++;
             }
-            catch (SocketException e)
+            catch (SocketException)
             {
                 m_log.Warn("[UDPBASE]: sync send SocketException {0} " + e.Message);
             }

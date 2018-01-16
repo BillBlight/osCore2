@@ -214,7 +214,7 @@ namespace OpenSim.Server.Base
                     ignal_thread.IsBackground = true;
                     signal_thread.Start();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Info("Could not set up UNIX signal handlers. SIGTERM will not");
                     m_log.InfoFormat("shut down gracefully: {0}", e.Message);
@@ -244,7 +244,7 @@ namespace OpenSim.Server.Base
                 {
                     MainConsole.Instance.Prompt();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("Command error: {0}", e);
                 }
@@ -374,7 +374,7 @@ namespace OpenSim.Server.Base
                     s = new IniConfigSource(iniFile);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 System.Console.WriteLine("Error reading from config source.  {0}", e.Message);
                 Environment.Exit(1);

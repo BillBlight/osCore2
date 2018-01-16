@@ -285,7 +285,7 @@ namespace OpenSim.Region.Framework.Scenes
             {
                 EventManager.TriggerShutdown();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("[SCENE]: SceneBase.cs: Close() - Failed with exception {0}", e));
             }

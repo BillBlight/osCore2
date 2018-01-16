@@ -172,7 +172,7 @@ namespace OpenSim.Data.Tests
             {
                 db.StoreObject(sog, region1);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.ToString());
                 Assert.Fail();
@@ -182,7 +182,7 @@ namespace OpenSim.Data.Tests
             {
                 db.StoreObject(sog2, region1);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.ToString());
                 Assert.Fail();

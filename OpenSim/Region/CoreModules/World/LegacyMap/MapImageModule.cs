@@ -156,7 +156,7 @@ namespace OpenSim.Region.CoreModules.World.LegacyMap
                         return OpenJPEG.EncodeFromImage(mapbmp, true);
                 }
             }
-            catch (Exception e) // LEGIT: Catching problems caused by OpenJPEG p/invoke
+            catch (Exception) // LEGIT: Catching problems caused by OpenJPEG p/invoke
             {
                 m_log.Error("Failed generating terrain map: " + e);
             }

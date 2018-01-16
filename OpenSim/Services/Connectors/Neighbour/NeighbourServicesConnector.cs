@@ -95,7 +95,7 @@ namespace OpenSim.Services.Connectors
             {
                 helloNeighbourRequest = WebRequest.Create(uri);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(string.Format(
                     "[NEIGHBOUR SERVICES CONNECTOR]: Unable to parse uri {0} to send HelloNeighbour from {1} to {2}.  Exception {3} ",
@@ -114,7 +114,7 @@ namespace OpenSim.Services.Connectors
             {
                 args = thisRegion.PackRegionInfoData();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(string.Format(
                     "[NEIGHBOUR SERVICES CONNECTOR]: PackRegionInfoData failed for HelloNeighbour from {0} to {1}.  Exception {2} ",
@@ -134,7 +134,7 @@ namespace OpenSim.Services.Connectors
                 strBuffer = OSDParser.SerializeJsonString(args);
                 buffer = Util.UTF8NoBomEncoding.GetBytes(strBuffer);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(string.Format(
                     "[NEIGHBOUR SERVICES CONNECTOR]: Exception thrown on serialization of HelloNeighbour from {0} to {1}.  Exception {2} ",
@@ -151,7 +151,7 @@ namespace OpenSim.Services.Connectors
                 os.Write(buffer, 0, strBuffer.Length);         //Send it
                 //m_log.InfoFormat("[REST COMMS]: Posted HelloNeighbour request to remote sim {0}", uri);
             }
-            catch (Exception e)
+            catch (Exception)
             {
 //                m_log.WarnFormat(
 //                    "[NEIGHBOUR SERVICE CONNCTOR]: Unable to send HelloNeighbour from {0} to {1}.  Exception {2}{3}",
@@ -190,7 +190,7 @@ namespace OpenSim.Services.Connectors
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(string.Format(
                     "[NEIGHBOUR SERVICES CONNECTOR]: Exception on reply of DoHelloNeighbourCall from {0} back to {1}.  Exception {2} ",

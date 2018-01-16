@@ -264,7 +264,7 @@ namespace OpenSim.Services.LLLoginService
                     return response;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[LLOGIN SERVICE]: SetLevel failed, exception " + e.ToString());
                 return response;
@@ -570,7 +570,7 @@ namespace OpenSim.Services.LLLoginService
 
                     return response;
                }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[LLOGIN SERVICE]: Exception processing login for {0} {1}: {2} {3}", firstName, lastName, e.ToString(), e.StackTrace);
                 if (m_PresenceService != null)

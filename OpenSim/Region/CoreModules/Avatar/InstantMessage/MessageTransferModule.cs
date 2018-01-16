@@ -413,7 +413,7 @@ namespace OpenSim.Region.CoreModules.Avatar.InstantMessage
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[INSTANT MESSAGE]: Caught unexpected exception:", e);
                 successful = false;
@@ -484,7 +484,7 @@ namespace OpenSim.Region.CoreModules.Avatar.InstantMessage
             do {
                 try {
                     SendGridInstantMessageViaXMLRPCAsync(im, result, UUID.Zero);
-                } catch (Exception e) {
+                } catch (Exception) {
                     m_log.Error("[SendGridInstantMessageViaXMLRPC]: exception " + e.Message);
                 }
                 lock (pendingInstantMessages) {
@@ -653,7 +653,7 @@ namespace OpenSim.Region.CoreModules.Avatar.InstantMessage
                     return false;
                 }
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 m_log.ErrorFormat("[GRID INSTANT MESSAGE]: Error sending message to {0} the host didn't respond " + e.ToString(), reginfo.ServerURI.ToString());
             }

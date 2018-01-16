@@ -498,7 +498,7 @@ namespace SecondLife
                     File.Delete(assembly);
                 }
             }
-            catch (Exception e) // NOTLEGIT - Should be just FileIOException
+            catch (Exception) // NOTLEGIT - Should be just FileIOException
             {
                 throw new Exception("Unable to delete old existing " +
                         "script-file before writing new. Compile aborted: " +

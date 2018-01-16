@@ -310,7 +310,7 @@ namespace OpenSim.Services.Connectors
             {
                 reply = SynchronousRestFormsRequester.MakeRequest(verb, uri, formdata, m_Auth);
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 using (HttpWebResponse hwr = (HttpWebResponse)e.Response)
                 {
@@ -327,7 +327,7 @@ namespace OpenSim.Services.Connectors
                             verb, uri, formdata, e));
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[ESTATE CONNECTOR]: Exception when contacting estate server at {0}: {1}", uri, e.Message);
             }

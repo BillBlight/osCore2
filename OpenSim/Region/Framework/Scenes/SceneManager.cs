@@ -77,7 +77,7 @@ namespace OpenSim.Region.Framework.Scenes
                             {
                                 d(this);
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.ErrorFormat("[SCENE MANAGER]: Delegate for OnRegionsReadyStatusChange failed - continuing {0} - {1}",
                                     e.Message, e.StackTrace);

@@ -319,7 +319,7 @@ namespace OpenSim
 
                     success = true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.FatalFormat("[CONFIG]: Exception reading config from URI {0}\n" + e.ToString(), iniPath);
                     Environment.Exit(1);

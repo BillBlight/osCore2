@@ -324,7 +324,7 @@ namespace OpenSim.Region.Framework.Scenes
             {
                 statsHeartBeat(sender, args);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(string.Format(
                     "[SIM STATS REPORTER] Update for {0} failed with exception ",

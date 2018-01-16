@@ -92,7 +92,7 @@ namespace OpenSim.Region.PhysicsModule.BulletS
                     Enabled = Configuration.GetBoolean("Enabled", Enabled);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("{0} Initialization error: {0}", LogHeader, e);
             }

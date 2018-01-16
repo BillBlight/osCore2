@@ -113,7 +113,7 @@ namespace OpenSim.Data.PGSQL
                                     Id = DBGuid.FromDB(reader["classifieduuid"]);
                                     Name = Convert.ToString(reader["name"]);
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {
                                     m_log.Error("[PROFILES_DATA]: UserAccount exception ", e);
                                 }
@@ -206,7 +206,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: ClassifiedsUpdate exception ", e);
                 result = e.Message;
@@ -235,7 +235,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: DeleteClassifiedRecord exception ", e);
                 return false;
@@ -284,7 +284,7 @@ namespace OpenSim.Data.PGSQL
                     dbcon.Close();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetClassifiedInfo exception ", e);
             }
@@ -339,7 +339,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetAvatarPicks exception ", e);
             }
@@ -396,7 +396,7 @@ namespace OpenSim.Data.PGSQL
                     dbcon.Close();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetPickInfo exception ", e);
             }
@@ -449,7 +449,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: UpdateAvatarNotes exception ", e);
                 return false;
@@ -479,7 +479,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: DeleteUserPickRecord exception ", e);
                 return false;
@@ -522,7 +522,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetAvatarNotes exception ", e);
             }
@@ -572,7 +572,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: UpdateAvatarNotes exception ", e);
                 return false;
@@ -699,7 +699,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetAvatarProperties exception ", e);
                 result = e.Message;
@@ -739,7 +739,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: AgentPropertiesUpdate exception ", e);
                 return false;
@@ -782,7 +782,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: UpdateAvatarInterests exception ", e);
                 result = e.Message;
@@ -863,7 +863,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetUserImageAssets exception ", e);
             }
@@ -916,7 +916,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetUserPreferences exception ", e);
                 result = e.Message;
@@ -951,7 +951,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: UpdateUserPreferences exception ", e);
                 result = e.Message;
@@ -1013,7 +1013,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: GetUserAppData exception ", e);
                 result = e.Message;
@@ -1050,7 +1050,7 @@ namespace OpenSim.Data.PGSQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[PROFILES_DATA]: SetUserData exception ", e);
                 return false;

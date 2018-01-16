@@ -71,7 +71,7 @@ namespace OpenSim.Region.DataSnapshot
                 {
                     Directory.CreateDirectory(m_directory);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[DATASNAPSHOT]: Failed to create directory " + m_directory, e);
 
@@ -109,7 +109,7 @@ namespace OpenSim.Region.DataSnapshot
                             snapXWriter.WriteEndDocument();
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.WarnFormat("[DATASNAPSHOT]: Exception on writing to file {0}: {1}", path, e.Message);
                     }
@@ -204,7 +204,7 @@ namespace OpenSim.Region.DataSnapshot
                         snapXWriter.WriteEndDocument();
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[DATASNAPSHOT]: Exception on writing to file {0}: {1}", path, e.Message);
                 }

@@ -335,7 +335,7 @@ namespace OpenSim.Services.FSAssetService
 
                                 //File.Move(files[i], diskFile);
                             }
-                            catch(System.IO.IOException e)
+                            catch(System.IO.IOException)
                             {
                                 if (e.Message.StartsWith("Win32 IO returned ERROR_ALREADY_EXISTS"))
                                     File.Delete(files[i]);

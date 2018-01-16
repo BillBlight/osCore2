@@ -335,7 +335,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
 
                 MODError(String.Format("Invocation of {0} failed; null return value",fname));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MODError(String.Format("Invocation of {0} failed; {1}",fname,e.Message));
             }

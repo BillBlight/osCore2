@@ -326,7 +326,7 @@ namespace OpenSim.Region.CoreModules
                     WindParamSet(plugin, param, value);
                     MainConsole.Instance.OutputFormat("{0} set to {1}", param, value);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     MainConsole.Instance.OutputFormat("{0}", e.Message);
                 }
@@ -338,7 +338,7 @@ namespace OpenSim.Region.CoreModules
                     value = WindParamGet(plugin, param);
                     MainConsole.Instance.OutputFormat("{0} : {1}", param, value);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     MainConsole.Instance.OutputFormat("{0}", e.Message);
                 }

@@ -101,7 +101,7 @@ namespace OpenSim.Services.Connectors
                     return response.Headers.Get("X-Handlers-Provided");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[HELO SERVICE]: Unable to perform HELO request to {0}: {1}", m_ServerURI, e.Message);
             }

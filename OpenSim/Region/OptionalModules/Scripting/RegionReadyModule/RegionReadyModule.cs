@@ -287,7 +287,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.RegionReady
                 buffer = str.GetBytes(strBuffer);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[RegionReady]: Exception thrown on alert: {0}", e.Message);
             }
@@ -303,7 +303,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.RegionReady
                 os = request.GetRequestStream();
                 os.Write(buffer, 0, strBuffer.Length);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 m_log.WarnFormat("[RegionReady]: Exception thrown sending alert: {0}", e.Message);
             }

@@ -177,7 +177,7 @@ namespace OpenSim.Services.Connectors.Friends
                     else
                         m_log.DebugFormat("[FRIENDS SIM CONNECTOR]: received empty reply");
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[FRIENDS SIM CONNECTOR]: Exception when contacting remote sim at {0}: {1}", uri, e.Message);
                 }

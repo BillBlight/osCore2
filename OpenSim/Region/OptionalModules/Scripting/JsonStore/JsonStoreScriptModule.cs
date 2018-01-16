@@ -94,7 +94,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.JsonStore
 
                 m_enabled = m_config.GetBoolean("Enabled", m_enabled);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[JsonStoreScripts]: initialization error: {0}", e.Message);
                 return;
@@ -196,7 +196,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.JsonStore
                     m_comms.RegisterScriptInvocations(this);
                     m_comms.RegisterConstants(this);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // See http://opensimulator.org/mantis/view.php?id=5971 for more information
                     m_log.WarnFormat("[JsonStoreScripts]: script method registration failed; {0}", e.Message);
@@ -539,7 +539,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.JsonStore
                 m_store.TakeValue(storeID,path,useJson,delegate(string value) { DispatchValue(scriptID,reqID,value); });
                 return;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.InfoFormat("[JsonStoreScripts]: unable to retrieve value; {0}",e.ToString());
             }
@@ -560,7 +560,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.JsonStore
                 m_store.ReadValue(storeID,path,useJson,delegate(string value) { DispatchValue(scriptID,reqID,value); });
                 return;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.InfoFormat("[JsonStoreScripts]: unable to retrieve value; {0}",e.ToString());
             }
@@ -600,11 +600,11 @@ namespace OpenSim.Region.OptionalModules.Scripting.JsonStore
                 m_comms.DispatchReply(scriptID, result, "", reqID.ToString());
                 return;
             }
-            catch(SLUtil.NotANotecardFormatException e)
+            catch(SLUtil.NotANotecardFormatException)
             {
                 m_log.WarnFormat("[JsonStoreScripts]: Notecard parsing failed; assetId {0} at line number {1}", assetID.ToString(), e.lineNumber);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[JsonStoreScripts]: Json parsing failed; {0}", e.Message);
             }

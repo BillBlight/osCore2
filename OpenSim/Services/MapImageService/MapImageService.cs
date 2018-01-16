@@ -124,7 +124,7 @@ namespace OpenSim.Services.MapImageService
                     using (FileStream f = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.Write))
                         f.Write(imageData, 0, imageData.Length);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[MAP IMAGE SERVICE]: Unable to save image file {0}: {1}", fileName, e);
                     reason = e.Message;
@@ -146,7 +146,7 @@ namespace OpenSim.Services.MapImageService
                 {
                     File.Delete(fileName);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                     m_log.WarnFormat("[MAP IMAGE SERVICE]: Unable to save delete file {0}: {1}", fileName, e);
@@ -279,7 +279,7 @@ namespace OpenSim.Services.MapImageService
                 if (File.Exists(fileName))
                     return new Bitmap(fileName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[MAP IMAGE SERVICE]: Unable to read image data from {0}: {1}", fileName, e);
             }
@@ -302,7 +302,7 @@ namespace OpenSim.Services.MapImageService
                     return bm;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[MAP IMAGE SERVICE]: Unable to read image data from {0}: {1}", fileName, e);
             }
@@ -372,7 +372,7 @@ namespace OpenSim.Services.MapImageService
                 {
                     output.Save(outputFile, ImageFormat.Jpeg);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[MAP IMAGE SERVICE]: Oops on saving {0} {1}", outputFile, e);
                 }

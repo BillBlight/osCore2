@@ -90,7 +90,7 @@ namespace OpenSim.Region.OptionalModules.Scripting.JsonStore
 
                 m_enabled = m_config.GetBoolean("Enabled", m_enabled);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[JsonStore]: initialization error: {0}", e);
                 return;

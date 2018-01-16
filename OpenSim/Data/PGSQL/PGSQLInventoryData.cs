@@ -251,7 +251,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[INVENTORY DB]: Error : {0}", e.Message);
                 }
@@ -291,7 +291,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[INVENTORY DB]: Error : {0}", e.Message);
                 }
@@ -315,7 +315,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[INVENTORY DB]: Error : {0}", e.Message);
                 }
@@ -473,7 +473,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     command.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[INVENTORY DB]: Error inserting item :" + e.Message);
                 }
@@ -489,7 +489,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     command.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[INVENTORY DB] Error updating inventory folder for new item :" + e.Message);
                 }
@@ -565,7 +565,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     command.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[INVENTORY DB]: Error updating item :" + e.Message);
                 }
@@ -590,7 +590,7 @@ namespace OpenSim.Data.PGSQL
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[INVENTORY DB]: Error deleting item :" + e.Message);
                 }
@@ -654,7 +654,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     command.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[INVENTORY DB] Error deleting item :" + e.Message);
                 }
@@ -754,7 +754,7 @@ namespace OpenSim.Data.PGSQL
 
                 return folder;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[INVENTORY DB] Error reading inventory folder :" + e.Message);
             }
@@ -796,7 +796,7 @@ namespace OpenSim.Data.PGSQL
 
                 return item;
             }
-            catch (NpgsqlException e)
+            catch (NpgsqlException)
             {
                 m_log.Error("[INVENTORY DB]: Error reading inventory item :" + e.Message);
             }
@@ -820,7 +820,7 @@ namespace OpenSim.Data.PGSQL
                     command.ExecuteNonQuery();
                 }
             }
-            catch (NpgsqlException e)
+            catch (NpgsqlException)
             {
                 m_log.Error("[INVENTORY DB]: Error deleting folder :" + e.Message);
             }

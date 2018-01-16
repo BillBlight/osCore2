@@ -605,7 +605,7 @@ namespace OpenSim.Region.CoreModules.Scripting.HttpRequest
                     // execute the request
                     response = (HttpWebResponse) Request.GetResponse();
                 }
-                catch (WebException e)
+                catch (WebException)
                 {
                     if (e.Status != WebExceptionStatus.ProtocolError)
                     {
@@ -641,7 +641,7 @@ namespace OpenSim.Region.CoreModules.Scripting.HttpRequest
                 else
                     ResponseBody = "";
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 if (e.Status == WebExceptionStatus.ProtocolError)
                 {
@@ -666,7 +666,7 @@ namespace OpenSim.Region.CoreModules.Scripting.HttpRequest
                     ResponseBody = e.Message;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // Don't crash on anything else
             }

@@ -1380,28 +1380,28 @@ namespace OpenSim.Region.CoreModules.World.Estate
                     FileInfo x = new FileInfo(filename);
                     remoteClient.SendAlertMessage("Your terrain was loaded as a " + x.Extension + " file. It may take a few moments to appear.");
                 }
-                catch (IOException e)
+                catch (IOException)
                 {
                     m_log.ErrorFormat("[TERRAIN]: Error Saving a terrain file uploaded via the estate tools.  It gave us the following error: {0}", e.ToString());
                     remoteClient.SendAlertMessage("There was an IO Exception loading your terrain.  Please check free space.");
 
                     return;
                 }
-                catch (SecurityException e)
+                catch (SecurityException)
                 {
                     m_log.ErrorFormat("[TERRAIN]: Error Saving a terrain file uploaded via the estate tools.  It gave us the following error: {0}", e.ToString());
                     remoteClient.SendAlertMessage("There was a security Exception loading your terrain.  Please check the security on the simulator drive");
 
                     return;
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     m_log.ErrorFormat("[TERRAIN]: Error Saving a terrain file uploaded via the estate tools.  It gave us the following error: {0}", e.ToString());
                     remoteClient.SendAlertMessage("There was a security Exception loading your terrain.  Please check the security on the simulator drive");
 
                     return;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("[TERRAIN]: Error loading a terrain file uploaded via the estate tools.  It gave us the following error: {0}", e.ToString());
                     remoteClient.SendAlertMessage("There was a general error loading your terrain.  Please fix the terrain file and try again");

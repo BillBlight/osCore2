@@ -191,7 +191,7 @@ namespace OpenSim.Region.CoreModules.Framework.Library
                     foreach (InventoryNodeBase node in nodes)
                         FixPerms(node);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[LIBRARY MODULE]: Exception when processing archive {0}: {1}", iarFileName, e.StackTrace);
                 }

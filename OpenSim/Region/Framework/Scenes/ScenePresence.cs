@@ -713,7 +713,7 @@ namespace OpenSim.Region.Framework.Scenes
                     {
                         PhysicsActor.Position = value;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SCENE PRESENCE]: ABSOLUTE POSITION " + e.Message);
                     }
@@ -777,7 +777,7 @@ namespace OpenSim.Region.Framework.Scenes
                     {
                         PhysicsActor.TargetVelocity = value;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SCENE PRESENCE]: VELOCITY " + e.Message);
                     }
@@ -811,7 +811,7 @@ namespace OpenSim.Region.Framework.Scenes
                     {
                         PhysicsActor.TargetVelocity = value;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SCENE PRESENCE]: TARGETVELOCITY " + e.Message);
                     }
@@ -846,7 +846,7 @@ namespace OpenSim.Region.Framework.Scenes
                     {
                         PhysicsActor.Orientation = m_bodyRot;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[SCENE PRESENCE]: Orientation " + e.Message);
                     }
@@ -3037,7 +3037,7 @@ namespace OpenSim.Region.Framework.Scenes
                 if(updated)
                     agent_control_v3 += LocalVectorToTarget3D;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //Avoid system crash, can be slower but...
                 m_log.DebugFormat("Crash! {0}", e.ToString());

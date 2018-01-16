@@ -341,7 +341,7 @@ namespace OpenSim.Region.CoreModules.Asset
                         delegate { WriteFileCache(filename, asset); }, null, "FlotsamAssetCache.UpdateFileCache");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[FLOTSAM ASSET CACHE]: Failed to update cache for asset {0}.  Exception {1} {2}",
@@ -483,7 +483,7 @@ namespace OpenSim.Region.CoreModules.Asset
                         m_DiskHits++;
                     }
                 }
-                catch (System.Runtime.Serialization.SerializationException e)
+                catch (System.Runtime.Serialization.SerializationException)
                 {
                     m_log.WarnFormat(
                         "[FLOTSAM ASSET CACHE]: Failed to get file {0} for asset {1}.  Exception {2} {3}",
@@ -495,7 +495,7 @@ namespace OpenSim.Region.CoreModules.Asset
                     // delete it and re-cache
                     File.Delete(filename);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat(
                         "[FLOTSAM ASSET CACHE]: Failed to get file {0} for asset {1}.  Exception {2} {3}",
@@ -522,7 +522,7 @@ namespace OpenSim.Region.CoreModules.Asset
                             found = true;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[FLOTSAM ASSET CACHE]: Failed to check file {0} for asset {1}.  Exception {2} {3}",
@@ -633,7 +633,7 @@ namespace OpenSim.Region.CoreModules.Asset
                 lock(weakAssetReferencesLock)
                     weakAssetReferences.Remove(id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat(
                     "[FLOTSAM ASSET CACHE]: Failed to expire cached file {0}.  Exception {1} {2}",
@@ -741,7 +741,7 @@ namespace OpenSim.Region.CoreModules.Asset
                 // If we get here, another node on the same box has
                 // already removed the directory. Continue with next.
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(
                     string.Format("[FLOTSAM ASSET CACHE]: Could not complete clean of expired files in {0}, exception  ", dir), e);
@@ -801,7 +801,7 @@ namespace OpenSim.Region.CoreModules.Asset
                     BinaryFormatter bformatter = new BinaryFormatter();
                     bformatter.Serialize(stream, asset);
                 }
-                catch (IOException e)
+                catch (IOException)
                 {
                     m_log.WarnFormat(
                         "[FLOTSAM ASSET CACHE]: Failed to write asset {0} to temporary location {1} (final {2}) on cache in {3}.  Exception {4} {5}.",
@@ -809,7 +809,7 @@ namespace OpenSim.Region.CoreModules.Asset
 
                     return;
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                 }
                 finally
@@ -906,7 +906,7 @@ namespace OpenSim.Region.CoreModules.Asset
                         "Please do not delete this file unless you are manually clearing your Flotsam Asset Cache.");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Warn(
                     string.Format(
@@ -1002,7 +1002,7 @@ namespace OpenSim.Region.CoreModules.Asset
                 {
                     Directory.Delete(dir, true);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat(
                         "[FLOTSAM ASSET CACHE]: Couldn't clear asset cache directory {0} from {1}.  Exception {2} {3}",
@@ -1016,7 +1016,7 @@ namespace OpenSim.Region.CoreModules.Asset
                 {
                     File.Delete(file);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat(
                         "[FLOTSAM ASSET CACHE]: Couldn't clear asset cache file {0} from {1}.  Exception {1} {2}",

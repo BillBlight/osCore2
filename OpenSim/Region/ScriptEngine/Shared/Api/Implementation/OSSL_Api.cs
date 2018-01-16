@@ -1977,7 +1977,7 @@ namespace OpenSim.Region.ScriptEngine.Shared.Api
                 OSD decoded = OSDParser.DeserializeJson(JSON);
                 return osdToObject(decoded);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 OSSLError("osParseJSONNew: Problems decoding JSON string " + JSON + " : " + e.Message) ;
                 return null;

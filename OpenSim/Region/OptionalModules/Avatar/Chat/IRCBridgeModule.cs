@@ -109,7 +109,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Chat
                         m_regions.Add(m_region);
                     m_region.Open();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.WarnFormat("[IRC-Bridge] Region {0} not connected to IRC : {1}", scene.RegionInfo.RegionName, e.Message);
                     m_log.Debug(e);
@@ -195,7 +195,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Chat
 
                 responseData["success"] = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[IRC-Bridge] XML RPC Admin request failed : {0}", e.Message);
 

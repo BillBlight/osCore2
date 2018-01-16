@@ -2566,7 +2566,7 @@ namespace OpenSim.Region.Framework.Scenes
 //                    }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat(
                     "[SCENE]: Storing of {0}, {1} in {2} failed with exception {3}{4}",

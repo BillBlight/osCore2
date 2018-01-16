@@ -164,7 +164,7 @@ namespace OpenSim.Data.MySQL
                             }
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(string.Format("[MYSQL XASSET DATA]: Failure fetching asset {0}", assetID), e);
                     }
@@ -280,7 +280,7 @@ namespace OpenSim.Data.MySQL
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[ASSET DB]: MySQL failure creating asset metadata {0} with name \"{1}\". Error: {2}",
                             asset.FullID, asset.Name, e.Message);
@@ -304,7 +304,7 @@ namespace OpenSim.Data.MySQL
                                 cmd.ExecuteNonQuery();
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat("[XASSET DB]: MySQL failure creating asset data {0} with name \"{1}\". Error: {2}",
                                 asset.FullID, asset.Name, e.Message);
@@ -392,7 +392,7 @@ namespace OpenSim.Data.MySQL
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[XASSETS DB]: MySql failure in ExistsData fetching hash {0}.  Exception {1}{2}",
@@ -485,7 +485,7 @@ namespace OpenSim.Data.MySQL
                             }
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error("[XASSETS DB]: MySql failure fetching asset set" + Environment.NewLine + e.ToString());
                     }

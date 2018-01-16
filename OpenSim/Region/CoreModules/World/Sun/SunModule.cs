@@ -306,7 +306,7 @@ namespace OpenSim.Region.CoreModules
                 // Update frequency in frames
                 m_UpdateInterval   = config.Configs["Sun"].GetInt("update_interval", d_frame_mod);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("[SUN]: Configuration access failed, using defaults. Reason: " + e.Message);
                 m_YearLengthDays = d_year_length;

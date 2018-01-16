@@ -192,7 +192,7 @@ namespace OpenSim.Data.PGSQL
                                 }
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.Error(string.Format("[PGSQL XASSET DATA]: Failure fetching asset {0}", assetID), e);
                         }
@@ -295,7 +295,7 @@ namespace OpenSim.Data.PGSQL
                                 cmd.ExecuteNonQuery();
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.ErrorFormat("[ASSET DB]: PGSQL failure creating asset metadata {0} with name \"{1}\". Error: {2}",
                                 asset.FullID, asset.Name, e.Message);
@@ -319,7 +319,7 @@ namespace OpenSim.Data.PGSQL
                                     cmd.ExecuteNonQuery();
                                 }
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.ErrorFormat("[XASSET DB]: PGSQL failure creating asset data {0} with name \"{1}\". Error: {2}",
                                     asset.FullID, asset.Name, e.Message);
@@ -373,7 +373,7 @@ namespace OpenSim.Data.PGSQL
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(
                             "[XASSET PGSQL DB]: Failure updating access_time for asset {0} with name {1} : {2}",
@@ -412,7 +412,7 @@ namespace OpenSim.Data.PGSQL
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat(
                         "[XASSETS DB]: PGSql failure in ExistsData fetching hash {0}.  Exception {1}{2}",
@@ -491,7 +491,7 @@ namespace OpenSim.Data.PGSQL
                                 }
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.Error(string.Format("[XASSETS DB]: PGSql failure fetching asset {0}", uuid), e);
                         }
@@ -551,7 +551,7 @@ namespace OpenSim.Data.PGSQL
                                 }
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             m_log.Error("[XASSETS DB]: PGSql failure fetching asset set" + Environment.NewLine + e.ToString());
                         }

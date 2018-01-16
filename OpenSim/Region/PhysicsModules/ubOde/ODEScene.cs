@@ -693,7 +693,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                 //                ode.drelease(world);
                 base.TriggerPhysicsBasedRestart();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[PHYSICS]: Unable to collide test an object: {0}", e.Message);
                 return;
@@ -1108,7 +1108,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Warn("[PHYSICS]: Unable to collide Active to Static: " + e.Message);
                 }
@@ -1119,7 +1119,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
             {
                 SafeNativeMethods.SpaceCollide(ActiveSpace, IntPtr.Zero, nearCallback);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                     m_log.Warn("[PHYSICS]: Unable to collide in Active: " + e.Message);
             }
@@ -1129,7 +1129,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
             {
                 SafeNativeMethods.SpaceCollide2(CharsSpace,ActiveSpace, IntPtr.Zero, nearCallback);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                     m_log.Warn("[PHYSICS]: Unable to collide Active to Character: " + e.Message);
             }
@@ -1735,7 +1735,7 @@ namespace OpenSim.Region.PhysicsModule.ubOde
                         }
 //                        updatesTime += Util.GetTimeStampMS() - tmpTime;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[PHYSICS]: {0}, {1}, {2}", e.Message, e.TargetSite, e);
 //                        ode.dunlock(world);

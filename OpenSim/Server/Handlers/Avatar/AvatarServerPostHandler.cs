@@ -92,7 +92,7 @@ namespace OpenSim.Server.Handlers.Avatar
                 }
                 m_log.DebugFormat("[AVATAR HANDLER]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("[AVATAR HANDLER]: Exception {0}" + e);
             }

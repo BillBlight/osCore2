@@ -112,7 +112,7 @@ namespace OpenSim.Region.PhysicsModule.Meshing
                         if (!Directory.Exists(decodedSculptMapPath))
                             Directory.CreateDirectory(decodedSculptMapPath);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.WarnFormat("[SCULPT]: Unable to create {0} directory: ", decodedSculptMapPath, e.Message);
                     }
@@ -392,7 +392,7 @@ namespace OpenSim.Region.PhysicsModule.Meshing
                         return false;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[MESH]: Exception deserializing mesh asset header:" + e.ToString());
                 }
@@ -443,7 +443,7 @@ namespace OpenSim.Region.PhysicsModule.Meshing
                             {
                                 convexBlockOsd = DecompressOsd(convexBytes);
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.ErrorFormat("{0} prim='{1}': exception decoding convex block: {2}", LogHeader, primName, e);
                                 //return false;
@@ -533,7 +533,7 @@ namespace OpenSim.Region.PhysicsModule.Meshing
                             }
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.WarnFormat("{0} exception decoding convex block: {1}", LogHeader, e);
                     }
@@ -559,7 +559,7 @@ namespace OpenSim.Region.PhysicsModule.Meshing
                 {
                     decodedMeshOsd = DecompressOsd(meshBytes);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("{0} prim='{1}': exception decoding physical mesh: {2}", LogHeader, primName, e);
                     return false;
@@ -652,7 +652,7 @@ namespace OpenSim.Region.PhysicsModule.Meshing
                         idata = Image.FromFile(decodedSculptFileName);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error("[SCULPT]: unable to load cached sculpt map " + decodedSculptFileName + " " + e.Message);
 
@@ -691,7 +691,7 @@ namespace OpenSim.Region.PhysicsModule.Meshing
                     if (cacheSculptMaps)
                     {
                         try { idata.Save(decodedSculptFileName, ImageFormat.MemoryBmp); }
-                        catch (Exception e) { m_log.Error("[SCULPT]: unable to cache sculpt map " + decodedSculptFileName + " " + e.Message); }
+                        catch (Exception) { m_log.Error("[SCULPT]: unable to cache sculpt map " + decodedSculptFileName + " " + e.Message); }
                     }
                 }
                 catch (DllNotFoundException)

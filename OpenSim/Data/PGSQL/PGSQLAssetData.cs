@@ -203,7 +203,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     command.ExecuteNonQuery();
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     m_log.Error("[ASSET DB]: Error storing item :" + e.Message + " sql "+sql);
                 }
@@ -224,7 +224,7 @@ namespace OpenSim.Data.PGSQL
 //                {
 //                    cmd.ExecuteNonQuery();
 //                }
-//                catch (Exception e)
+//                catch (Exception)
 //                {
 //                    m_log.Error(e.ToString());
 //                }

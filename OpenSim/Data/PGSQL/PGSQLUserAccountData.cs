@@ -211,7 +211,7 @@ namespace OpenSim.Data.PGSQL
                 {
                     conta = cmd.ExecuteNonQuery();
                 }
-                catch (Exception e){
+                catch (Exception){
                     m_log.ErrorFormat("[USER]: ERROR opened update user {0} ", e.Message);
                 }
 

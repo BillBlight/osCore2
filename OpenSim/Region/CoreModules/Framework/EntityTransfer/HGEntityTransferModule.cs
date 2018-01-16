@@ -466,7 +466,7 @@ namespace OpenSim.Region.CoreModules.Framework.EntityTransfer
             {
                 finalDestination = userAgentService.GetHomeRegion(aCircuit.AgentID, out position, out lookAt);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("[HG ENTITY TRANSFER MODULE]: GetHomeRegion call failed ", e);
             }

@@ -167,7 +167,7 @@ namespace OpenSim.Framework
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (ErrorLogger != null)
                 {

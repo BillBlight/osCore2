@@ -290,7 +290,7 @@ namespace OpenSim.Server.Base
                                 plug = (T)Activator.CreateInstance(pluginType,
                                         args);
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 if (!(e is System.MissingMethodException))
                                 {
@@ -318,7 +318,7 @@ namespace OpenSim.Server.Base
                     rtle);
                 return null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("[SERVER UTILS]: Error loading plugin from {0}", dllName), e);
                 return null;
@@ -428,7 +428,7 @@ namespace OpenSim.Server.Base
                         LitJson.JsonMapper.RegisterExporter<UUID>((uuid, writer) => writer.Write(uuid.ToString()) );
                         js = LitJson.JsonMapper.ToJson(kvp.Value);
                     }
- //                   catch(Exception e)
+ //                   catch(Exception)
                     catch
                     {
                         continue;
@@ -526,7 +526,7 @@ namespace OpenSim.Server.Base
 
                 ret = ParseElement(rootNode);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[serverUtils.ParseXmlResponse]: failed error: {0} \n --- string: {1} - ",e.Message, data);
             }
@@ -583,7 +583,7 @@ namespace OpenSim.Server.Base
                 IConfigSource cs = new XmlConfigSource(r);
                 source.Merge(cs);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.FatalFormat("[SERVER UTILS]: Exception reading config from URI {0}\n" + e.ToString(), url);
                 Environment.Exit(1);

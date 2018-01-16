@@ -1564,7 +1564,7 @@ namespace OpenSim.Region.CoreModules.Avatar.UserProfiles
                         if (client.RequestAvatarPropertiesUsingOpenProfile(ref properties))
                             secondChanceSuccess = true;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Debug(
                             string.Format(
@@ -1657,7 +1657,7 @@ namespace OpenSim.Region.CoreModules.Avatar.UserProfiles
                 {
                     account = uConn.GetUserInfo(userID);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Debug("[PROFILES]: GetUserInfo call failed ", e);
                     account = new Dictionary<string, object>();
@@ -1847,7 +1847,7 @@ namespace OpenSim.Region.CoreModules.Avatar.UserProfiles
 
                 webResponse = webRequest.GetResponse();
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 Console.WriteLine("Web Error" + e.Message);
                 Console.WriteLine ("Please check input");
@@ -1862,7 +1862,7 @@ namespace OpenSim.Region.CoreModules.Avatar.UserProfiles
                 {
                     mret = (OSDMap)OSDParser.DeserializeJson(rstream);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[PROFILES]: JsonRpcRequest Error {0} - remote user with legacy profiles?", e.Message);
                     if (webResponse != null)
@@ -1928,7 +1928,7 @@ namespace OpenSim.Region.CoreModules.Avatar.UserProfiles
 
                 webResponse = webRequest.GetResponse();
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 Console.WriteLine("Web Error" + e.Message);
                 Console.WriteLine ("Please check input");
@@ -1943,7 +1943,7 @@ namespace OpenSim.Region.CoreModules.Avatar.UserProfiles
                 {
                     response = (OSDMap)OSDParser.DeserializeJson(rstream);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[PROFILES]: JsonRpcRequest Error {0} - remote user with legacy profiles?", e.Message);
                     if (webResponse != null)

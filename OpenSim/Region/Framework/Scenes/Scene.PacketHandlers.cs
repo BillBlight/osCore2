@@ -578,7 +578,7 @@ namespace OpenSim.Region.Framework.Scenes
             {
                 SendInventoryUpdate(remoteClient, new InventoryFolderBase(folderID), fetchFolders, fetchItems);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(
                     string.Format(
@@ -693,7 +693,7 @@ namespace OpenSim.Region.Framework.Scenes
             {
                 d.BeginInvoke(remoteClient.AgentId, folderID, PurgeFolderCompleted, d);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[AGENT INVENTORY]: Exception on purge folder for user {0}: {1}", remoteClient.AgentId, e.Message);
             }

@@ -101,7 +101,7 @@ namespace OpenSim.Services.Connectors
             {
                 response = SynchronousRestObjectRequester.MakeRequest<AuthorizationRequest, AuthorizationResponse>("POST", uri, req);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[AUTHORIZATION CONNECTOR]: Unable to send authorize {0} for region {1} error thrown during comms with remote server. Reason: {2}", userID, regionID, e.Message);
                 message = e.Message;

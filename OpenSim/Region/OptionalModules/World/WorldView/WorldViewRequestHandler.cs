@@ -77,7 +77,7 @@ namespace OpenSim.Region.OptionalModules.World.WorldView
                     return SendWorldView(request);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("[WORLDVIEW]: Exception: " + e.ToString());
             }

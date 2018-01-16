@@ -79,7 +79,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                     else
                         m_log.DebugFormat("[USER AGENT CONNECTOR]: Failed to resolv address of {0}", url);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.DebugFormat("[USER AGENT CONNECTOR]: Malformed Uri {0}: {1}", url, e.Message);
                 }
@@ -181,7 +181,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
             {
                 response = request.Send(m_ServerURL, 10000);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[USER AGENT CONNECTOR]: {0} call to {1} failed: {2}", methodName, m_ServerURLHost, e.Message);
                 throw;
@@ -583,7 +583,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                 // to other grids running recent mono.
                 response = request.Send(m_ServerURLHost, 10000);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[USER AGENT CONNECTOR]: Unable to contact remote server {0} for GetBoolResponse", m_ServerURLHost);
                 reason = "Exception: " + e.Message;
@@ -620,7 +620,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
 
                 return success;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[USER AGENT CONNECTOR]: Got exception on GetBoolResponse response.");
                 if (hash.ContainsKey("result") && hash["result"] != null)

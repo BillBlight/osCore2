@@ -143,7 +143,7 @@ namespace OpenSim.Services.Connectors
                         "[GRID CONNECTOR]: RegisterRegion received null reply when contacting grid server at {0}", uri);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
             }
@@ -176,7 +176,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[GRID CONNECTOR]: DeregisterRegion received null reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
             }
@@ -203,7 +203,7 @@ namespace OpenSim.Services.Connectors
             {
                 reply = SynchronousRestFormsRequester.MakeRequest("POST", uri, reqString, m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return rinfos;
@@ -246,7 +246,7 @@ namespace OpenSim.Services.Connectors
             {
                 reply = SynchronousRestFormsRequester.MakeRequest("POST", uri, ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return null;
@@ -300,7 +300,7 @@ namespace OpenSim.Services.Connectors
                         uri,
                         ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return null;
@@ -346,7 +346,7 @@ namespace OpenSim.Services.Connectors
                         uri,
                         ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return null;
@@ -390,7 +390,7 @@ namespace OpenSim.Services.Connectors
                         uri,
                         ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return rinfos;
@@ -446,7 +446,7 @@ namespace OpenSim.Services.Connectors
 
                 //m_log.DebugFormat("[GRID CONNECTOR]: reply was {0}", reply);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return rinfos;
@@ -497,7 +497,7 @@ namespace OpenSim.Services.Connectors
 
                 //m_log.DebugFormat("[GRID CONNECTOR]: reply was {0}", reply);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return rinfos;
@@ -548,7 +548,7 @@ namespace OpenSim.Services.Connectors
 
                 //m_log.DebugFormat("[GRID CONNECTOR]: reply was {0}", reply);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return rinfos;
@@ -601,7 +601,7 @@ namespace OpenSim.Services.Connectors
 
                 //m_log.DebugFormat("[GRID CONNECTOR]: reply was {0}", reply);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return rinfos;
@@ -652,7 +652,7 @@ namespace OpenSim.Services.Connectors
 
                 //m_log.DebugFormat("[GRID CONNECTOR]: reply was {0}", reply);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return rinfos;
@@ -701,7 +701,7 @@ namespace OpenSim.Services.Connectors
                         uri,
                         ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return -1;
@@ -746,7 +746,7 @@ namespace OpenSim.Services.Connectors
                                                                   uri,
                                                                   ServerUtils.BuildQueryString(sendData), m_Auth);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[GRID CONNECTOR]: GetExtraFeatures - Exception when contacting grid server at {0}: {1}", uri, e.Message);
                 return extraFeatures;

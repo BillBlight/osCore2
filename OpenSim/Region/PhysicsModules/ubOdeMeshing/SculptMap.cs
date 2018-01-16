@@ -119,7 +119,7 @@ namespace PrimMesher
                     ++byteNdx;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (needsScaling)
                     bm.Dispose();

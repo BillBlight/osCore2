@@ -36,7 +36,7 @@ namespace OpenSim.Framework
     {
         public PluginNotInitialisedException () : base() {}
         public PluginNotInitialisedException (string msg) : base(msg) {}
-        public PluginNotInitialisedException (string msg, Exception e) : base(msg, e) {}
+        public PluginNotInitialisedException (string msg, Exception) : base(msg, e) {}
     }
 
     /// <summary>

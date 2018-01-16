@@ -204,7 +204,7 @@ namespace OpenSim.Framework
                     configurationPlugin.LoadData();
                     useFile = true;
                 }
-                catch (XmlException e)
+                catch (XmlException)
                 {
                     m_log.WarnFormat("[CONFIG] Not using {0}: {1}",
                             configurationFilename,

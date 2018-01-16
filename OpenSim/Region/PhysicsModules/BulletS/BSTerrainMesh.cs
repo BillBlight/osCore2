@@ -269,7 +269,7 @@ public sealed class BSTerrainMesh : BSTerrainPhys
 
             ret = true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             if (physicsScene != null)
                 physicsScene.Logger.ErrorFormat("{0} Failed conversion of heightmap to mesh. For={1}/{2}, e={3}",
@@ -422,7 +422,7 @@ public sealed class BSTerrainMesh : BSTerrainPhys
 
             ret = true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             if (physicsScene != null)
                 physicsScene.Logger.ErrorFormat("{0} Failed conversion of heightmap to mesh. For={1}/{2}, e={3}",

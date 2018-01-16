@@ -88,7 +88,7 @@ namespace OpenSim.Server.Handlers.AgentPreferences
                 }
                 m_log.DebugFormat("[AGENT PREFERENCES HANDLER]: unknown method request: {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AGENT PREFERENCES HANDLER]: Exception {0}", e);
             }

@@ -585,7 +585,7 @@ namespace OpenSim.Framework
                         LitJson.JsonMapper.RegisterImporter<string, UUID>((input) => new UUID(input));
                         bdata = LitJson.JsonMapper.ToObject<Dictionary<string,EstateBan>>((string)map["EstateBans"]);
                     }
- //                   catch(Exception e)
+ //                   catch(Exception)
                     catch
                     {
                         return;

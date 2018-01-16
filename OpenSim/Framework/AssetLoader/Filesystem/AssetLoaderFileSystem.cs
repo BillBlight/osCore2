@@ -109,7 +109,7 @@ namespace OpenSim.Framework.AssetLoader.Filesystem
                         LoadXmlAssetSet(Path.Combine(assetRootPath, assetSetPath), assets);
                     }
                 }
-                catch (XmlException e)
+                catch (XmlException)
                 {
                     m_log.ErrorFormat("[ASSETS]: Error loading {0} : {1}", assetSetPath, e);
                 }
@@ -151,7 +151,7 @@ namespace OpenSim.Framework.AssetLoader.Filesystem
                         assets.Add(newAsset);
                     }
                 }
-                catch (XmlException e)
+                catch (XmlException)
                 {
                     m_log.ErrorFormat("[ASSETS]: Error loading {0} : {1}", assetSetPath, e);
                 }

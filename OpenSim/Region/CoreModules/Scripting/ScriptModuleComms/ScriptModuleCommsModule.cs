@@ -182,7 +182,7 @@ namespace OpenSim.Region.CoreModules.Scripting.ScriptModuleComms
                     typeArgs.Add(mi.ReturnType);
                     delegateType = Expression.GetFuncType(typeArgs.ToArray());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.ErrorFormat("{0} Failed to create function signature. Most likely more than 5 parameters. Method={1}. Error={2}",
                         LogHeader, mi.Name, e);

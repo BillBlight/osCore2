@@ -96,7 +96,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
             {
                 response = request.Send(info.ServerURI, 10000);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Debug("[GATEKEEPER SERVICE CONNECTOR]: Exception " + e.Message);
                 reason = "Error contacting remote server";
@@ -146,7 +146,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 reason = "Error parsing return arguments";
                 m_log.Error("[GATEKEEPER SERVICE CONNECTOR]: Got exception while parsing hyperlink response " + e.StackTrace);
@@ -232,7 +232,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
             {
                 response = request.Send(gatekeeper.ServerURI, 10000);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 message = "Error contacting grid.";
                 m_log.Debug("[GATEKEEPER SERVICE CONNECTOR]: Exception " + e.Message);
@@ -328,7 +328,7 @@ namespace OpenSim.Services.Connectors.Hypergrid
                 }
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 message = "Error parsing response from grid.";
                 m_log.Error("[GATEKEEPER SERVICE CONNECTOR]: Got exception while parsing hyperlink response " + e.StackTrace);

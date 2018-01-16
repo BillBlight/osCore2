@@ -632,7 +632,7 @@ namespace OpenSim.Region.CoreModules.Avatar.AvatarFactory
                     {
                         bakedModuleCache = bakedModule.Get(sp.UUID);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat(e.ToString());
                         bakedModuleCache = null;

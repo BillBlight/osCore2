@@ -2401,7 +2401,7 @@ namespace OpenSim.Region.Framework.Scenes
                             {
                                 g = SceneObjectSerializer.FromOriginalXmlFormat(reader);
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 m_log.Error("[AGENT INVENTORY]: Deserialization of xml failed ", e);
                                 Util.LogFailedXML("[AGENT INVENTORY]:", xmlData);
@@ -2455,7 +2455,7 @@ namespace OpenSim.Region.Framework.Scenes
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[AGENT INVENTORY]: Deserialization of xml failed when looking for CoalescedObject tag ", e);
                 Util.LogFailedXML("[AGENT INVENTORY]:", xmlData);

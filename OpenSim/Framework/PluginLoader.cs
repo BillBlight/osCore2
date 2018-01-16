@@ -41,7 +41,7 @@ namespace OpenSim.Framework
     {
         public PluginConstraintViolatedException () : base() {}
         public PluginConstraintViolatedException (string msg) : base(msg) {}
-        public PluginConstraintViolatedException (string msg, Exception e) : base(msg, e) {}
+        public PluginConstraintViolatedException (string msg, Exception) : base(msg, e) {}
     }
 
     /// <summary>

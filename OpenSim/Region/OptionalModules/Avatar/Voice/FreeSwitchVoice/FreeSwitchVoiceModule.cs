@@ -178,7 +178,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Voice.FreeSwitchVoice
 
                 m_log.Info("[FreeSwitchVoice]: plugin enabled");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[FreeSwitchVoice]: plugin initialization failed: {0} {1}", e.Message, e.StackTrace);
                 return;
@@ -400,7 +400,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Voice.FreeSwitchVoice
 
                 return r;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[FreeSwitchVoice][PROVISIONVOICE]: avatar \"{0}\": {1}, retry later", avatarName, e.Message);
                 m_log.DebugFormat("[FreeSwitchVoice][PROVISIONVOICE]: avatar \"{0}\": {1} failed", avatarName, e.ToString());
@@ -483,7 +483,7 @@ namespace OpenSim.Region.OptionalModules.Avatar.Voice.FreeSwitchVoice
 //                                  scene.RegionInfo.RegionName, land.Name, land.LocalID, avatarName, r);
                 return r;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[FreeSwitchVoice][PARCELVOICE]: region \"{0}\": avatar \"{1}\": {2}, retry later",
                                   scene.RegionInfo.RegionName, avatarName, e.Message);

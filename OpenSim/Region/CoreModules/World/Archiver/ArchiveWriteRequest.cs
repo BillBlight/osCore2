@@ -104,7 +104,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
             {
                 m_saveStream = new GZipStream(new FileStream(savePath, FileMode.Create), CompressionMode.Compress, CompressionLevel.BestCompression);
             }
-            catch (EntryPointNotFoundException e)
+            catch (EntryPointNotFoundException)
             {
                 m_log.ErrorFormat(
                     "[ARCHIVER]: Mismatch between Mono and zlib1g library version when trying to create compression stream."
@@ -211,7 +211,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
                 }
                 CloseArchive(string.Empty);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 CloseArchive(e.Message);
                 throw;
@@ -640,7 +640,7 @@ namespace OpenSim.Region.CoreModules.World.Archiver
                     m_archiveWriter.Close();
                 m_saveStream.Close();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(string.Format("[ARCHIVER]: Error closing archive: {0} ", e.Message), e);
                 if (errorMessage == string.Empty)

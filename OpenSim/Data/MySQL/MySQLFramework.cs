@@ -103,7 +103,7 @@ namespace OpenSim.Data.MySQL
                     cmd.Connection = null;
                     return ret;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(e.Message, e);
                     m_log.Error(Environment.StackTrace.ToString());
@@ -111,7 +111,7 @@ namespace OpenSim.Data.MySQL
                     return 0;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
                 return 0;

@@ -225,7 +225,7 @@ namespace OpenSim.Server.Handlers.Hypergrid
 
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error("[INSTANT MESSAGE]: Caught unexpected exception:", e);
                 successful = false;

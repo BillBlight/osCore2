@@ -1016,7 +1016,7 @@ namespace OpenSim.Region.PhysicsModule.ODE
                     "[ODE SCENE]: The Operating system shut down ODE because of corrupt memory.  This could be a result of really irregular terrain.  If this repeats continuously, restart using Basic Physics and terrain fill your terrain.  Restarting the sim.");
                 base.TriggerPhysicsBasedRestart();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.ErrorFormat("[ODE SCENE]: Unable to collide test an object: {0}", e.Message);
                 return;
@@ -2875,7 +2875,7 @@ namespace OpenSim.Region.PhysicsModule.ODE
 
                         SafeNativeMethods.JointGroupEmpty(contactgroup);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[ODE SCENE]: {0}, {1}, {2}", e.Message, e.TargetSite, e);
                     }
@@ -3418,7 +3418,7 @@ namespace OpenSim.Region.PhysicsModule.ODE
                     SafeNativeMethods.WorldDestroy(world);
                     world = IntPtr.Zero;
                 }
-                catch (AccessViolationException e)
+                catch (AccessViolationException)
                 {
                     m_log.ErrorFormat("[ODE SCENE]: exception {0}", e.Message);
                 }

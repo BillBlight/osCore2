@@ -106,7 +106,7 @@ namespace OpenSim.Services.Connectors
                     return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AGENT PREFERENCES CONNECTOR]: Exception when contacting agent preferences server at {0}: {1}", uri, e.Message);
             }
@@ -172,7 +172,7 @@ namespace OpenSim.Services.Connectors
                 else
                     m_log.DebugFormat("[AGENT PREFERENCES CONNECTOR]: StoreAgentPreferences received empty reply");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AGENT PREFERENCES CONNECTOR]: Exception when contacting agent preferences server at {0}: {1}", uri, e.Message);
             }
@@ -200,7 +200,7 @@ namespace OpenSim.Services.Connectors
                     return "en-us"; // I guess? Gotta return somethin'!
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[AGENT PREFERENCES CONNECTOR]: Exception when contacting agent preferences server at {0}: {1}", uri, e.Message);
             }

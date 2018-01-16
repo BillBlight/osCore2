@@ -138,7 +138,7 @@ namespace OpenSim.Data.MySQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
                 return null;
@@ -179,7 +179,7 @@ namespace OpenSim.Data.MySQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
                 return null;
@@ -231,7 +231,7 @@ namespace OpenSim.Data.MySQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
                 return null;
@@ -272,7 +272,7 @@ namespace OpenSim.Data.MySQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
                 return null;
@@ -324,7 +324,7 @@ namespace OpenSim.Data.MySQL
 
                 return item;
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
                 m_log.Error(e.ToString());
             }
@@ -364,7 +364,7 @@ namespace OpenSim.Data.MySQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
             }
@@ -389,7 +389,7 @@ namespace OpenSim.Data.MySQL
                 folder.Version = (ushort) ((int) reader["version"]);
                 return folder;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
             }
@@ -430,7 +430,7 @@ namespace OpenSim.Data.MySQL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
                 return null;
@@ -514,7 +514,7 @@ namespace OpenSim.Data.MySQL
                     dbcon.Close();
                 }
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
                 m_log.Error(e.ToString());
             }
@@ -551,7 +551,7 @@ namespace OpenSim.Data.MySQL
                     dbcon.Close();
                 }
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
                 m_log.Error(e.Message, e);
             }
@@ -604,7 +604,7 @@ namespace OpenSim.Data.MySQL
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(e.ToString());
                     }
@@ -648,7 +648,7 @@ namespace OpenSim.Data.MySQL
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(e.ToString());
                     }
@@ -790,7 +790,7 @@ namespace OpenSim.Data.MySQL
 
                 return folders;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.Error(e.Message, e);
                 return null;
@@ -820,7 +820,7 @@ namespace OpenSim.Data.MySQL
                     dbcon.Close();
                 }
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
                 m_log.Error(e.Message, e);
             }
@@ -848,7 +848,7 @@ namespace OpenSim.Data.MySQL
                     dbcon.Close();
                 }
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
                 m_log.Error(e.ToString());
             }
@@ -905,7 +905,7 @@ namespace OpenSim.Data.MySQL
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Error(e.Message, e);
                     return null;

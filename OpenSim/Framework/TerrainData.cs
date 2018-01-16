@@ -602,7 +602,7 @@ namespace OpenSim.Framework
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ClearTaint();
                 m_log.ErrorFormat("{0} 2D error: {1} - terrain may be damaged",
@@ -659,7 +659,7 @@ namespace OpenSim.Framework
                     }
                 }
             }
-            catch( Exception e)
+            catch( Exception)
             {
                 ClearTaint();
                 m_log.ErrorFormat("{0} V2DGzip error: {1} - terrain may be damaged",

@@ -158,7 +158,7 @@ namespace OpenSim.Framework.Servers.HttpServer
                         resp.Send();
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     _log.DebugFormat("[{0}] OSHttpHandler problem: {1}", EngineID, e.ToString());
                     _log.ErrorFormat("[{0}] OSHttpHandler problem: {1}", EngineID, e.Message);

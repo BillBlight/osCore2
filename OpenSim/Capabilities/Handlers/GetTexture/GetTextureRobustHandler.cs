@@ -391,7 +391,7 @@ namespace OpenSim.Capabilities.Handlers
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.WarnFormat("[GETTEXTURE]: Unable to convert texture {0} to {1}: {2}", texture.ID, format, e.Message);
             }

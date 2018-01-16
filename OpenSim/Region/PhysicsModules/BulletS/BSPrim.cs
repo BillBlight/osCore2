@@ -790,8 +790,6 @@ public class BSPrim : BSPhysObject
     public override OMV.Vector3 ForceVelocity {
         get { return RawVelocity; }
         set {
-            PhysScene.AssertInTaintTime("BSPrim.ForceVelocity");
-
             RawVelocity = Util.ClampV(value, BSParam.MaxLinearVelocity);
             if (PhysBody.HasPhysicalBody)
             {
@@ -1726,7 +1724,7 @@ public class BSPrim : BSPhysObject
                 ret = (object)index;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
             m_log.WarnFormat("{0} SetSxisLockLimitsExtension exception in object {1}: {2}", LogHeader, this.Name, e);
             ret = null;

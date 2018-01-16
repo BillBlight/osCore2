@@ -253,7 +253,7 @@ namespace OpenSim.Region.CoreModules.World.Warp3DMap
                 using (Bitmap mapbmp = CreateMapTile())
                     return OpenJPEG.EncodeFromImage(mapbmp, true);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // JPEG2000 encoder failed
                 m_log.Error("[WARP 3D IMAGE MODULE]: Failed generating terrain map: ", e);
@@ -613,7 +613,7 @@ namespace OpenSim.Region.CoreModules.World.Warp3DMap
                     using (Bitmap img = (Bitmap)imgDecoder.DecodeToImage(asset))
                         ret = new warp_Texture(img);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_log.Warn(string.Format("[WARP 3D IMAGE MODULE]: Failed to decode asset {0}, exception  ", id), e);
                 }

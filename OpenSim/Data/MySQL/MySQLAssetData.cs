@@ -139,7 +139,7 @@ namespace OpenSim.Data.MySQL
                             }
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(
                             string.Format("[ASSETS DB]: MySql failure fetching asset {0}.  Exception  ", assetID), e);
@@ -204,7 +204,7 @@ namespace OpenSim.Data.MySQL
                         dbcon.Close();
                         return true;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.ErrorFormat("[ASSET DB]: MySQL failure creating asset {0} with name \"{1}\". Error: {2}",
                             asset.FullID, asset.Name, e.Message);
@@ -232,7 +232,7 @@ namespace OpenSim.Data.MySQL
                         cmd.Parameters.AddWithValue("?access_time", now);
                         cmd.ExecuteNonQuery();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(
                             string.Format(
@@ -330,7 +330,7 @@ namespace OpenSim.Data.MySQL
                             }
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         m_log.Error(
                             string.Format(

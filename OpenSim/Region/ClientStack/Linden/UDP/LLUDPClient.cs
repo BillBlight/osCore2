@@ -822,7 +822,7 @@ namespace OpenSim.Region.ClientStack.LindenUDP
                 // if (m_udpServer.IsRunningOutbound)
                 // {
                 try { callback(categories); }
-                catch (Exception e) { m_log.Error("[LLUDPCLIENT]: OnQueueEmpty(" + categories + ") threw an exception: " + e.Message, e); }
+                catch (Exception) { m_log.Error("[LLUDPCLIENT]: OnQueueEmpty(" + categories + ") threw an exception: " + e.Message, e); }
                 // }
             }
 

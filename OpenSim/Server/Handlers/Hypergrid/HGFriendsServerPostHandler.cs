@@ -125,7 +125,7 @@ namespace OpenSim.Server.Handlers.Hypergrid
 
                 m_log.DebugFormat("[HGFRIENDS HANDLER]: unknown method {0}", method);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 m_log.DebugFormat("[HGFRIENDS HANDLER]: Exception {0}", e);
             }

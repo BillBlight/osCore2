@@ -102,7 +102,7 @@ namespace OpenSim.Framework.Serialization.External
                     {
                         p(nodeToFill, xtr);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         errors = true;
                         parseExceptionAction(nodeToFill, nodeName, e);

@@ -238,7 +238,7 @@ namespace OpenSim.Framework.Monitoring
                         break;
                     }
                 }
-                catch(ObjectDisposedException e)
+                catch(ObjectDisposedException)
                 {
                     m_log.DebugFormat("[JobEngine] {0} stopping ignoring {1} jobs in queue",
                         Name,m_jobQueue.Count);
@@ -256,7 +256,7 @@ namespace OpenSim.Framework.Monitoring
                 {
                     m_currentJob.Action();
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     m_log.Error(
                         string.Format(

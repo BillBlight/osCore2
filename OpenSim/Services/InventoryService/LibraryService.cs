@@ -242,7 +242,7 @@ namespace OpenSim.Services.InventoryService
                         action(source.Configs[i], path);
                     }
                 }
-                catch (XmlException e)
+                catch (XmlException)
                 {
                     m_log.ErrorFormat("[LIBRARY INVENTORY]: Error loading {0} : {1}", path, e);
                 }

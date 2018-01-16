@@ -239,7 +239,7 @@ namespace OpenSim.Region.ClientStack.Linden
                             avatarID, evMap["message"], m_scene.Name);
                 }
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 m_log.Error("[EVENTQUEUE] Caught exception: " + e);
                 return false;
