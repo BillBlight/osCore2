@@ -57,6 +57,7 @@ using System.Web;
 
 namespace OpenSim.Framework
 {
+
     [Flags]
     public enum PermissionMask : uint
     {
@@ -134,6 +135,7 @@ namespace OpenSim.Framework
         public int ActiveThreads { get; set; }
         public int WaitingCallbacks { get; set; }
         public int MaxConcurrentWorkItems { get; set; }
+
     }
 
     /// <summary>
@@ -154,8 +156,7 @@ namespace OpenSim.Framework
         public static bool LogOverloads { get; set; }
 
         public static readonly int MAX_THREADPOOL_LEVEL = 3;
-
-        public static double TimeStampClockPeriodMS;
+		public static double TimeStampClockPeriodMS;
         public static double TimeStampClockPeriod;
 
         static Util()
@@ -2634,7 +2635,7 @@ namespace OpenSim.Framework
                     m_fireAndForgetCallsInProgress[context]++;
             }
 */
-            WaitCallback realCallback;
+			            WaitCallback realCallback;
 
             bool loggingEnabled = LogThreadPool > 0;
 
@@ -2675,7 +2676,7 @@ namespace OpenSim.Framework
 
                         callback(o);
                     }
-                    catch (ThreadAbortException e)
+                    catch (ThreadAbortException)
                     {
                     }
                     catch (Exception e)
