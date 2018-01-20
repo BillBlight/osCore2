@@ -381,6 +381,8 @@ namespace OpenSim.Framework.Capabilities
 
             if (reader.IsEmptyElement)
             {
+                
+
                 reader.Read();
                 return ret;
             }

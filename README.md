@@ -1,10 +1,17 @@
 # osCore2 Fork by Bill Blight of Opensim.life
 
+# BlightPS Branch
+The PS stands for Profile and Search
+
+I have included the source which will build the Jopensim Profile and Search moduals.
+There is no documetation on configuring them included at this point
+please see http://jopensim.com for details.
+
 This has some fixes that have not made it into core OpenSimulator .
 
 Some of the additions include the http tests branch which improves the built in http server.
 Roll back of some of the permission changes , specifcally the item creation permsions for textures.
-decresed built in LSL delays, added osParcelMusicURL, for gods, as the ll funcion only works for parcel/land owners.
+configureable LSL delays, see OpenSimDefaults.ini, added osParcelMusicURL, for gods, as the ll funcion only works for parcel/land owners.
 
 And various others.
 
@@ -22,12 +29,12 @@ If it breaks, you get to keep *both* pieces.
 
 # Compiling OpenSim
 
-Please see BUILDING.md if you downloaded a source distribution and 
+Please see BUILDING.md if you downloaded a source distribution and
 need to build OpenSim before running it.
 
 # Running OpenSim on Windows
 
-You will need .NET 4.0 installed to run OpenSimulator.
+You will need .NET 4.6 installed to run this version OpenSimulator.
 
 We recommend that you run OpenSim from a command prompt on Windows in order
 to capture any errors.
@@ -41,7 +48,8 @@ Now see the "Configuring OpenSim" section
 
 # Running OpenSim on Linux
 
-You will need Mono >= 2.10.8.1 to run OpenSimulator.  On some Linux distributions you
+
+You will need Mono >= 5.x to run this version of OpenSimulator.  On some Linux distributions you
 may need to install additional packages.  See http://opensimulator.org/wiki/Dependencies
 for more information.
 
@@ -57,7 +65,7 @@ Now see the "Configuring OpenSim" section
 When OpenSim starts for the first time, you will be prompted with a
 series of questions that look something like:
 
-	[09-17 03:54:40] DEFAULT REGION CONFIG: Simulator Name [OpenSim Test]:
+        [09-17 03:54:40] DEFAULT REGION CONFIG: Simulator Name [OpenSim Test]:
 
 For all the options except simulator name, you can safely hit enter to accept
 the default if you want to connect using a client on the same machine or over
@@ -74,7 +82,7 @@ in-world.  You can also use these details to perform your first login.
 
 Once you are presented with a prompt that looks like:
 
-	Region (My region name) #
+        Region (My region name) #
 
 You have successfully started OpenSim.
 
@@ -98,27 +106,4 @@ one you set up using the "create user" command.
 
 # Bug reports
 
-In the very likely event of bugs biting you (err, your OpenSim) we
-encourage you to see whether the problem has already been reported on
-the [OpenSim mantis system](http://opensimulator.org/mantis/main_page.php).
-
-If your bug has already been reported, you might want to add to the
-bug description and supply additional information.
-
-If your bug has not been reported yet, file a bug report ("opening a
-mantis"). Useful information to include:
- * description of what went wrong
- * stack trace
- * OpenSim.log (attach as file)
- * OpenSim.ini (attach as file)
- * if running under mono: run OpenSim.exe with the "--debug" flag:
-
-       mono --debug OpenSim.exe
-
-# More Information on OpenSim
-
-More extensive information on building, running, and configuring
-OpenSim, as well as how to report bugs, and participate in the OpenSim
-project can always be found at http://opensimulator.org.
-
-Thanks for trying OpenSim, we hope it is a pleasant experience.
+email grid@opensim.life

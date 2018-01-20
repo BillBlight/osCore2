@@ -150,7 +150,6 @@ namespace OpenSim.Region.Framework.Scenes.Serialization
                 }
 
                 XmlDocument doc = new XmlDocument();
-                doc.XmlResolver=null;
                 doc.LoadXml(xml);
                 XmlElement e = (XmlElement)doc.SelectSingleNode("/CoalescedObject");
                 if (e == null)

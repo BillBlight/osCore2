@@ -1438,7 +1438,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
                     {
                         File.Delete(filename);
                     }
-                    catch (IOException e)
+                    catch (IOException)
                     {
                          m_log.ErrorFormat(
                         "[MESH CACHE]: Failed to delete file {0}",filename);
@@ -1651,7 +1651,7 @@ namespace OpenSim.Region.PhysicsModule.ubODEMeshing
 
                 return false;
             }
-            return false;
+            //return false;
         }
     }
 }

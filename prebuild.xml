@@ -1346,10 +1346,9 @@
       <Reference name="OpenMetaverseTypes" path="../../../../../bin/"/>
       <Reference name="OpenMetaverse.StructuredData" path="../../../../../bin/"/>
 
-      <Reference name="OpenSim.Region.Framework"/>
-      <Reference name="OpenSim.Region.Framework.Interfaces"/>
-      <Reference name="OpenSim.Region.Framework.Scenes"/>
+
       <Reference name="OpenSim.Capabilities"/>
+	  <Reference name="OpenSim.Region.Framework"/>
       <Reference name="OpenSim.Capabilities.Handlers"/>
       <Reference name="OpenSim.Framework"/>
       <Reference name="OpenSim.Framework.Monitoring"/>
@@ -1465,8 +1464,8 @@
       <Reference name="OpenMetaverse" path="../../../bin/"/>
       <Reference name="Mono.Data.SqliteClient" path="../../../bin/"/>
       <Reference name="netcd" path="../../../bin/"/>
-      <Reference name="OpenSim.Capabilities"/>
       <Reference name="OpenSim.Framework"/>
+	  <Reference name="OpenSim.Capabilities"/>
       <Reference name="OpenSim.Data"/>
       <Reference name="OpenSim.Framework.Console"/>
       <Reference name="OpenSim.Framework.Monitoring"/>
@@ -1474,7 +1473,7 @@
       <Reference name="OpenSim.Framework.Servers.HttpServer"/>
       <Reference name="OpenSim.Region.CoreModules"/>
       <Reference name="OpenSim.Region.ClientStack.LindenUDP"/>
-      <Reference name="OpenSim.Region.Framework.Interfaces"/>
+
       <Reference name="OpenSim.Region.Framework.Scenes"/>
       <Reference name="OpenSim.Region.Framework"/>
       <Reference name="OpenSim.Region.PhysicsModules.SharedBase"/>
@@ -1735,7 +1734,7 @@
       </Files>
     </Project>
 
-    <Project frameworkVersion="v4_6" name="OpenSim.Region.PhysicsModule.BulletS" path="OpenSim/Region/PhysicsModules/BulletS" type="Library">
+<Project frameworkVersion="v4_6" name="OpenSim.Region.PhysicsModule.BulletS" path="OpenSim/Region/PhysicsModules/BulletS" type="Library">
       <Configuration name="Debug">
         <Options>
           <OutputPath>../../../../bin/</OutputPath>
@@ -1768,6 +1767,7 @@
 
       <Files>
         <Match pattern="*.cs" recurse="true">
+          <Exclude name="obj" pattern="obj"/>
           <Exclude name="Tests" pattern="Tests"/>
         </Match>
       </Files>
@@ -2202,7 +2202,6 @@
       <Reference name="OpenSim.Region.ScriptEngine.Shared.Api"/>
       <Reference name="OpenSim.Region.ScriptEngine.Shared.Api.Runtime"/>
       <Reference name="SmartThreadPool"/>
-      <Reference name="Axiom.MathLib" path="../../../../../bin/"/>
       <Reference name="Nini" path="../../../../../bin/"/>
       <Reference name="log4net" path="../../../../../bin/"/>
 
@@ -2330,8 +2329,6 @@
 	  <Reference name="OpenSim.Framework.Console"/>
     <Reference name="OpenSim.Region.CoreModules"/>
 	      <Reference name="OpenSim.Services.Connectors"/>
-	  <Reference name="OpenSim.Framework.Nwc"/>
-	  <Reference name="OpenSim.Framework.Commander"/>
 
       <Files>
         <Match pattern="*.cs" recurse="true">
@@ -2378,8 +2375,6 @@
 	  <Reference name="OpenSim.Framework.Console"/>
     <Reference name="OpenSim.Region.CoreModules"/>
 	      <Reference name="OpenSim.Services.Connectors"/>
-	  <Reference name="OpenSim.Framework.Nwc"/>
-	  <Reference name="OpenSim.Framework.Commander"/>
 
       <Files>
         <Match pattern="*.cs" recurse="true">
@@ -3235,8 +3230,8 @@
         <Match pattern="*.cs" recurse="true"/>
       </Files>
     </Project>
-
-    <Project frameworkVersion="v4_6" name="OpenSim.Region.PhysicsModule.BulletS.Tests" path="OpenSim/Region/PhysicsModules/BulletS/Tests" type="Library">
+	
+<Project frameworkVersion="v4_6" name="OpenSim.Region.PhysicsModule.BulletS.Tests" path="OpenSim/Region/PhysicsModules/BulletS/Tests" type="Library">
       <Configuration name="Debug">
         <Options>
           <OutputPath>../../../../../bin/</OutputPath>
@@ -3268,7 +3263,6 @@
         <Match pattern="*.cs" recurse="false"/>
       </Files>
     </Project>
-
 
     <Project frameworkVersion="v4_6" name="OpenSim.Server.Handlers.Tests" path="OpenSim/Server/Handlers" type="Library">
       <Configuration name="Debug">
