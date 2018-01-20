@@ -13,3 +13,4 @@ Robust32.exe
 *.sln
 *.build
 
+patch-core1.diff
