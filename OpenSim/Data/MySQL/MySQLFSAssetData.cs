@@ -231,7 +231,6 @@ namespace OpenSim.Data.MySQL
                     cmd.Parameters.AddWithValue("?type", meta.Type);
                     cmd.Parameters.AddWithValue("?hash", hash);
                     cmd.Parameters.AddWithValue("?asset_flags", meta.Flags);
-
                     if (existingAsset == null)
                     {
                         cmd.CommandText = String.Format("insert into {0} (id, name, description, type, hash, asset_flags, create_time, access_time) values ( ?id, ?name, ?description, ?type, ?hash, ?asset_flags, UNIX_TIMESTAMP(), UNIX_TIMESTAMP())", m_Table);
@@ -241,9 +240,13 @@ namespace OpenSim.Data.MySQL
                         return true;
                     }
 
-                    //cmd.CommandText = String.Format("update {0} set hash = ?hash, access_time = UNIX_TIMESTAMP() where id = ?id", m_Table);
+                    else
+					{
+						
+					cmd.CommandText = String.Format("update {0} set name = ?name, description = ?description, type = ?type , hash = ?hash, asset_flags = ?asset_flags, create_time = UNIX_TIMESTAMP(), access_time = UNIX_TIMESTAMP() where id = ?id", m_Table);
 
-                    //ExecuteNonQuery(cmd);
+                    ExecuteNonQuery(cmd);
+					}
 
                 }
 

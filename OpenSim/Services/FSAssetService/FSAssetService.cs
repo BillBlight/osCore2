@@ -620,12 +620,12 @@ namespace OpenSim.Services.FSAssetService
             int tickCount = Environment.TickCount;
             string hash = GetSHA256Hash(asset.Data);
 
-            if (!AssetExists(hash))
+            //if (!AssetExists(hash))
             {
                 string tempFile = Path.Combine(Path.Combine(m_SpoolDirectory, "spool"), hash + ".asset");
                 string finalFile = Path.Combine(m_SpoolDirectory, hash + ".asset");
 
-                if (!File.Exists(finalFile))
+                //if (!File.Exists(finalFile))
                 {
                     // Deal with bug introduced in Oct. 20 (1eb3e6cc43e2a7b4053bc1185c7c88e22356c5e8)
                     // Fix bad assets before storing on this server
@@ -681,21 +681,21 @@ namespace OpenSim.Services.FSAssetService
 
         public bool UpdateContent(string id, byte[] data)
         {
-            return false;
+//            return false;
 
-//            string oldhash;
-//            AssetMetadata meta = m_DataConnector.Get(id, out oldhash);
-//
-//            if (meta == null)
-//                return false;
-//
-//            AssetBase asset = new AssetBase();
-//            asset.Metadata = meta;
-//            asset.Data = data;
-//
-//            Store(asset);
-//
-//            return true;
+            string oldhash;
+            AssetMetadata meta = m_DataConnector.Get(id, out oldhash);
+
+            if (meta == null)
+                return false;
+
+            AssetBase asset = new AssetBase();
+            asset.Metadata = meta;
+            asset.Data = data;
+
+            Store(asset);
+
+            return true;
         }
 
         public virtual bool Delete(string id)
