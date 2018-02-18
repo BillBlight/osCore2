@@ -640,7 +640,7 @@ namespace OpenSim.Services.FSAssetService
                     fs.Write(asset.Data, 0, asset.Data.Length);
 
                     fs.Close();
-
+                    if (File.Exists(finalFile)) File.Delete(finalFile);
                     File.Move(tempFile, finalFile);
                 }
             }
