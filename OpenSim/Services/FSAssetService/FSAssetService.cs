@@ -681,21 +681,21 @@ namespace OpenSim.Services.FSAssetService
 
         public bool UpdateContent(string id, byte[] data)
         {
-//            return false;
+            return false;
 
-            string oldhash;
-            AssetMetadata meta = m_DataConnector.Get(id, out oldhash);
+//            string oldhash;
+//            AssetMetadata meta = m_DataConnector.Get(id, out oldhash);
+//
+//            if (meta == null)
+//                return false;
+//
+//            AssetBase asset = new AssetBase();
+//            asset.Metadata = meta;
+//            asset.Data = data;
+//
+//            Store(asset);
 
-            if (meta == null)
-                return false;
-
-            AssetBase asset = new AssetBase();
-            asset.Metadata = meta;
-            asset.Data = data;
-
-            Store(asset);
-
-            return true;
+//            return true;
         }
 
         public virtual bool Delete(string id)
