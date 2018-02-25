@@ -265,8 +265,8 @@
     ; DefaultScriptEngine = "XEngine"
     ;; ***DANGER***DANGER***
     ;; experimental engine
-    ;; see section [XMREngine} below
-    ; DefaultScriptEngine = "XMREngine"
+    ;; see section [YEngine} below
+    ; DefaultScriptEngine = "YEngine"
     
     ;# {HttpProxy} {} {Proxy URL for llHTTPRequest and dynamic texture loading} {} http://proxy.com:8080
     ;; Http proxy setting for llHTTPRequest and dynamic texture loading, if
@@ -905,7 +905,7 @@
     ;; Money Unit fee to create groups.  Default is 0.
     ; PriceGroupCreate = 0
 
-[XMREngine]
+[YEngine]
     ;; experimental engine
     ;; implements microthreading, so fixing problems like llSleep or long events handlers
     ;; but those will suffer from timeslicing, so will be slower.
